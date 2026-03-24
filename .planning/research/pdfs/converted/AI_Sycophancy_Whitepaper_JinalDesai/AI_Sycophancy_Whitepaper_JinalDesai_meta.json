@@ -1,0 +1,1750 @@
+{
+  "table_of_contents": [
+    {
+      "title": "W H I T E P A P E R\nThe Sycophancy Problem in Large \nLanguage Models",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          92.05662667751312,
+          165.779296875
+        ],
+        [
+          526.4178466796875,
+          165.779296875
+        ],
+        [
+          526.4178466796875,
+          240.36628532409668
+        ],
+        [
+          90.86131417751312,
+          240.36628532409668
+        ]
+      ]
+    },
+    {
+      "title": "Executive Summary",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          63.65005320310593,
+          92.82108575105667
+        ],
+        [
+          238.66824531555176,
+          91.27421075105667
+        ],
+        [
+          238.66824531555176,
+          112.3701171875
+        ],
+        [
+          63.65005320310593,
+          113.84875845909119
+        ]
+      ]
+    },
+    {
+      "title": "1. Introduction: The Problem with Agreeable AI",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          64.74110233783722,
+          124.80700922012329
+        ],
+        [
+          469.7839307785034,
+          123.26013422012329
+        ],
+        [
+          469.7839307785034,
+          143.43279004096985
+        ],
+        [
+          64.74110233783722,
+          144.97966504096985
+        ]
+      ]
+    },
+    {
+      "title": "1.1 Scope and Purpose of This Whitepaper",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          64.33952468633652,
+          414.3143005371094
+        ],
+        [
+          352.378657579422,
+          413.07038497924805
+        ],
+        [
+          352.378657579422,
+          428.35430908203125
+        ],
+        [
+          64.33952468633652,
+          429.76434230804443
+        ]
+      ]
+    },
+    {
+      "title": "2. Defining Sycophancy in the LLM Context",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          64.33238410949707,
+          543.4269404411316
+        ],
+        [
+          439.2387864589691,
+          541.8800654411316
+        ],
+        [
+          439.2387864589691,
+          562.6553406715393
+        ],
+        [
+          64.33238410949707,
+          564.2022156715393
+        ]
+      ]
+    },
+    {
+      "title": "2.1 Technical Definition",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          64.2975931763649,
+          603.3563089370728
+        ],
+        [
+          224.5404818058014,
+          601.8094339370728
+        ],
+        [
+          223.3451693058014,
+          617.7443084716797
+        ],
+        [
+          63.1022806763649,
+          618.8229818344116
+        ]
+      ]
+    },
+    {
+      "title": "2.2 Taxonomy of Sycophantic Behaviours",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          63.78024333715439,
+          134.85004842281342
+        ],
+        [
+          345.40142941474915,
+          133.30317342281342
+        ],
+        [
+          345.40142941474915,
+          150.50433349609375
+        ],
+        [
+          63.78024333715439,
+          151.4014173746109
+        ]
+      ]
+    },
+    {
+      "title": "\u2022 Opinion Sycophancy (Sycophantic Agreement / SyA)",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          82.8239974975586,
+          211.41867327690125
+        ],
+        [
+          380.4053943157196,
+          209.87179827690125
+        ],
+        [
+          379.2100818157196,
+          223.019287109375
+        ],
+        [
+          81.75473499298096,
+          224.53543496131897
+        ]
+      ]
+    },
+    {
+      "title": "\u2022 Feedback Sycophancy",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          82.36209440231323,
+          265.86607217788696
+        ],
+        [
+          221.2863850593567,
+          264.31919717788696
+        ],
+        [
+          220.0910725593567,
+          277.16925048828125
+        ],
+        [
+          81.16678190231323,
+          278.4034638404846
+        ]
+      ]
+    },
+    {
+      "title": "\u2022 Sycophantic Praise (SyPr)",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          82.8239974975586,
+          330.80959010124207
+        ],
+        [
+          240.42130708694458,
+          329.26271510124207
+        ],
+        [
+          239.22599458694458,
+          342.80926513671875
+        ],
+        [
+          82.0117684006691,
+          343.66987681388855
+        ]
+      ]
+    },
+    {
+      "title": "\u2022 Position Swaying",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          82.8239974975586,
+          374.1211931705475
+        ],
+        [
+          195.2196865081787,
+          372.5743181705475
+        ],
+        [
+          194.0243740081787,
+          385.47586369514465
+        ],
+        [
+          82.12814247608185,
+          387.02273869514465
+        ]
+      ]
+    },
+    {
+      "title": "\u2022 Positivity Bias in Assessment",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          82.8239974975586,
+          427.9014172554016
+        ],
+        [
+          259.7475017309189,
+          426.3545422554016
+        ],
+        [
+          258.5521892309189,
+          439.4292907714844
+        ],
+        [
+          82.13160789012909,
+          440.8088164329529
+        ]
+      ]
+    },
+    {
+      "title": "\u2022 Emotional Validation Sycophancy",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          82.8239974975586,
+          470.8751606941223
+        ],
+        [
+          281.9847718477249,
+          469.3282856941223
+        ],
+        [
+          280.7894593477249,
+          482.334819316864
+        ],
+        [
+          82.8239974975586,
+          483.881694316864
+        ]
+      ]
+    },
+    {
+      "title": "3. Root Causes: The Technical Mechanics of \nSycophancy",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          63.73833918571472,
+          556.4595322608948
+        ],
+        [
+          449.8258972167969,
+          554.9126572608948
+        ],
+        [
+          449.8258972167969,
+          598.0075335502625
+        ],
+        [
+          63.73833918571472,
+          599.5544085502625
+        ]
+      ]
+    },
+    {
+      "title": "3.1 Reinforcement Learning from Human Feedback (RLHF)",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          63.53289484977722,
+          637.1004467010498
+        ],
+        [
+          456.7717387676239,
+          635.5535717010498
+        ],
+        [
+          456.7717387676239,
+          651.7043151855469
+        ],
+        [
+          63.53289484977722,
+          653.2117767333984
+        ]
+      ]
+    },
+    {
+      "title": "3.2 The Reward Hacking Problem",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          64.6121798157692,
+          451.1365957260132
+        ],
+        [
+          290.0085732936859,
+          449.5897207260132
+        ],
+        [
+          288.8132607936859,
+          466.3943176269531
+        ],
+        [
+          63.416867315769196,
+          467.6404981613159
+        ]
+      ]
+    },
+    {
+      "title": "3.3 The Compounding Effect of Short-Term Feedback Signals",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          63.81377577781677,
+          644.0676155090332
+        ],
+        [
+          475.6812264919281,
+          642.5207405090332
+        ],
+        [
+          475.6812264919281,
+          659.3510313034058
+        ],
+        [
+          63.81377577781677,
+          660.8979063034058
+        ]
+      ]
+    },
+    {
+      "title": "3.4 The Bayesian Framework: Sycophancy as Belief Updating Gone \nWrong",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          63.416146874427795,
+          149.1529655456543
+        ],
+        [
+          519.3560585975647,
+          149.1529655456543
+        ],
+        [
+          519.3560585975647,
+          181.76756072044373
+        ],
+        [
+          63.416146874427795,
+          181.76756072044373
+        ]
+      ]
+    },
+    {
+      "title": "4. Comparative Analysis: How Major AI Platforms Rank",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          63.99848234653473,
+          359.04173469543457
+        ],
+        [
+          538.306474685669,
+          359.04173469543457
+        ],
+        [
+          538.306474685669,
+          380.67957401275635
+        ],
+        [
+          63.99848234653473,
+          380.67957401275635
+        ]
+      ]
+    },
+    {
+      "title": "4.1 SycEval Benchmark Study (2025)",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          63.80768394470215,
+          476.51043462753296
+        ],
+        [
+          312.45446133613586,
+          476.51043462753296
+        ],
+        [
+          312.45446133613586,
+          493.2033534049988
+        ],
+        [
+          63.80768394470215,
+          493.2033534049988
+        ]
+      ]
+    },
+    {
+      "title": "4.2 Opinion Agreement Studies",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          64.8239974975586,
+          192.51271963119507
+        ],
+        [
+          276.32927083969116,
+          190.96584463119507
+        ],
+        [
+          275.13395833969116,
+          207.2642822265625
+        ],
+        [
+          63.92046493291855,
+          208.69297170639038
+        ]
+      ]
+    },
+    {
+      "title": "4.3 Medical Domain Testing (High-Stakes Sycophancy)",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          63.904314279556274,
+          321.02447748184204
+        ],
+        [
+          433.2487270832062,
+          319.47760248184204
+        ],
+        [
+          433.2487270832062,
+          335.8143310546875
+        ],
+        [
+          63.904314279556274,
+          337.208128452301
+        ]
+      ]
+    },
+    {
+      "title": "4.4 Comparative Positioning by Platform",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          63.93892282247543,
+          478.1236824989319
+        ],
+        [
+          337.2606976032257,
+          476.5768074989319
+        ],
+        [
+          337.2606976032257,
+          493.41682291030884
+        ],
+        [
+          63.93892282247543,
+          494.96369791030884
+        ]
+      ]
+    },
+    {
+      "title": "5. The April 2025 GPT-4o Incident: A Case Study",
+      "heading_level": null,
+      "page_id": 7,
+      "polygon": [
+        [
+          64.30015575885773,
+          444.5563817024231
+        ],
+        [
+          481.6222229003906,
+          444.5563817024231
+        ],
+        [
+          481.6222229003906,
+          465.4443869590759
+        ],
+        [
+          64.30015575885773,
+          465.4443869590759
+        ]
+      ]
+    },
+    {
+      "title": "5.1 Timeline of Events",
+      "heading_level": null,
+      "page_id": 7,
+      "polygon": [
+        [
+          64.8239974975586,
+          591.331253528595
+        ],
+        [
+          215.59088587760925,
+          589.784378528595
+        ],
+        [
+          214.39557337760925,
+          606.7043151855469
+        ],
+        [
+          63.79722386598587,
+          608.0140700340271
+        ]
+      ]
+    },
+    {
+      "title": "5.2 Root Cause Analysis (Per OpenAI's Postmortem)",
+      "heading_level": null,
+      "page_id": 8,
+      "polygon": [
+        [
+          64.18069016933441,
+          386.8151228427887
+        ],
+        [
+          416.50380992889404,
+          386.8151228427887
+        ],
+        [
+          416.50380992889404,
+          402.86968660354614
+        ],
+        [
+          64.18069016933441,
+          402.86968660354614
+        ]
+      ]
+    },
+    {
+      "title": "6. Real-World Impact and Risk Domains",
+      "heading_level": null,
+      "page_id": 8,
+      "polygon": [
+        [
+          64.47176671028137,
+          674.5752024650574
+        ],
+        [
+          406.3792562484741,
+          673.0283274650574
+        ],
+        [
+          406.3792562484741,
+          694.4501342773438
+        ],
+        [
+          64.47176671028137,
+          695.6298480033875
+        ]
+      ]
+    },
+    {
+      "title": "6.1 Business Viability and Market Research",
+      "heading_level": null,
+      "page_id": 9,
+      "polygon": [
+        [
+          63.66551077365875,
+          72.4603459239006
+        ],
+        [
+          353.801118850708,
+          70.9134709239006
+        ],
+        [
+          353.801118850708,
+          87.7442626953125
+        ],
+        [
+          63.66551077365875,
+          88.11670786142349
+        ]
+      ]
+    },
+    {
+      "title": "6.2 Medical and Clinical Settings",
+      "heading_level": null,
+      "page_id": 9,
+      "polygon": [
+        [
+          64.4320056438446,
+          280.35091280937195
+        ],
+        [
+          284.9916386604309,
+          278.80403780937195
+        ],
+        [
+          283.7963261604309,
+          295.0143127441406
+        ],
+        [
+          63.236693143844604,
+          296.4179627895355
+        ]
+      ]
+    },
+    {
+      "title": "6.3 Legal and Financial Advisory Use Cases",
+      "heading_level": null,
+      "page_id": 9,
+      "polygon": [
+        [
+          64.36612629890442,
+          487.64592361450195
+        ],
+        [
+          360.49079060554504,
+          486.09904861450195
+        ],
+        [
+          359.29547810554504,
+          502.2743225097656
+        ],
+        [
+          63.17081379890442,
+          503.7408256530762
+        ]
+      ]
+    },
+    {
+      "title": "6.4 Educational Settings",
+      "heading_level": null,
+      "page_id": 9,
+      "polygon": [
+        [
+          63.95823794603348,
+          631.1337804794312
+        ],
+        [
+          230.01339197158813,
+          629.5869054794312
+        ],
+        [
+          230.01339197158813,
+          645.3319101333618
+        ],
+        [
+          63.95823794603348,
+          646.8787851333618
+        ]
+      ]
+    },
+    {
+      "title": "6.5 Mental Health and Emotional Support",
+      "heading_level": null,
+      "page_id": 10,
+      "polygon": [
+        [
+          64.6353068947792,
+          135.7472151517868
+        ],
+        [
+          340.98660135269165,
+          134.2003401517868
+        ],
+        [
+          339.79128885269165,
+          150.50433349609375
+        ],
+        [
+          63.439994394779205,
+          151.02878987789154
+        ]
+      ]
+    },
+    {
+      "title": "7. Constitutional AI and Anti-Sycophancy Design \nApproaches",
+      "heading_level": null,
+      "page_id": 10,
+      "polygon": [
+        [
+          63.71875047683716,
+          265.58743357658386
+        ],
+        [
+          487.7779846191406,
+          264.04055857658386
+        ],
+        [
+          487.7779846191406,
+          305.1201171875
+        ],
+        [
+          63.71875047683716,
+          306.0823438167572
+        ]
+      ]
+    },
+    {
+      "title": "7.1 Constitutional AI (CAI) \u2014 Anthropic",
+      "heading_level": null,
+      "page_id": 10,
+      "polygon": [
+        [
+          64.2028779387474,
+          404.0437216758728
+        ],
+        [
+          329.1833646297455,
+          402.4968466758728
+        ],
+        [
+          327.9880521297455,
+          418.21060037612915
+        ],
+        [
+          63.007565438747406,
+          419.75747537612915
+        ]
+      ]
+    },
+    {
+      "title": "7.2 Synthetic Data Augmentation",
+      "heading_level": null,
+      "page_id": 10,
+      "polygon": [
+        [
+          64.49876046180725,
+          610.5920848846436
+        ],
+        [
+          286.95211458206177,
+          609.0452098846436
+        ],
+        [
+          285.75680208206177,
+          625.4243011474609
+        ],
+        [
+          63.30344796180725,
+          626.7503385543823
+        ]
+      ]
+    },
+    {
+      "title": "7.3 Direct Preference Optimization (DPO) with Anti-Sycophancy Pairs",
+      "heading_level": null,
+      "page_id": 11,
+      "polygon": [
+        [
+          63.49461114406586,
+          99.85721790790558
+        ],
+        [
+          528.1973876953125,
+          98.31034290790558
+        ],
+        [
+          528.1973876953125,
+          115.34429931640625
+        ],
+        [
+          63.49461114406586,
+          115.85532224178314
+        ]
+      ]
+    },
+    {
+      "title": "7.4 Activation Steering / Mechanistic Interpretability",
+      "heading_level": null,
+      "page_id": 11,
+      "polygon": [
+        [
+          64.70821738243103,
+          229.0077202320099
+        ],
+        [
+          411.98137164115906,
+          227.4608452320099
+        ],
+        [
+          410.78605914115906,
+          243.8642578125
+        ],
+        [
+          63.51290488243103,
+          244.8543140888214
+        ]
+      ]
+    },
+    {
+      "title": "7.5 System Prompt Engineering (User-Accessible)",
+      "heading_level": null,
+      "page_id": 11,
+      "polygon": [
+        [
+          63.737828493118286,
+          387.00501251220703
+        ],
+        [
+          400.6900312900543,
+          385.45813751220703
+        ],
+        [
+          400.6900312900543,
+          401.86177253723145
+        ],
+        [
+          63.737828493118286,
+          403.40864753723145
+        ]
+      ]
+    },
+    {
+      "title": "8. Measuring and Benchmarking Sycophancy",
+      "heading_level": null,
+      "page_id": 11,
+      "polygon": [
+        [
+          64.41433203220367,
+          683.2802925109863
+        ],
+        [
+          456.1869592666626,
+          681.7334175109863
+        ],
+        [
+          456.1869592666626,
+          703.0975513458252
+        ],
+        [
+          64.41433203220367,
+          704.6444263458252
+        ]
+      ]
+    },
+    {
+      "title": "9. Practical Framework for Enterprise and Power Users",
+      "heading_level": null,
+      "page_id": 12,
+      "polygon": [
+        [
+          63.71134543418884,
+          476.3149981498718
+        ],
+        [
+          537.3993752002716,
+          474.7681231498718
+        ],
+        [
+          537.3993752002716,
+          494.8601379394531
+        ],
+        [
+          63.71134543418884,
+          496.0156559944153
+        ]
+      ]
+    },
+    {
+      "title": "9.1 The CRITIC Protocol for AI-Assisted Evaluation",
+      "heading_level": null,
+      "page_id": 12,
+      "polygon": [
+        [
+          64.06959629058838,
+          607.5294914245605
+        ],
+        [
+          405.39825224876404,
+          605.9826164245605
+        ],
+        [
+          405.39825224876404,
+          622.3043060302734
+        ],
+        [
+          64.06959629058838,
+          623.3386974334717
+        ]
+      ]
+    },
+    {
+      "title": "9.2 Red Flags: Signs Your AI Assessment May Be Sycophantic",
+      "heading_level": null,
+      "page_id": 13,
+      "polygon": [
+        [
+          63.786508440971375,
+          486.4089617729187
+        ],
+        [
+          484.0511498451233,
+          484.8620867729187
+        ],
+        [
+          484.0511498451233,
+          501.3303008079529
+        ],
+        [
+          63.786508440971375,
+          502.8771758079529
+        ]
+      ]
+    },
+    {
+      "title": "10. Implications for AI Policy and Industry Standards",
+      "heading_level": null,
+      "page_id": 14,
+      "polygon": [
+        [
+          64.8239974975586,
+          72.73296564817429
+        ],
+        [
+          518.0831937789917,
+          71.18609064817429
+        ],
+        [
+          518.0831937789917,
+          92.45725053548813
+        ],
+        [
+          64.8239974975586,
+          94.00412553548813
+        ]
+      ]
+    },
+    {
+      "title": "10.1 Regulatory Perspective",
+      "heading_level": null,
+      "page_id": 14,
+      "polygon": [
+        [
+          64.8239974975586,
+          190.5856876373291
+        ],
+        [
+          254.82320308685303,
+          189.0388126373291
+        ],
+        [
+          253.62789058685303,
+          205.34429931640625
+        ],
+        [
+          63.680640041828156,
+          206.1460897922516
+        ]
+      ]
+    },
+    {
+      "title": "10.2 Enterprise AI Governance Recommendations",
+      "heading_level": null,
+      "page_id": 14,
+      "polygon": [
+        [
+          64.8239974975586,
+          348.2527914047241
+        ],
+        [
+          400.2712998390198,
+          346.7059164047241
+        ],
+        [
+          399.0759873390198,
+          362.9342956542969
+        ],
+        [
+          63.763527274131775,
+          364.20404291152954
+        ]
+      ]
+    },
+    {
+      "title": "10.3 The \"Honest AI\" Design Challenge",
+      "heading_level": null,
+      "page_id": 14,
+      "polygon": [
+        [
+          63.999585807323456,
+          491.04779291152954
+        ],
+        [
+          326.102246761322,
+          489.50091791152954
+        ],
+        [
+          326.102246761322,
+          505.99432373046875
+        ],
+        [
+          63.999585807323456,
+          507.5312075614929
+        ]
+      ]
+    },
+    {
+      "title": "11. Conclusion",
+      "heading_level": null,
+      "page_id": 14,
+      "polygon": [
+        [
+          64.7418546974659,
+          634.4184823036194
+        ],
+        [
+          195.41675913333893,
+          632.8716073036194
+        ],
+        [
+          194.22144663333893,
+          655.2265191078186
+        ],
+        [
+          63.5465421974659,
+          656.7733941078186
+        ]
+      ]
+    },
+    {
+      "title": "References and Sources",
+      "heading_level": null,
+      "page_id": 15,
+      "polygon": [
+        [
+          64.40463799238205,
+          506.6552839279175
+        ],
+        [
+          278.00696897506714,
+          505.1084089279175
+        ],
+        [
+          276.81165647506714,
+          525.3626146316528
+        ],
+        [
+          63.20932549238205,
+          526.9094896316528
+        ]
+      ]
+    }
+  ],
+  "page_stats": [
+    {
+      "page_id": 0,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          26
+        ],
+        [
+          "Line",
+          11
+        ],
+        [
+          "Text",
+          5
+        ],
+        [
+          "SectionHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 1,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          107
+        ],
+        [
+          "Line",
+          35
+        ],
+        [
+          "Text",
+          3
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 2,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          87
+        ],
+        [
+          "Line",
+          32
+        ],
+        [
+          "Text",
+          7
+        ],
+        [
+          "SectionHeader",
+          4
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 3,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          106
+        ],
+        [
+          "Line",
+          36
+        ],
+        [
+          "SectionHeader",
+          9
+        ],
+        [
+          "ListItem",
+          6
+        ],
+        [
+          "Text",
+          3
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 4,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          113
+        ],
+        [
+          "Line",
+          38
+        ],
+        [
+          "Text",
+          7
+        ],
+        [
+          "ListItem",
+          3
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 5,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          117
+        ],
+        [
+          "Line",
+          37
+        ],
+        [
+          "Text",
+          6
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 6,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          124
+        ],
+        [
+          "Line",
+          50
+        ],
+        [
+          "Text",
+          4
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 7,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          146
+        ],
+        [
+          "Line",
+          69
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "Table",
+          2
+        ],
+        [
+          "Text",
+          2
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 8,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          112
+        ],
+        [
+          "Line",
+          41
+        ],
+        [
+          "Text",
+          4
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 9,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          88
+        ],
+        [
+          "Line",
+          36
+        ],
+        [
+          "Text",
+          6
+        ],
+        [
+          "SectionHeader",
+          4
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 10,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          82
+        ],
+        [
+          "Line",
+          32
+        ],
+        [
+          "Text",
+          6
+        ],
+        [
+          "SectionHeader",
+          4
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 11,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          111
+        ],
+        [
+          "Line",
+          35
+        ],
+        [
+          "ListItem",
+          5
+        ],
+        [
+          "SectionHeader",
+          4
+        ],
+        [
+          "Text",
+          3
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 12,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          144
+        ],
+        [
+          "Line",
+          61
+        ],
+        [
+          "Text",
+          3
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "Table",
+          2
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 13,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          131
+        ],
+        [
+          "Line",
+          51
+        ],
+        [
+          "ListItem",
+          7
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "Text",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 14,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          74
+        ],
+        [
+          "Line",
+          31
+        ],
+        [
+          "SectionHeader",
+          5
+        ],
+        [
+          "Text",
+          5
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 15,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          82
+        ],
+        [
+          "Line",
+          34
+        ],
+        [
+          "Text",
+          10
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 16,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          77
+        ],
+        [
+          "Line",
+          35
+        ],
+        [
+          "Text",
+          17
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    }
+  ],
+  "debug_data_path": "debug_data\\AI_Sycophancy_Whitepaper_JinalDesai"
+}

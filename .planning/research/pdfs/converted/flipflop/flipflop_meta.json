@@ -1,0 +1,1388 @@
+{
+  "table_of_contents": [
+    {
+      "title": "Are You Sure? Challenging LLMs Leads to Performance Drops in\nThe FlipFlop Experiment",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          95.02799987792969,
+          78.85003662109375
+        ],
+        [
+          501.2620871067047,
+          78.85003662109375
+        ],
+        [
+          501.2620871067047,
+          109.13623046875
+        ],
+        [
+          95.02799987792969,
+          109.13623046875
+        ]
+      ]
+    },
+    {
+      "title": "Abstract",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          156.21821415424347,
+          214.4921875
+        ],
+        [
+          203.3370612859726,
+          214.4921875
+        ],
+        [
+          203.3370612859726,
+          226.4473876953125
+        ],
+        [
+          156.21821415424347,
+          226.4473876953125
+        ]
+      ]
+    },
+    {
+      "title": "1 Introduction",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          69.63022190332413,
+          563.3151550292969
+        ],
+        [
+          153.67967224121094,
+          563.3151550292969
+        ],
+        [
+          153.67967224121094,
+          575.2703552246094
+        ],
+        [
+          69.63022190332413,
+          575.2703552246094
+        ]
+      ]
+    },
+    {
+      "title": "2 Related Work",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          69.9564199745655,
+          666.0111541748047
+        ],
+        [
+          160.09809684753418,
+          666.0111541748047
+        ],
+        [
+          160.09809684753418,
+          677.9663543701172
+        ],
+        [
+          69.9564199745655,
+          677.9663543701172
+        ]
+      ]
+    },
+    {
+      "title": "2.1 Sycophancy in LLMs",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          70.11404159665108,
+          687.8490447998047
+        ],
+        [
+          196.62796461582184,
+          687.8490447998047
+        ],
+        [
+          196.62796461582184,
+          698.880211353302
+        ],
+        [
+          70.11404159665108,
+          698.880211353302
+        ]
+      ]
+    },
+    {
+      "title": "2.2 Self-Critique",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          306.0438892841339,
+          353.2630615234375
+        ],
+        [
+          391.999787569046,
+          352.62809133529663
+        ],
+        [
+          391.28753662109375,
+          364.17218017578125
+        ],
+        [
+          304.8798267841339,
+          364.8502086400986
+        ]
+      ]
+    },
+    {
+      "title": "2.3 Answer Flipping in Education Research",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          306.14202880859375,
+          663.9890747070312
+        ],
+        [
+          516.8197355270386,
+          663.9890747070312
+        ],
+        [
+          516.8197355270386,
+          674.8981628417969
+        ],
+        [
+          306.14202880859375,
+          676.1734043359756
+        ]
+      ]
+    },
+    {
+      "title": "3 FlipFlop Experiment",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          69.93356892466545,
+          539.238173365593
+        ],
+        [
+          196.29426646232605,
+          539.238173365593
+        ],
+        [
+          196.29426646232605,
+          551.2093505859375
+        ],
+        [
+          69.93356892466545,
+          551.2093505859375
+        ]
+      ]
+    },
+    {
+      "title": "3.1 FlipFlop Experimental Procedure",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          69.99769484996796,
+          704.6370544433594
+        ],
+        [
+          253.38986599445343,
+          704.6370544433594
+        ],
+        [
+          253.38986599445343,
+          715.7497555017471
+        ],
+        [
+          69.99769484996796,
+          715.7497555017471
+        ]
+      ]
+    },
+    {
+      "title": "3.2 FlipFlop Metric Definitions",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          306.14202880859375,
+          715.8060531616211
+        ],
+        [
+          458.03589367866516,
+          715.8060531616211
+        ],
+        [
+          458.03589367866516,
+          726.9149322509766
+        ],
+        [
+          306.14202880859375,
+          726.9149322509766
+        ]
+      ]
+    },
+    {
+      "title": "4 Evaluation Setting",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          70.06468492746353,
+          467.7181701660156
+        ],
+        [
+          184.0013074874878,
+          467.7181701660156
+        ],
+        [
+          184.0013074874878,
+          479.6733703613281
+        ],
+        [
+          70.06468492746353,
+          479.6733703613281
+        ]
+      ]
+    },
+    {
+      "title": "4.1 Evaluated Models",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          69.97334289550781,
+          527.0792416334152
+        ],
+        [
+          179.5178657770157,
+          527.0792416334152
+        ],
+        [
+          179.5178657770157,
+          538.0161437988281
+        ],
+        [
+          69.97334289550781,
+          538.0161437988281
+        ]
+      ]
+    },
+    {
+      "title": "4.2 Task Selection",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          70.43039053678513,
+          704.0560607910156
+        ],
+        [
+          161.98971557617188,
+          704.0560607910156
+        ],
+        [
+          161.98971557617188,
+          714.9651565551758
+        ],
+        [
+          70.43039053678513,
+          714.9651565551758
+        ]
+      ]
+    },
+    {
+      "title": "4.3 Challenger Selection",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          305.0892074108124,
+          401.1640319824219
+        ],
+        [
+          427.35889649391174,
+          401.1640319824219
+        ],
+        [
+          427.35889649391174,
+          412.0731506347656
+        ],
+        [
+          305.0892074108124,
+          412.0731506347656
+        ]
+      ]
+    },
+    {
+      "title": "Basic Challengers",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          306.14202880859375,
+          452.92706298828125
+        ],
+        [
+          389.4766540527344,
+          452.92706298828125
+        ],
+        [
+          389.4766540527344,
+          463.9014981985092
+        ],
+        [
+          306.14202880859375,
+          463.9014981985092
+        ]
+      ]
+    },
+    {
+      "title": "Persona-based Challengers",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          305.78303384780884,
+          530.205078125
+        ],
+        [
+          432.3218994140625,
+          529.4718117713928
+        ],
+        [
+          432.283935546875,
+          541.1141967773438
+        ],
+        [
+          304.61897134780884,
+          541.5502433776855
+        ]
+      ]
+    },
+    {
+      "title": "4.4 Experiment Selection",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          306.14202880859375,
+          663.9890747070312
+        ],
+        [
+          430.77349877357483,
+          663.9890747070312
+        ],
+        [
+          430.3748474121094,
+          674.8981628417969
+        ],
+        [
+          305.10874581336975,
+          676.0490406751633
+        ]
+      ]
+    },
+    {
+      "title": "5 Results",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          70.23670279979706,
+          532.7981567382812
+        ],
+        [
+          125.99142456054688,
+          532.7981567382812
+        ],
+        [
+          125.99142456054688,
+          544.7533569335938
+        ],
+        [
+          70.23670279979706,
+          544.7533569335938
+        ]
+      ]
+    },
+    {
+      "title": "5.1 Average Accuracy Deterioration",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          70.44984012842178,
+          555.0040588378906
+        ],
+        [
+          245.67343139648438,
+          554.5620046854019
+        ],
+        [
+          245.67343139648438,
+          565.9131774902344
+        ],
+        [
+          70.44984012842178,
+          566.795213341713
+        ]
+      ]
+    },
+    {
+      "title": "5.2 Accuracy Deterioration Distribution",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          306.14202880859375,
+          592.2860717773438
+        ],
+        [
+          501.1004157066345,
+          591.6725627183914
+        ],
+        [
+          501.1004157066345,
+          603.1951599121094
+        ],
+        [
+          306.14202880859375,
+          603.8884066343307
+        ]
+      ]
+    },
+    {
+      "title": "5.3 Flipping Dynamics Analysis",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          69.85827946662903,
+          569.1350870132446
+        ],
+        [
+          226.72333908081055,
+          569.1350870132446
+        ],
+        [
+          226.72333908081055,
+          580.0541687011719
+        ],
+        [
+          69.85827946662903,
+          580.0541687011719
+        ]
+      ]
+    },
+    {
+      "title": "6 Mitigation through Finetuning",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          305.4885723590851,
+          567.5771484375
+        ],
+        [
+          480.7431409358978,
+          567.5771484375
+        ],
+        [
+          480.7431409358978,
+          579.5323486328125
+        ],
+        [
+          305.4885723590851,
+          579.5323486328125
+        ]
+      ]
+    },
+    {
+      "title": "6.1 Synthetic Data Creation",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          70.0166826248169,
+          278.57806396484375
+        ],
+        [
+          207.92791748046875,
+          278.57806396484375
+        ],
+        [
+          207.92791748046875,
+          289.7593248486519
+        ],
+        [
+          70.0166826248169,
+          289.7593248486519
+        ]
+      ]
+    },
+    {
+      "title": "6.2 Finetuning Results",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          306.03657126426697,
+          330.533065199852
+        ],
+        [
+          418.72675919532776,
+          330.533065199852
+        ],
+        [
+          418.72675919532776,
+          341.6531677246094
+        ],
+        [
+          306.03657126426697,
+          341.6531677246094
+        ]
+      ]
+    },
+    {
+      "title": "\u2206F F of -3.8% across all tasks and challengers,\na 60% reduction from the base model's 9.5%.",
+      "heading_level": null,
+      "page_id": 7,
+      "polygon": [
+        [
+          69.96099853515625,
+          73.30687001347542
+        ],
+        [
+          292.8718087673187,
+          73.30687001347542
+        ],
+        [
+          292.8718087673187,
+          98.0201416015625
+        ],
+        [
+          69.96099853515625,
+          98.0201416015625
+        ]
+      ]
+    },
+    {
+      "title": "7 Discussion",
+      "heading_level": null,
+      "page_id": 7,
+      "polygon": [
+        [
+          70.31735199689865,
+          394.09255689382553
+        ],
+        [
+          142.60916137695312,
+          394.09255689382553
+        ],
+        [
+          142.60916137695312,
+          406.74237060546875
+        ],
+        [
+          70.31735199689865,
+          406.74237060546875
+        ]
+      ]
+    },
+    {
+      "title": "8 Conclusion",
+      "heading_level": null,
+      "page_id": 7,
+      "polygon": [
+        [
+          306.14202880859375,
+          440.4194006919861
+        ],
+        [
+          381.208740234375,
+          440.4194006919861
+        ],
+        [
+          381.208740234375,
+          453.66033935546875
+        ],
+        [
+          306.14202880859375,
+          453.66033935546875
+        ]
+      ]
+    },
+    {
+      "title": "9 Limitations",
+      "heading_level": null,
+      "page_id": 8,
+      "polygon": [
+        [
+          70.20183563232422,
+          72.7591552734375
+        ],
+        [
+          148.09231686592102,
+          72.7591552734375
+        ],
+        [
+          148.09231686592102,
+          84.71435546875
+        ],
+        [
+          70.20183563232422,
+          84.71435546875
+        ]
+      ]
+    },
+    {
+      "title": "References",
+      "heading_level": null,
+      "page_id": 8,
+      "polygon": [
+        [
+          306.02047872543335,
+          284.5688232779503
+        ],
+        [
+          362.34486198425293,
+          284.5688232779503
+        ],
+        [
+          362.34486198425293,
+          296.9183349609375
+        ],
+        [
+          306.02047872543335,
+          296.9183349609375
+        ]
+      ]
+    },
+    {
+      "title": "A Appendix",
+      "heading_level": null,
+      "page_id": 11,
+      "polygon": [
+        [
+          69.83624103665352,
+          72.7591552734375
+        ],
+        [
+          141.87443339824677,
+          72.7591552734375
+        ],
+        [
+          141.87443339824677,
+          84.71435546875
+        ],
+        [
+          69.83624103665352,
+          84.71435546875
+        ]
+      ]
+    },
+    {
+      "title": "A.1 FlipFlop Experiment: Design\nConsiderations",
+      "heading_level": null,
+      "page_id": 11,
+      "polygon": [
+        [
+          69.96396446228027,
+          95.38507080078125
+        ],
+        [
+          235.0250997543335,
+          94.64105954766273
+        ],
+        [
+          235.0250997543335,
+          119.8431396484375
+        ],
+        [
+          69.96396446228027,
+          120.14900997281075
+        ]
+      ]
+    },
+    {
+      "title": "A.2 Relating FlipFlop Effect and\nTemperature",
+      "heading_level": null,
+      "page_id": 11,
+      "polygon": [
+        [
+          306.14202880859375,
+          348.8505074977875
+        ],
+        [
+          468.1990602016449,
+          348.8505074977875
+        ],
+        [
+          467.0349977016449,
+          373.72918701171875
+        ],
+        [
+          306.14202880859375,
+          373.72918701171875
+        ]
+      ]
+    },
+    {
+      "title": "A.3 Evaluation Task Selection",
+      "heading_level": null,
+      "page_id": 12,
+      "polygon": [
+        [
+          69.78461080789566,
+          329.34134715795517
+        ],
+        [
+          218.00626301765442,
+          329.34134715795517
+        ],
+        [
+          218.00626301765442,
+          341.065185546875
+        ],
+        [
+          69.78461080789566,
+          341.065185546875
+        ]
+      ]
+    },
+    {
+      "title": "A.4 Model Access Detail",
+      "heading_level": null,
+      "page_id": 12,
+      "polygon": [
+        [
+          306.14202880859375,
+          470.9100341796875
+        ],
+        [
+          428.5640606880188,
+          470.0795817375183
+        ],
+        [
+          427.3999981880188,
+          481.81915283203125
+        ],
+        [
+          305.67852115631104,
+          482.38646507263184
+        ]
+      ]
+    },
+    {
+      "title": "A.5 Finetuning Details",
+      "heading_level": null,
+      "page_id": 13,
+      "polygon": [
+        [
+          70.04436054825783,
+          285.4971091747284
+        ],
+        [
+          184.905171751976,
+          285.4971091747284
+        ],
+        [
+          184.905171751976,
+          298.8466799259186
+        ],
+        [
+          70.04436054825783,
+          298.8466799259186
+        ]
+      ]
+    },
+    {
+      "title": "A.6 Finetuning Synthetic Dataset Creation",
+      "heading_level": null,
+      "page_id": 13,
+      "polygon": [
+        [
+          70.86599731445312,
+          393.7240580320358
+        ],
+        [
+          277.9337408542633,
+          393.7240580320358
+        ],
+        [
+          276.7696783542633,
+          406.80763709545135
+        ],
+        [
+          69.70699006319046,
+          406.80763709545135
+        ]
+      ]
+    }
+  ],
+  "page_stats": [
+    {
+      "page_id": 0,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          295
+        ],
+        [
+          "Line",
+          139
+        ],
+        [
+          "Text",
+          9
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 1,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          274
+        ],
+        [
+          "Line",
+          101
+        ],
+        [
+          "Text",
+          10
+        ],
+        [
+          "SectionHeader",
+          4
+        ],
+        [
+          "Footnote",
+          2
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 2,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          260
+        ],
+        [
+          "Line",
+          112
+        ],
+        [
+          "Text",
+          9
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Caption",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "TextInlineMath",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 3,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          417
+        ],
+        [
+          "Line",
+          97
+        ],
+        [
+          "Text",
+          12
+        ],
+        [
+          "SectionHeader",
+          7
+        ],
+        [
+          "Equation",
+          6
+        ],
+        [
+          "TextInlineMath",
+          3
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "ListItem",
+          1
+        ],
+        [
+          "TableGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 4,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          412
+        ],
+        [
+          "Line",
+          103
+        ],
+        [
+          "Text",
+          5
+        ],
+        [
+          "TextInlineMath",
+          4
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "TableGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 5,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          341
+        ],
+        [
+          "Line",
+          107
+        ],
+        [
+          "Text",
+          7
+        ],
+        [
+          "Caption",
+          2
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ],
+        [
+          "TableGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 6,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          278
+        ],
+        [
+          "Line",
+          84
+        ],
+        [
+          "Text",
+          11
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "TextInlineMath",
+          2
+        ],
+        [
+          "Table",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 7,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          207
+        ],
+        [
+          "Line",
+          99
+        ],
+        [
+          "Text",
+          8
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "TextInlineMath",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 8,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          221
+        ],
+        [
+          "Line",
+          106
+        ],
+        [
+          "Text",
+          8
+        ],
+        [
+          "ListItem",
+          5
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 9,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          278
+        ],
+        [
+          "Line",
+          112
+        ],
+        [
+          "ListItem",
+          21
+        ],
+        [
+          "ListGroup",
+          2
+        ],
+        [
+          "Text",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 10,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          253
+        ],
+        [
+          "Line",
+          111
+        ],
+        [
+          "ListItem",
+          14
+        ],
+        [
+          "ListGroup",
+          2
+        ],
+        [
+          "Text",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 11,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          257
+        ],
+        [
+          "Line",
+          108
+        ],
+        [
+          "Text",
+          9
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 12,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          248
+        ],
+        [
+          "Line",
+          95
+        ],
+        [
+          "Text",
+          14
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Footnote",
+          2
+        ],
+        [
+          "TextInlineMath",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 13,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          219
+        ],
+        [
+          "Line",
+          102
+        ],
+        [
+          "Text",
+          6
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Code",
+          2
+        ],
+        [
+          "Footnote",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 14,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          15
+        ],
+        [
+          "Line",
+          8
+        ],
+        [
+          "Text",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    }
+  ],
+  "debug_data_path": "debug_data\\flipflop"
+}
