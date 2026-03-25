@@ -36,7 +36,14 @@ sycophantic behavior across all 19+ identified categories in any AGENTS.md-compa
   3. The file is under 300 lines total and the behavioral rules section is under 80 lines, with detailed guidance in linked reference docs rather than inlined.
   4. Running the file through the claude-md-improver scoring rubric produces a passing result on all five quality criteria: concise, actionable, project-specific, current, and universally applicable.
   5. Rules use positive behavioral framing (not prohibition-only) and are phrased as universal commitments, not situational guidance.
-**Plans**: TBD
+**Plans**: 5 plans
+
+Plans:
+- [ ] 01-01-PLAN.md -- Validation scaffolds (structural checklist, canonical test cases, quality rubric, verification script)
+- [ ] 01-02-PLAN.md -- Primary AGENTS.md and mid-session reminder block
+- [ ] 01-03-PLAN.md -- 5 progressive disclosure reference docs
+- [ ] 01-04-PLAN.md -- 18 AGENTS.md variants (14 presentation + 4 content) for Phase 2 benchmarking
+- [ ] 01-05-PLAN.md -- Human validation checkpoint (canonical test cases + quality scoring)
 
 **Research flags:**
 - Framing sycophancy rules (targeting the 90% false-premise acceptance rate) require iterative
@@ -104,7 +111,7 @@ Phases execute strictly in sequence: 1 -> 2 -> 3 -> 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. AGENTS.md Core Rules | 0/TBD | Not started | - |
+| 1. AGENTS.md Core Rules | 0/5 | Planning complete | - |
 | 2. Benchmark Suite | 0/TBD | Not started | - |
 | 3. Research Report | 0/TBD | Not started | - |
 | 4. Distribution | 0/TBD | Not started | - |
@@ -127,4 +134,4 @@ No orphaned requirements. No duplicate mappings.
 
 ---
 *Roadmap created: 2026-03-24*
-*Last updated: 2026-03-24 after research synthesis*
+*Last updated: 2026-03-25 after Phase 1 planning*
