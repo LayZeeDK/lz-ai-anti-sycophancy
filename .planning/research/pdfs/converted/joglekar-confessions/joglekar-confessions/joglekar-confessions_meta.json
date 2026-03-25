@@ -1,0 +1,2202 @@
+{
+  "table_of_contents": [
+    {
+      "title": "Training LLMs for Honesty via Confessions",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          151.44944608211517,
+          110.367919921875
+        ],
+        [
+          459.4091377258301,
+          110.367919921875
+        ],
+        [
+          459.3480529785156,
+          127.5833740234375
+        ],
+        [
+          150.25413358211517,
+          127.5833740234375
+        ]
+      ]
+    },
+    {
+      "title": "Abstract",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          284.8361692428589,
+          253.1414794921875
+        ],
+        [
+          326.50521969795227,
+          253.1414794921875
+        ],
+        [
+          326.50521969795227,
+          262.1728184223175
+        ],
+        [
+          284.8361692428589,
+          262.1728184223175
+        ]
+      ]
+    },
+    {
+      "title": "1 Introduction",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          70.09208464622498,
+          494.7620849609375
+        ],
+        [
+          182.29354858398438,
+          494.7620849609375
+        ],
+        [
+          182.29354858398438,
+          509.5963668823242
+        ],
+        [
+          70.09208464622498,
+          509.5963668823242
+        ]
+      ]
+    },
+    {
+      "title": "Main Findings",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          84.13600158691406,
+          429.5507507324219
+        ],
+        [
+          157.63781833648682,
+          429.5507507324219
+        ],
+        [
+          157.63781833648682,
+          439.51336669921875
+        ],
+        [
+          84.13600158691406,
+          439.51336669921875
+        ]
+      ]
+    },
+    {
+      "title": "2 Method",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          71.31788367033005,
+          223.23028564453125
+        ],
+        [
+          150.61252123117447,
+          223.23028564453125
+        ],
+        [
+          150.61252123117447,
+          237.57647705078125
+        ],
+        [
+          71.31788367033005,
+          237.57647705078125
+        ]
+      ]
+    },
+    {
+      "title": "Rewarding confessions",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          71.67809066176414,
+          572.4236450195312
+        ],
+        [
+          184.79431664943695,
+          572.4236450195312
+        ],
+        [
+          184.79431664943695,
+          582.4923791885376
+        ],
+        [
+          71.67809066176414,
+          582.4923791885376
+        ]
+      ]
+    },
+    {
+      "title": "3 Results",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          71.97426956892014,
+          215.2882080078125
+        ],
+        [
+          147.37354463338852,
+          215.2882080078125
+        ],
+        [
+          147.37354463338852,
+          229.6343994140625
+        ],
+        [
+          71.97426956892014,
+          229.6343994140625
+        ]
+      ]
+    },
+    {
+      "title": "3.1 Confessions are broadly effective",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          71.5765038728714,
+          549.9473876953125
+        ],
+        [
+          294.4743347167969,
+          549.9473876953125
+        ],
+        [
+          294.4743347167969,
+          561.902587890625
+        ],
+        [
+          71.5765038728714,
+          561.902587890625
+        ]
+      ]
+    },
+    {
+      "title": "3.2 RL training improves confessions",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          71.2490587234497,
+          626.5272979736328
+        ],
+        [
+          297.0327453613281,
+          626.5272979736328
+        ],
+        [
+          297.0327453613281,
+          638.4824981689453
+        ],
+        [
+          71.2490587234497,
+          638.4824981689453
+        ]
+      ]
+    },
+    {
+      "title": "4\n3.3 Confession training impact on base task performance is minimal",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          71.46364080905914,
+          611.4332427978516
+        ],
+        [
+          480.9396057128906,
+          611.4332427978516
+        ],
+        [
+          480.9396057128906,
+          623.3884429931641
+        ],
+        [
+          71.46364080905914,
+          623.3884429931641
+        ]
+      ]
+    },
+    {
+      "title": "<truncated>",
+      "heading_level": null,
+      "page_id": 8,
+      "polygon": [
+        [
+          86.32701110839844,
+          114.46807730197906
+        ],
+        [
+          127.31901550292969,
+          114.46807730197906
+        ],
+        [
+          127.31901550292969,
+          122.86138916015625
+        ],
+        [
+          86.32701110839844,
+          122.86138916015625
+        ]
+      ]
+    },
+    {
+      "title": "User",
+      "heading_level": null,
+      "page_id": 8,
+      "polygon": [
+        [
+          83.92921847105026,
+          239.74473595619202
+        ],
+        [
+          97.4610824584961,
+          239.74473595619202
+        ],
+        [
+          97.4610824584961,
+          247.19006323814392
+        ],
+        [
+          83.92921847105026,
+          247.19006323814392
+        ]
+      ]
+    },
+    {
+      "title": "Assistant: answer",
+      "heading_level": null,
+      "page_id": 8,
+      "polygon": [
+        [
+          261.4620056152344,
+          460.2600402832031
+        ],
+        [
+          302.79681396484375,
+          459.05040407180786
+        ],
+        [
+          302.79681396484375,
+          466.93130922317505
+        ],
+        [
+          261.4620056152344,
+          468.47818422317505
+        ]
+      ]
+    },
+    {
+      "title": "3.4 Confessions scale with test-time compute",
+      "heading_level": null,
+      "page_id": 9,
+      "polygon": [
+        [
+          71.51022326946259,
+          124.42645263671875
+        ],
+        [
+          345.0448913574219,
+          124.42645263671875
+        ],
+        [
+          345.0448913574219,
+          136.38165283203125
+        ],
+        [
+          71.51022326946259,
+          136.38165283203125
+        ]
+      ]
+    },
+    {
+      "title": "4 Confessions detect reward hacking",
+      "heading_level": null,
+      "page_id": 9,
+      "polygon": [
+        [
+          71.08702325820923,
+          269.53228759765625
+        ],
+        [
+          333.5743408203125,
+          269.53228759765625
+        ],
+        [
+          333.5743408203125,
+          283.87847900390625
+        ],
+        [
+          71.08702325820923,
+          283.87847900390625
+        ]
+      ]
+    },
+    {
+      "title": "0.0 0.2 0.4 0.6 0.8 1.0\nReported confidence\n0\n20\n40\n60\n80\n100\n120\n140\nCount\n0.0 0.2 0.4 0.6 0.8 1.0\nReported confidence\n0.0\n0.2\n0.4\n0.6\n0.8\n1.0\nChance answer is correct given guess\n0 100 200 300 400 500 600\nDataset idx sorted by real-valued confidence, binned\n0.0\n0.2\n0.4\n0.6\n0.8\n1.0\nFraction of samples\nHallucination\n(General\nKnowledge),\ntoo confident\nHallucination\n(General\nKnowledge),\nbalanced\nHallucination\n(General\nKnowledge),\ntoo unconfident\n0.0\n0.2\n0.4\n0.6\n0.8\n1.0\nproportion of samples\n(a) (b) (c) (d)",
+      "heading_level": null,
+      "page_id": 10,
+      "polygon": [
+        [
+          71.81995832920074,
+          258.727294921875
+        ],
+        [
+          541.4591064453125,
+          258.727294921875
+        ],
+        [
+          541.4591064453125,
+          381.5658359527588
+        ],
+        [
+          71.81995832920074,
+          381.5658359527588
+        ]
+      ]
+    },
+    {
+      "title": "5 Confessions express subjective confidence",
+      "heading_level": null,
+      "page_id": 10,
+      "polygon": [
+        [
+          70.98340737819672,
+          223.1802978515625
+        ],
+        [
+          381.820556640625,
+          223.1802978515625
+        ],
+        [
+          381.820556640625,
+          237.5264892578125
+        ],
+        [
+          70.98340737819672,
+          237.5264892578125
+        ]
+      ]
+    },
+    {
+      "title": "6 Analyzing errors",
+      "heading_level": null,
+      "page_id": 11,
+      "polygon": [
+        [
+          71.44282096624374,
+          175.09423828125
+        ],
+        [
+          210.79194402694702,
+          175.09423828125
+        ],
+        [
+          210.79194402694702,
+          189.4404296875
+        ],
+        [
+          71.44282096624374,
+          189.4404296875
+        ]
+      ]
+    },
+    {
+      "title": "7 Discussion and related work",
+      "heading_level": null,
+      "page_id": 12,
+      "polygon": [
+        [
+          71.74233305454254,
+          603.844569683075
+        ],
+        [
+          290.87242805957794,
+          603.844569683075
+        ],
+        [
+          290.87242805957794,
+          618.1961975097656
+        ],
+        [
+          71.74233305454254,
+          618.1961975097656
+        ]
+      ]
+    },
+    {
+      "title": "7.1 Conceptual motivation for confession honesty",
+      "heading_level": null,
+      "page_id": 12,
+      "polygon": [
+        [
+          71.57385009527206,
+          629.5272827148438
+        ],
+        [
+          370.00732421875,
+          629.2074565887451
+        ],
+        [
+          370.00732421875,
+          641.4824829101562
+        ],
+        [
+          71.57385009527206,
+          642.6042966842651
+        ]
+      ]
+    },
+    {
+      "title": "",
+      "heading_level": null,
+      "page_id": 13,
+      "polygon": [
+        [
+          280.7244007587433,
+          70.45708072185516
+        ],
+        [
+          354.65102076530457,
+          70.45708072185516
+        ],
+        [
+          354.65102076530457,
+          77.68248295783997
+        ],
+        [
+          280.7244007587433,
+          77.68248295783997
+        ]
+      ]
+    },
+    {
+      "title": "7.2 Comparison to chain-of-thought monitoring",
+      "heading_level": null,
+      "page_id": 13,
+      "polygon": [
+        [
+          70.97351270914078,
+          621.7463073730469
+        ],
+        [
+          359.48406958580017,
+          621.7463073730469
+        ],
+        [
+          359.48406958580017,
+          633.7015075683594
+        ],
+        [
+          70.97351270914078,
+          633.7015075683594
+        ]
+      ]
+    },
+    {
+      "title": "7.3 Training confessions without ground truth",
+      "heading_level": null,
+      "page_id": 15,
+      "polygon": [
+        [
+          71.97551894187927,
+          548.3812408447266
+        ],
+        [
+          352.5526578426361,
+          547.4736557006836
+        ],
+        [
+          351.75177001953125,
+          560.3364410400391
+        ],
+        [
+          70.78020644187927,
+          560.9949331283569
+        ]
+      ]
+    },
+    {
+      "title": "7.4 What confessions are not good for",
+      "heading_level": null,
+      "page_id": 16,
+      "polygon": [
+        [
+          71.08353048563004,
+          112.3614501953125
+        ],
+        [
+          305.2100524902344,
+          112.3614501953125
+        ],
+        [
+          305.2100524902344,
+          124.316650390625
+        ],
+        [
+          71.08353048563004,
+          124.316650390625
+        ]
+      ]
+    },
+    {
+      "title": "7.5 Related Work",
+      "heading_level": null,
+      "page_id": 16,
+      "polygon": [
+        [
+          71.01021417975426,
+          434.3334655761719
+        ],
+        [
+          184.3788604736328,
+          434.3334655761719
+        ],
+        [
+          184.3788604736328,
+          446.2886657714844
+        ],
+        [
+          71.01021417975426,
+          446.2886657714844
+        ]
+      ]
+    },
+    {
+      "title": "7.6 Future work",
+      "heading_level": null,
+      "page_id": 17,
+      "polygon": [
+        [
+          71.5997905433178,
+          72.63140869140625
+        ],
+        [
+          174.82667541503906,
+          72.63140869140625
+        ],
+        [
+          174.82667541503906,
+          84.58660888671875
+        ],
+        [
+          71.5997905433178,
+          84.58660888671875
+        ]
+      ]
+    },
+    {
+      "title": "References",
+      "heading_level": null,
+      "page_id": 18,
+      "polygon": [
+        [
+          71.0797778069973,
+          70.76513671875
+        ],
+        [
+          145.8167985677719,
+          70.76513671875
+        ],
+        [
+          145.8167985677719,
+          85.111328125
+        ],
+        [
+          71.0797778069973,
+          85.111328125
+        ]
+      ]
+    },
+    {
+      "title": "A Descriptions of evaluations",
+      "heading_level": null,
+      "page_id": 20,
+      "polygon": [
+        [
+          71.51156383752823,
+          70.76513671875
+        ],
+        [
+          285.5951313972473,
+          70.76513671875
+        ],
+        [
+          285.5951313972473,
+          85.111328125
+        ],
+        [
+          71.51156383752823,
+          85.111328125
+        ]
+      ]
+    },
+    {
+      "title": "B Additional figures",
+      "heading_level": null,
+      "page_id": 21,
+      "polygon": [
+        [
+          71.11031904816628,
+          310.9302978515625
+        ],
+        [
+          222.20469665527344,
+          310.9302978515625
+        ],
+        [
+          222.20469665527344,
+          325.9139771461487
+        ],
+        [
+          71.11031904816628,
+          325.9139771461487
+        ]
+      ]
+    },
+    {
+      "title": "C Example transcripts",
+      "heading_level": null,
+      "page_id": 27,
+      "polygon": [
+        [
+          71.16473972797394,
+          70.01256304979324
+        ],
+        [
+          240.11797392368317,
+          70.01256304979324
+        ],
+        [
+          240.11797392368317,
+          85.111328125
+        ],
+        [
+          71.16473972797394,
+          85.111328125
+        ]
+      ]
+    },
+    {
+      "title": "User",
+      "heading_level": null,
+      "page_id": 29,
+      "polygon": [
+        [
+          83.88984954357147,
+          176.32047700881958
+        ],
+        [
+          97.8001856803894,
+          176.32047700881958
+        ],
+        [
+          97.8001856803894,
+          183.35002970695496
+        ],
+        [
+          83.88984954357147,
+          183.35002970695496
+        ]
+      ]
+    },
+    {
+      "title": "Tool Response",
+      "heading_level": null,
+      "page_id": 29,
+      "polygon": [
+        [
+          86.50973904132843,
+          218.67840671539307
+        ],
+        [
+          123.7407796382904,
+          218.67840671539307
+        ],
+        [
+          122.5454671382904,
+          226.05948543548584
+        ],
+        [
+          85.31442654132843,
+          226.05948543548584
+        ]
+      ]
+    },
+    {
+      "title": "Tool Response",
+      "heading_level": null,
+      "page_id": 29,
+      "polygon": [
+        [
+          85.72270703315735,
+          278.7475311756134
+        ],
+        [
+          123.83666217327118,
+          278.7475311756134
+        ],
+        [
+          122.64134967327118,
+          286.2983658313751
+        ],
+        [
+          84.52739453315735,
+          286.2983658313751
+        ]
+      ]
+    },
+    {
+      "title": "Tool Response",
+      "heading_level": null,
+      "page_id": 29,
+      "polygon": [
+        [
+          86.5896624326706,
+          330.85471987724304
+        ],
+        [
+          121.04754638671875,
+          330.85471987724304
+        ],
+        [
+          121.04754638671875,
+          338.4286859035492
+        ],
+        [
+          86.5896624326706,
+          338.4286859035492
+        ]
+      ]
+    },
+    {
+      "title": "Confession",
+      "heading_level": null,
+      "page_id": 29,
+      "polygon": [
+        [
+          86.88700866699219,
+          562.2563781738281
+        ],
+        [
+          128.86267983913422,
+          561.7388191223145
+        ],
+        [
+          127.66736733913422,
+          569.2700157165527
+        ],
+        [
+          86.88700866699219,
+          570.8168907165527
+        ]
+      ]
+    },
+    {
+      "title": "You are ChatGPT,a large language model trained by OpenAI.",
+      "heading_level": null,
+      "page_id": 30,
+      "polygon": [
+        [
+          75.6595094203949,
+          117.71536767482758
+        ],
+        [
+          267.4135265350342,
+          117.71536767482758
+        ],
+        [
+          266.4991760253906,
+          126.7314453125
+        ],
+        [
+          74.4641969203949,
+          126.7314453125
+        ]
+      ]
+    },
+    {
+      "title": "Howard Goorney.",
+      "heading_level": null,
+      "page_id": 30,
+      "polygon": [
+        [
+          74.81703990697861,
+          326.7273988723755
+        ],
+        [
+          128.7768196463585,
+          325.1805238723755
+        ],
+        [
+          128.5364990234375,
+          334.6773986816406
+        ],
+        [
+          73.62172740697861,
+          335.49886178970337
+        ]
+      ]
+    },
+    {
+      "title": "{",
+      "heading_level": null,
+      "page_id": 30,
+      "polygon": [
+        [
+          72.2740461230278,
+          438.20271348953247
+        ],
+        [
+          84.06706899404526,
+          436.65583848953247
+        ],
+        [
+          84.06706899404526,
+          449.4085388183594
+        ],
+        [
+          72.2740461230278,
+          449.4085388183594
+        ]
+      ]
+    },
+    {
+      "title": "}, {",
+      "heading_level": null,
+      "page_id": 30,
+      "polygon": [
+        [
+          75.92509692907333,
+          504.95013427734375
+        ],
+        [
+          90.79842376708984,
+          504.95013427734375
+        ],
+        [
+          90.79842376708984,
+          514.3381562232971
+        ],
+        [
+          74.72978442907333,
+          515.8850312232971
+        ]
+      ]
+    },
+    {
+      "title": "D Confession schema",
+      "heading_level": null,
+      "page_id": 31,
+      "polygon": [
+        [
+          70.8094071149826,
+          70.76513671875
+        ],
+        [
+          229.08391320705414,
+          70.76513671875
+        ],
+        [
+          229.08391320705414,
+          85.111328125
+        ],
+        [
+          70.8094071149826,
+          85.111328125
+        ]
+      ]
+    }
+  ],
+  "page_stats": [
+    {
+      "page_id": 0,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          127
+        ],
+        [
+          "Line",
+          41
+        ],
+        [
+          "Text",
+          8
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Footnote",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 1,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          161
+        ],
+        [
+          "Line",
+          57
+        ],
+        [
+          "Text",
+          3
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 2,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          180
+        ],
+        [
+          "Line",
+          44
+        ],
+        [
+          "ListItem",
+          12
+        ],
+        [
+          "Text",
+          4
+        ],
+        [
+          "ListGroup",
+          2
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "Footnote",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 3,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          274
+        ],
+        [
+          "Line",
+          43
+        ],
+        [
+          "ListItem",
+          6
+        ],
+        [
+          "Text",
+          3
+        ],
+        [
+          "TextInlineMath",
+          3
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "ListGroup",
+          2
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 4,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          195
+        ],
+        [
+          "Line",
+          83
+        ],
+        [
+          "Text",
+          7
+        ],
+        [
+          "ListItem",
+          2
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Footnote",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 5,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          229
+        ],
+        [
+          "Line",
+          76
+        ],
+        [
+          "Text",
+          5
+        ],
+        [
+          "ListItem",
+          3
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 6,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          1007
+        ],
+        [
+          "Line",
+          390
+        ],
+        [
+          "Text",
+          25
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "TextInlineMath",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 7,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          555
+        ],
+        [
+          "Line",
+          214
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Text",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 8,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          226
+        ],
+        [
+          "Line",
+          98
+        ],
+        [
+          "Text",
+          24
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Equation",
+          2
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 9,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          83
+        ],
+        [
+          "Line",
+          30
+        ],
+        [
+          "Text",
+          5
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "TextInlineMath",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 10,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          271
+        ],
+        [
+          "Line",
+          87
+        ],
+        [
+          "Text",
+          6
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 11,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          144
+        ],
+        [
+          "Line",
+          52
+        ],
+        [
+          "Text",
+          6
+        ],
+        [
+          "ListItem",
+          6
+        ],
+        [
+          "Footnote",
+          3
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 12,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          96
+        ],
+        [
+          "Line",
+          25
+        ],
+        [
+          "Text",
+          3
+        ],
+        [
+          "Caption",
+          2
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 13,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          197
+        ],
+        [
+          "Line",
+          28
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "TextInlineMath",
+          2
+        ],
+        [
+          "Text",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 14,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          160
+        ],
+        [
+          "Line",
+          55
+        ],
+        [
+          "Text",
+          5
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 15,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          114
+        ],
+        [
+          "Line",
+          50
+        ],
+        [
+          "Text",
+          4
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 16,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          149
+        ],
+        [
+          "Line",
+          47
+        ],
+        [
+          "Text",
+          6
+        ],
+        [
+          "ListItem",
+          3
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Footnote",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 17,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          72
+        ],
+        [
+          "Line",
+          30
+        ],
+        [
+          "Text",
+          6
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 18,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          148
+        ],
+        [
+          "Line",
+          39
+        ],
+        [
+          "ListItem",
+          19
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 19,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          27
+        ],
+        [
+          "Line",
+          9
+        ],
+        [
+          "ListItem",
+          3
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 20,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          182
+        ],
+        [
+          "Line",
+          46
+        ],
+        [
+          "ListItem",
+          10
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 21,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          97
+        ],
+        [
+          "Line",
+          23
+        ],
+        [
+          "ListItem",
+          2
+        ],
+        [
+          "Text",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 22,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          419
+        ],
+        [
+          "Line",
+          125
+        ],
+        [
+          "Caption",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 23,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          205
+        ],
+        [
+          "Line",
+          102
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 24,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          356
+        ],
+        [
+          "Line",
+          127
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Text",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 25,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          549
+        ],
+        [
+          "Line",
+          211
+        ],
+        [
+          "Caption",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 26,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          807
+        ],
+        [
+          "Line",
+          31
+        ],
+        [
+          "Table",
+          2
+        ],
+        [
+          "Text",
+          2
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 27,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          92
+        ],
+        [
+          "Line",
+          42
+        ],
+        [
+          "Text",
+          3
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "Form",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 28,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          73
+        ],
+        [
+          "Line",
+          34
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "PictureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 29,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          104
+        ],
+        [
+          "Line",
+          49
+        ],
+        [
+          "Text",
+          15
+        ],
+        [
+          "SectionHeader",
+          5
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 30,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          113
+        ],
+        [
+          "Line",
+          51
+        ],
+        [
+          "Text",
+          20
+        ],
+        [
+          "SectionHeader",
+          4
+        ],
+        [
+          "TextInlineMath",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 31,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          1323
+        ],
+        [
+          "Line",
+          64
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "Text",
+          1
+        ],
+        [
+          "Code",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 32,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          1283
+        ],
+        [
+          "Line",
+          56
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "TableGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    }
+  ],
+  "debug_data_path": "debug_data\\joglekar-confessions"
+}
