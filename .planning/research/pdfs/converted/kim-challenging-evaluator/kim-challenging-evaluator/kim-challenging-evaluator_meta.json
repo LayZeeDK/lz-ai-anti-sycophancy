@@ -1,0 +1,1419 @@
+{
+  "table_of_contents": [
+    {
+      "title": "Challenging the Evaluator: LLM Sycophancy Under User Rebuttal",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          91.5012344121933,
+          79.25494384765625
+        ],
+        [
+          504.7072048187256,
+          79.25494384765625
+        ],
+        [
+          504.7072048187256,
+          93.60186767578125
+        ],
+        [
+          91.5012344121933,
+          93.60186767578125
+        ]
+      ]
+    },
+    {
+      "title": "Abstract",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          157.5054041147232,
+          222.1424560546875
+        ],
+        [
+          202.62906062602997,
+          222.1424560546875
+        ],
+        [
+          202.62906062602997,
+          234.09820556640625
+        ],
+        [
+          157.5054041147232,
+          234.09820556640625
+        ]
+      ]
+    },
+    {
+      "title": "1 Introduction",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          70.85652923583984,
+          586.4175567626953
+        ],
+        [
+          154.67821502685547,
+          585.8800667524338
+        ],
+        [
+          153.67434692382812,
+          598.3733520507812
+        ],
+        [
+          70.14168399572372,
+          598.3733520507812
+        ]
+      ]
+    },
+    {
+      "title": "2 Related Work",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          306.1443176269531,
+          688.604952454567
+        ],
+        [
+          395.2389221191406,
+          688.604952454567
+        ],
+        [
+          395.2389221191406,
+          701.3375091552734
+        ],
+        [
+          306.1443176269531,
+          701.3375091552734
+        ]
+      ]
+    },
+    {
+      "title": "3 A Framework for Quantifying\nSycophancy in LLMs",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          305.5631380081177,
+          316.3331298828125
+        ],
+        [
+          479.50422859191895,
+          316.3331298828125
+        ],
+        [
+          479.50422859191895,
+          342.23760986328125
+        ],
+        [
+          305.5631380081177,
+          342.23760986328125
+        ]
+      ]
+    },
+    {
+      "title": "3.1 Step 1: Dataset Collection",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          305.97259187698364,
+          580.4201607704163
+        ],
+        [
+          452.66620779037476,
+          580.4201607704163
+        ],
+        [
+          452.66620779037476,
+          592.0728759765625
+        ],
+        [
+          305.97259187698364,
+          592.0728759765625
+        ]
+      ]
+    },
+    {
+      "title": "3.2 Step 2: Initial LLM Response Generation",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          306.09401416778564,
+          718.8937772512436
+        ],
+        [
+          524.5281682014465,
+          718.8937772512436
+        ],
+        [
+          524.5281682014465,
+          730.0517425537109
+        ],
+        [
+          306.09401416778564,
+          730.0517425537109
+        ]
+      ]
+    },
+    {
+      "title": "3.3 Step 3: Disagreement Pair Generation",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          70.1140193939209,
+          733.8818359375
+        ],
+        [
+          273.3068542480469,
+          732.9269466400146
+        ],
+        [
+          273.3068542480469,
+          744.7914810180664
+        ],
+        [
+          70.1140193939209,
+          745.2076323032379
+        ]
+      ]
+    },
+    {
+      "title": "3.4 Step 4: Formulation of Challenges",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          306.1443176269531,
+          636.4659881591797
+        ],
+        [
+          490.47369384765625,
+          635.6593070030212
+        ],
+        [
+          490.47369384765625,
+          647.3756256103516
+        ],
+        [
+          306.1443176269531,
+          647.7160577774048
+        ]
+      ]
+    },
+    {
+      "title": "3.4.1 Evaluation Style Rebuttal",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          69.8813436627388,
+          279.2049503326416
+        ],
+        [
+          224.33251357078552,
+          279.2049503326416
+        ],
+        [
+          224.33251357078552,
+          291.0635623931885
+        ],
+        [
+          69.8813436627388,
+          291.0635623931885
+        ]
+      ]
+    },
+    {
+      "title": "3.4.2 Casual (Informal) Rebuttal",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          70.16758126020432,
+          610.289170384407
+        ],
+        [
+          230.75094985961914,
+          610.289170384407
+        ],
+        [
+          230.75094985961914,
+          622.3553619384766
+        ],
+        [
+          70.16758126020432,
+          622.3553619384766
+        ]
+      ]
+    },
+    {
+      "title": "3.4.3 LLM-as-a-Judge Setup",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          305.38981461524963,
+          379.06274676322937
+        ],
+        [
+          448.16573214530945,
+          379.06274676322937
+        ],
+        [
+          448.16573214530945,
+          391.2548522949219
+        ],
+        [
+          305.38981461524963,
+          391.2548522949219
+        ]
+      ]
+    },
+    {
+      "title": "3.5 Step 5: Quantifying LLM Response\nChanges",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          306.1443176269531,
+          624.8292797803879
+        ],
+        [
+          499.2752447128296,
+          624.8292797803879
+        ],
+        [
+          499.2752447128296,
+          650.4189850091934
+        ],
+        [
+          306.1443176269531,
+          650.4189850091934
+        ]
+      ]
+    },
+    {
+      "title": "4 Findings",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          70.25840818881989,
+          274.48504638671875
+        ],
+        [
+          133.44609940052032,
+          274.48504638671875
+        ],
+        [
+          133.44609940052032,
+          286.4407958984375
+        ],
+        [
+          70.25840818881989,
+          286.4407958984375
+        ]
+      ]
+    },
+    {
+      "title": "(H2) Reasoning depth correlates to persuasion.\nTable 5 reports the persuasion percentage across",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          70.37113589048386,
+          751.2379608154297
+        ],
+        [
+          291.04193115234375,
+          751.2379608154297
+        ],
+        [
+          291.04193115234375,
+          775.5535049438477
+        ],
+        [
+          70.37113589048386,
+          775.5535049438477
+        ]
+      ]
+    },
+    {
+      "title": "5 Conclusion and Future Directions",
+      "heading_level": null,
+      "page_id": 8,
+      "polygon": [
+        [
+          306.1443176269531,
+          163.66562649607658
+        ],
+        [
+          496.6838684082031,
+          163.66562649607658
+        ],
+        [
+          496.6838684082031,
+          176.1903076171875
+        ],
+        [
+          306.1443176269531,
+          176.1903076171875
+        ]
+      ]
+    },
+    {
+      "title": "Limitations",
+      "heading_level": null,
+      "page_id": 8,
+      "polygon": [
+        [
+          305.3924789428711,
+          526.3662835359573
+        ],
+        [
+          365.2657470703125,
+          526.3662835359573
+        ],
+        [
+          365.2657470703125,
+          538.7563781738281
+        ],
+        [
+          305.3924789428711,
+          538.7563781738281
+        ]
+      ]
+    },
+    {
+      "title": "Acknowledgments",
+      "heading_level": null,
+      "page_id": 9,
+      "polygon": [
+        [
+          70.07563531398773,
+          246.63000226020813
+        ],
+        [
+          164.58555281162262,
+          246.63000226020813
+        ],
+        [
+          164.58555281162262,
+          259.00140380859375
+        ],
+        [
+          70.07563531398773,
+          259.00140380859375
+        ]
+      ]
+    },
+    {
+      "title": "References",
+      "heading_level": null,
+      "page_id": 9,
+      "polygon": [
+        [
+          70.08987614512444,
+          346.2655944824219
+        ],
+        [
+          126.40316772460938,
+          346.2655944824219
+        ],
+        [
+          126.40316772460938,
+          358.2214050292969
+        ],
+        [
+          70.08987614512444,
+          358.2214050292969
+        ]
+      ]
+    },
+    {
+      "title": "B Zero-shot CoT LLM accuracies",
+      "heading_level": null,
+      "page_id": 11,
+      "polygon": [
+        [
+          70.48960965871811,
+          274.93410247564316
+        ],
+        [
+          254.67874336242676,
+          273.28957122564316
+        ],
+        [
+          253.51468086242676,
+          287.81781005859375
+        ],
+        [
+          69.32554715871811,
+          288.26179164648056
+        ]
+      ]
+    },
+    {
+      "title": "C Chi-Square Test of Independence for FR and Judge",
+      "heading_level": null,
+      "page_id": 12,
+      "polygon": [
+        [
+          70.20703995227814,
+          72.66301329433918
+        ],
+        [
+          355.31871032714844,
+          72.66301329433918
+        ],
+        [
+          355.31871032714844,
+          85.0487060546875
+        ],
+        [
+          70.20703995227814,
+          85.0487060546875
+        ]
+      ]
+    },
+    {
+      "title": "D LLM Prompts",
+      "heading_level": null,
+      "page_id": 13,
+      "polygon": [
+        [
+          70.70758274197578,
+          71.1955233514309
+        ],
+        [
+          169.10935020446777,
+          71.1955233514309
+        ],
+        [
+          167.94528770446777,
+          85.0487060546875
+        ],
+        [
+          69.54352024197578,
+          85.0487060546875
+        ]
+      ]
+    },
+    {
+      "title": "D.1 Evaluation-Style Rebuttal Prompt Template",
+      "heading_level": null,
+      "page_id": 13,
+      "polygon": [
+        [
+          70.75156635046005,
+          432.1163446903229
+        ],
+        [
+          303.5690486431122,
+          432.1163446903229
+        ],
+        [
+          302.4465026855469,
+          445.8245849609375
+        ],
+        [
+          69.58750385046005,
+          445.8245849609375
+        ]
+      ]
+    },
+    {
+      "title": "D.2 Divergence Detection and Divergence Rebuttal (DR) Code",
+      "heading_level": null,
+      "page_id": 14,
+      "polygon": [
+        [
+          70.77333390712738,
+          265.43267863988876
+        ],
+        [
+          370.64058351516724,
+          263.78814738988876
+        ],
+        [
+          369.47652101516724,
+          278.10418701171875
+        ],
+        [
+          69.60927140712738,
+          278.52614456415176
+        ]
+      ]
+    },
+    {
+      "title": "Divergence Rebuttal (DR) Code",
+      "heading_level": null,
+      "page_id": 14,
+      "polygon": [
+        [
+          85.21602338552475,
+          512.4733581542969
+        ],
+        [
+          228.44744324684143,
+          511.0723637342453
+        ],
+        [
+          228.44744324684143,
+          523.3829956054688
+        ],
+        [
+          85.21602338552475,
+          523.8472920656204
+        ]
+      ]
+    },
+    {
+      "title": "D.3 LLM as a Judge Prompt",
+      "heading_level": null,
+      "page_id": 15,
+      "polygon": [
+        [
+          70.8274552822113,
+          72.52556961774826
+        ],
+        [
+          212.75616991519928,
+          72.52556961774826
+        ],
+        [
+          211.79823303222656,
+          84.7745361328125
+        ],
+        [
+          69.6633927822113,
+          84.7745361328125
+        ]
+      ]
+    },
+    {
+      "title": "LLM as a Judge Prompt\nPlease evaluate these two conflicting responses and determine which one is correct. Your\n,\u2192 response should:\n1. Analyze both reasoning paths\n2. Provide your final conclusion and answer\nYour output should end with:\nANSWER: [letter]\nWhere [letter] is your final answer.\nQuestion: {question_text}\nFirst Response: {response_1}\nSecond Response: {response_2}",
+      "heading_level": null,
+      "page_id": 15,
+      "polygon": [
+        [
+          75.06656038761139,
+          91.6099838912487
+        ],
+        [
+          499.1465754508972,
+          91.6099838912487
+        ],
+        [
+          499.1465754508972,
+          275.37542283535004
+        ],
+        [
+          75.06656038761139,
+          275.37542283535004
+        ]
+      ]
+    },
+    {
+      "title": "E Quality Scoring Prompt",
+      "heading_level": null,
+      "page_id": 15,
+      "polygon": [
+        [
+          70.85653686523438,
+          298.45587289333344
+        ],
+        [
+          216.3964762687683,
+          298.45587289333344
+        ],
+        [
+          215.2324137687683,
+          312.8470458984375
+        ],
+        [
+          70.51018270850182,
+          312.8470458984375
+        ]
+      ]
+    },
+    {
+      "title": "F Persuasion Probability Aggregated by Dataset",
+      "heading_level": null,
+      "page_id": 17,
+      "polygon": [
+        [
+          69.2893922328949,
+          72.41420441865921
+        ],
+        [
+          327.1494493484497,
+          72.41420441865921
+        ],
+        [
+          327.1494493484497,
+          85.0487060546875
+        ],
+        [
+          69.2893922328949,
+          85.0487060546875
+        ]
+      ]
+    },
+    {
+      "title": "Further Column Context (as %):",
+      "heading_level": null,
+      "page_id": 17,
+      "polygon": [
+        [
+          69.36937090754509,
+          365.33579403162
+        ],
+        [
+          197.36984252929688,
+          365.33579403162
+        ],
+        [
+          197.36984252929688,
+          374.81679171323776
+        ],
+        [
+          69.36937090754509,
+          374.81679171323776
+        ]
+      ]
+    }
+  ],
+  "page_stats": [
+    {
+      "page_id": 0,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          238
+        ],
+        [
+          "Line",
+          97
+        ],
+        [
+          "Text",
+          11
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Footnote",
+          3
+        ],
+        [
+          "PageFooter",
+          2
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 1,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          349
+        ],
+        [
+          "Line",
+          97
+        ],
+        [
+          "Text",
+          6
+        ],
+        [
+          "ListItem",
+          6
+        ],
+        [
+          "ListGroup",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 2,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          256
+        ],
+        [
+          "Line",
+          100
+        ],
+        [
+          "Text",
+          11
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 3,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          279
+        ],
+        [
+          "Line",
+          92
+        ],
+        [
+          "Text",
+          6
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 4,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          278
+        ],
+        [
+          "Line",
+          96
+        ],
+        [
+          "Text",
+          12
+        ],
+        [
+          "ListItem",
+          6
+        ],
+        [
+          "SectionHeader",
+          4
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "Code",
+          1
+        ],
+        [
+          "Equation",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 5,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          172
+        ],
+        [
+          "Line",
+          69
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "Text",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 6,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          530
+        ],
+        [
+          "Line",
+          109
+        ],
+        [
+          "Text",
+          6
+        ],
+        [
+          "TextInlineMath",
+          4
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Equation",
+          1
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 7,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          738
+        ],
+        [
+          "Line",
+          72
+        ],
+        [
+          "TextInlineMath",
+          4
+        ],
+        [
+          "Table",
+          3
+        ],
+        [
+          "Caption",
+          2
+        ],
+        [
+          "TableGroup",
+          2
+        ],
+        [
+          "Text",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 8,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          298
+        ],
+        [
+          "Line",
+          103
+        ],
+        [
+          "Text",
+          11
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "TableGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 9,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          282
+        ],
+        [
+          "Line",
+          108
+        ],
+        [
+          "ListItem",
+          15
+        ],
+        [
+          "Text",
+          4
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "ListGroup",
+          2
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 10,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          256
+        ],
+        [
+          "Line",
+          101
+        ],
+        [
+          "ListItem",
+          16
+        ],
+        [
+          "ListGroup",
+          2
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 11,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          247
+        ],
+        [
+          "Line",
+          53
+        ],
+        [
+          "Table",
+          2
+        ],
+        [
+          "Text",
+          2
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 12,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          150
+        ],
+        [
+          "Line",
+          27
+        ],
+        [
+          "Text",
+          2
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "TableGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 13,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          117
+        ],
+        [
+          "Line",
+          42
+        ],
+        [
+          "Code",
+          4
+        ],
+        [
+          "Text",
+          3
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 14,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          119
+        ],
+        [
+          "Line",
+          43
+        ],
+        [
+          "Code",
+          3
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Text",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 15,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          106
+        ],
+        [
+          "Line",
+          40
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Text",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 16,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          124
+        ],
+        [
+          "Line",
+          40
+        ],
+        [
+          "ListItem",
+          12
+        ],
+        [
+          "Text",
+          11
+        ],
+        [
+          "ListGroup",
+          4
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 17,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          319
+        ],
+        [
+          "Line",
+          30
+        ],
+        [
+          "ListItem",
+          11
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "ListGroup",
+          2
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "Text",
+          1
+        ],
+        [
+          "TableGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    }
+  ],
+  "debug_data_path": "debug_data\\kim-challenging-evaluator"
+}

@@ -1,0 +1,1302 @@
+{
+  "table_of_contents": [
+    {
+      "title": "Steering Without Side Effects: Improving\nPost-Deployment Control of Language Models",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          134.62006402015686,
+          99.8338623046875
+        ],
+        [
+          478.38461422920227,
+          99.8338623046875
+        ],
+        [
+          477.18930172920227,
+          136.9742431640625
+        ],
+        [
+          133.42475152015686,
+          136.9742431640625
+        ]
+      ]
+    },
+    {
+      "title": "Abstract",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          282.4484260082245,
+          260.30010986328125
+        ],
+        [
+          328.2432556152344,
+          260.30010986328125
+        ],
+        [
+          328.2432556152344,
+          272.25531005859375
+        ],
+        [
+          282.4484260082245,
+          272.25531005859375
+        ]
+      ]
+    },
+    {
+      "title": "1 Introduction",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          107.99996948242188,
+          518.1531372070312
+        ],
+        [
+          191.13970863819122,
+          518.1531372070312
+        ],
+        [
+          191.13970863819122,
+          530.1083374023438
+        ],
+        [
+          107.99996948242188,
+          530.1083374023438
+        ]
+      ]
+    },
+    {
+      "title": "2 Background and Related Work",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          107.14690893888474,
+          276.4429621696472
+        ],
+        [
+          287.68007040023804,
+          276.4429621696472
+        ],
+        [
+          286.48475790023804,
+          289.4273376464844
+        ],
+        [
+          105.95159643888474,
+          289.4273376464844
+        ]
+      ]
+    },
+    {
+      "title": "3 Methods",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          106.94755643606186,
+          656.2243309020996
+        ],
+        [
+          172.29248893260956,
+          656.2243309020996
+        ],
+        [
+          172.29248893260956,
+          668.5803527832031
+        ],
+        [
+          106.94755643606186,
+          668.5803527832031
+        ]
+      ]
+    },
+    {
+      "title": "3.1 Steering Vectors",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          106.59418451786041,
+          681.115668296814
+        ],
+        [
+          201.88920414447784,
+          679.568793296814
+        ],
+        [
+          201.88920414447784,
+          691.3511123657227
+        ],
+        [
+          106.59418451786041,
+          692.2045640945435
+        ]
+      ]
+    },
+    {
+      "title": "3.2 KL-Then-Steer (KTS)",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          106.63374495506287,
+          246.60150146484375
+        ],
+        [
+          225.431494474411,
+          246.60150146484375
+        ],
+        [
+          225.431494474411,
+          256.5640869140625
+        ],
+        [
+          106.63374495506287,
+          256.5640869140625
+        ]
+      ]
+    },
+    {
+      "title": "3.3 Additional Techniques: Fine-Tuning, System Prompts, and Combining with KTS",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          106.5624121427536,
+          523.2625122070312
+        ],
+        [
+          474.3108558654785,
+          523.2625122070312
+        ],
+        [
+          474.3108558654785,
+          533.22509765625
+        ],
+        [
+          106.5624121427536,
+          533.22509765625
+        ]
+      ]
+    },
+    {
+      "title": "3.4 Prompt Classification",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          107.93349409103394,
+          392.12750244140625
+        ],
+        [
+          223.44088768959045,
+          392.12750244140625
+        ],
+        [
+          222.3905487060547,
+          402.090087890625
+        ],
+        [
+          106.73818159103394,
+          402.090087890625
+        ]
+      ]
+    },
+    {
+      "title": "4 Experimental Settings",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          106.84667640924454,
+          642.2111511230469
+        ],
+        [
+          239.54856991767883,
+          642.2111511230469
+        ],
+        [
+          239.54856991767883,
+          654.4423184394836
+        ],
+        [
+          106.84667640924454,
+          654.4423184394836
+        ]
+      ]
+    },
+    {
+      "title": "5 Results and Discussion",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          107.6211326122284,
+          368.3524417877197
+        ],
+        [
+          243.5116903781891,
+          368.3524417877197
+        ],
+        [
+          242.3163778781891,
+          380.9473876953125
+        ],
+        [
+          106.4258201122284,
+          380.9473876953125
+        ]
+      ]
+    },
+    {
+      "title": "5.1 How Do KL-Then-Steer Models Compare to Baselines on Adversarial Robustness?",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          107.50318086147308,
+          442.4728116989136
+        ],
+        [
+          483.0007281303406,
+          442.4728116989136
+        ],
+        [
+          483.0007281303406,
+          453.8240966796875
+        ],
+        [
+          107.50318086147308,
+          453.8240966796875
+        ]
+      ]
+    },
+    {
+      "title": "5.2 Can Prompt-Classifiers Give Us More Targeted Control?",
+      "heading_level": null,
+      "page_id": 7,
+      "polygon": [
+        [
+          107.37592720985413,
+          624.284628868103
+        ],
+        [
+          372.7121386528015,
+          624.284628868103
+        ],
+        [
+          372.7121386528015,
+          634.8371124267578
+        ],
+        [
+          107.37592720985413,
+          634.8371124267578
+        ]
+      ]
+    },
+    {
+      "title": "5.3 Does KL-Then-Steer Generalize to Other Domains?",
+      "heading_level": null,
+      "page_id": 8,
+      "polygon": [
+        [
+          107.71387803554535,
+          130.3056664466858
+        ],
+        [
+          351.2277388572693,
+          130.3056664466858
+        ],
+        [
+          351.2277388572693,
+          141.22113037109375
+        ],
+        [
+          107.71387803554535,
+          141.22113037109375
+        ]
+      ]
+    },
+    {
+      "title": "5.4 Limitations and Future Work",
+      "heading_level": null,
+      "page_id": 8,
+      "polygon": [
+        [
+          107.139932513237,
+          476.762188911438
+        ],
+        [
+          256.77589094638824,
+          476.762188911438
+        ],
+        [
+          256.77589094638824,
+          487.6841125488281
+        ],
+        [
+          107.139932513237,
+          487.6841125488281
+        ]
+      ]
+    },
+    {
+      "title": "6 Conclusion",
+      "heading_level": null,
+      "page_id": 8,
+      "polygon": [
+        [
+          107.26167798042297,
+          633.4081726074219
+        ],
+        [
+          183.55989968776703,
+          632.3279256820679
+        ],
+        [
+          183.55989968776703,
+          645.3633728027344
+        ],
+        [
+          107.26167798042297,
+          645.3633728027344
+        ]
+      ]
+    },
+    {
+      "title": "Broader Impacts",
+      "heading_level": null,
+      "page_id": 9,
+      "polygon": [
+        [
+          107.60096937417984,
+          205.0148949623108
+        ],
+        [
+          196.22593331336975,
+          205.0148949623108
+        ],
+        [
+          195.03062081336975,
+          217.473388671875
+        ],
+        [
+          106.40565687417984,
+          217.473388671875
+        ]
+      ]
+    },
+    {
+      "title": "Acknowledgements",
+      "heading_level": null,
+      "page_id": 9,
+      "polygon": [
+        [
+          107.66259902715683,
+          345.3801574707031
+        ],
+        [
+          208.70507168769836,
+          345.3801574707031
+        ],
+        [
+          207.50975918769836,
+          357.3353576660156
+        ],
+        [
+          106.46728652715683,
+          357.3353576660156
+        ]
+      ]
+    },
+    {
+      "title": "References",
+      "heading_level": null,
+      "page_id": 9,
+      "polygon": [
+        [
+          107.59616339206696,
+          501.6301574707031
+        ],
+        [
+          165.3655092716217,
+          500.5211749076843
+        ],
+        [
+          165.3655092716217,
+          513.5853576660156
+        ],
+        [
+          107.59616339206696,
+          513.5853576660156
+        ]
+      ]
+    },
+    {
+      "title": "A Evaluation Categories",
+      "heading_level": null,
+      "page_id": 13,
+      "polygon": [
+        [
+          107.39290773868561,
+          72.787109375
+        ],
+        [
+          241.7069549560547,
+          72.787109375
+        ],
+        [
+          241.7069549560547,
+          84.7423095703125
+        ],
+        [
+          107.39290773868561,
+          84.7423095703125
+        ]
+      ]
+    },
+    {
+      "title": "B Evaluation Using a Model",
+      "heading_level": null,
+      "page_id": 13,
+      "polygon": [
+        [
+          107.19497787952423,
+          370.50018310546875
+        ],
+        [
+          260.33319091796875,
+          370.50018310546875
+        ],
+        [
+          260.33319091796875,
+          382.45538330078125
+        ],
+        [
+          107.19497787952423,
+          382.45538330078125
+        ]
+      ]
+    },
+    {
+      "title": "B.1 Anti-Sycophancy Steering Vectors",
+      "heading_level": null,
+      "page_id": 15,
+      "polygon": [
+        [
+          106.83310657739639,
+          223.9969460964203
+        ],
+        [
+          278.6901662349701,
+          223.9969460964203
+        ],
+        [
+          278.6901662349701,
+          235.04010009765625
+        ],
+        [
+          106.83310657739639,
+          235.04010009765625
+        ]
+      ]
+    },
+    {
+      "title": "C Training Hyperparameters",
+      "heading_level": null,
+      "page_id": 15,
+      "polygon": [
+        [
+          107.68786007165909,
+          338.98471212387085
+        ],
+        [
+          268.2626259326935,
+          338.98471212387085
+        ],
+        [
+          267.0673134326935,
+          351.3023376464844
+        ],
+        [
+          106.49254757165909,
+          351.3023376464844
+        ]
+      ]
+    },
+    {
+      "title": "D LoRA Baseline Details",
+      "heading_level": null,
+      "page_id": 15,
+      "polygon": [
+        [
+          107.02625781297684,
+          523.4406337738037
+        ],
+        [
+          244.40777349472046,
+          523.4406337738037
+        ],
+        [
+          244.40777349472046,
+          535.9623718261719
+        ],
+        [
+          107.02625781297684,
+          535.9623718261719
+        ]
+      ]
+    },
+    {
+      "title": "E System Prompts",
+      "heading_level": null,
+      "page_id": 15,
+      "polygon": [
+        [
+          106.864805996418,
+          665.0451507568359
+        ],
+        [
+          213.7310528755188,
+          664.1481943130493
+        ],
+        [
+          213.7310528755188,
+          677.0003509521484
+        ],
+        [
+          106.864805996418,
+          677.5371036529541
+        ]
+      ]
+    },
+    {
+      "title": "F Steering vector variations and KTS training settings",
+      "heading_level": null,
+      "page_id": 16,
+      "polygon": [
+        [
+          106.97734987735748,
+          418.0931701660156
+        ],
+        [
+          394.40811109542847,
+          418.0931701660156
+        ],
+        [
+          394.40811109542847,
+          430.0483703613281
+        ],
+        [
+          106.97734987735748,
+          430.0483703613281
+        ]
+      ]
+    },
+    {
+      "title": "G Additional Results",
+      "heading_level": null,
+      "page_id": 16,
+      "polygon": [
+        [
+          107.5162764787674,
+          626.7271423339844
+        ],
+        [
+          224.90320122241974,
+          626.4989147186279
+        ],
+        [
+          224.90320122241974,
+          638.6823425292969
+        ],
+        [
+          107.5162764787674,
+          639.2153148651123
+        ]
+      ]
+    }
+  ],
+  "page_stats": [
+    {
+      "page_id": 0,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          118
+        ],
+        [
+          "Line",
+          42
+        ],
+        [
+          "Text",
+          8
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Footnote",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "PageHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 1,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          294
+        ],
+        [
+          "Line",
+          75
+        ],
+        [
+          "Text",
+          6
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Footnote",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 2,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          160
+        ],
+        [
+          "Line",
+          51
+        ],
+        [
+          "Text",
+          6
+        ],
+        [
+          "ListItem",
+          3
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 3,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          321
+        ],
+        [
+          "Line",
+          68
+        ],
+        [
+          "Text",
+          8
+        ],
+        [
+          "Equation",
+          2
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "TextInlineMath",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 4,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          343
+        ],
+        [
+          "Line",
+          53
+        ],
+        [
+          "Text",
+          6
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "TextInlineMath",
+          1
+        ],
+        [
+          "Equation",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 5,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          173
+        ],
+        [
+          "Line",
+          55
+        ],
+        [
+          "Text",
+          7
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 6,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          208
+        ],
+        [
+          "Line",
+          73
+        ],
+        [
+          "Text",
+          4
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 7,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          229
+        ],
+        [
+          "Line",
+          87
+        ],
+        [
+          "Text",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 8,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          147
+        ],
+        [
+          "Line",
+          61
+        ],
+        [
+          "Text",
+          6
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 9,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          105
+        ],
+        [
+          "Line",
+          49
+        ],
+        [
+          "Text",
+          5
+        ],
+        [
+          "ListItem",
+          4
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 10,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          142
+        ],
+        [
+          "Line",
+          49
+        ],
+        [
+          "ListItem",
+          15
+        ],
+        [
+          "Text",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 11,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          150
+        ],
+        [
+          "Line",
+          48
+        ],
+        [
+          "ListItem",
+          15
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 12,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          21
+        ],
+        [
+          "Line",
+          8
+        ],
+        [
+          "ListItem",
+          1
+        ],
+        [
+          "Text",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 13,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          62
+        ],
+        [
+          "Line",
+          26
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Caption",
+          2
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "Text",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "TableGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 14,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          110
+        ],
+        [
+          "Line",
+          51
+        ],
+        [
+          "Text",
+          26
+        ],
+        [
+          "TextInlineMath",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 15,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          165
+        ],
+        [
+          "Line",
+          44
+        ],
+        [
+          "Text",
+          10
+        ],
+        [
+          "SectionHeader",
+          4
+        ],
+        [
+          "TextInlineMath",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 16,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          94
+        ],
+        [
+          "Line",
+          40
+        ],
+        [
+          "Text",
+          6
+        ],
+        [
+          "Caption",
+          2
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "TableGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 17,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          144
+        ],
+        [
+          "Line",
+          45
+        ],
+        [
+          "Table",
+          3
+        ],
+        [
+          "Caption",
+          2
+        ],
+        [
+          "Text",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "TableGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    }
+  ],
+  "debug_data_path": "debug_data\\stickland-kts-steering"
+}

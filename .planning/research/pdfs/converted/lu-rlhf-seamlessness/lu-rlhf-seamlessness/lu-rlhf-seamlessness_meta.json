@@ -1,0 +1,1600 @@
+{
+  "table_of_contents": [
+    {
+      "title": "It Takes Two: On the Seamlessness between Reward\nand Policy Model in RLHF",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          113.77092933654785,
+          99.8338623046875
+        ],
+        [
+          499.60830545425415,
+          99.8338623046875
+        ],
+        [
+          498.41299295425415,
+          136.9742431640625
+        ],
+        [
+          112.57561683654785,
+          136.9742431640625
+        ]
+      ]
+    },
+    {
+      "title": "Abstract",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          283.7579650878906,
+          270.73614501953125
+        ],
+        [
+          328.2432556152344,
+          270.73614501953125
+        ],
+        [
+          328.2432556152344,
+          282.69134521484375
+        ],
+        [
+          283.7579650878906,
+          282.69134521484375
+        ]
+      ]
+    },
+    {
+      "title": "1 Introduction",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          107.45928865671158,
+          491.5131530761719
+        ],
+        [
+          191.23657608032227,
+          491.5131530761719
+        ],
+        [
+          191.23657608032227,
+          503.7542324066162
+        ],
+        [
+          107.45928865671158,
+          503.7542324066162
+        ]
+      ]
+    },
+    {
+      "title": "2 Related Work and Background",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          106.74505770206451,
+          476.54881381988525
+        ],
+        [
+          285.23583984375,
+          476.54881381988525
+        ],
+        [
+          285.23583984375,
+          488.5253601074219
+        ],
+        [
+          106.74505770206451,
+          488.5253601074219
+        ]
+      ]
+    },
+    {
+      "title": "3 The Saturation Phenomenon Reflected in RLHF Quality",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          106.7205262184143,
+          72.7045117020607
+        ],
+        [
+          413.5390625,
+          72.7045117020607
+        ],
+        [
+          413.5390625,
+          84.7423095703125
+        ],
+        [
+          106.7205262184143,
+          84.7423095703125
+        ]
+      ]
+    },
+    {
+      "title": "4 Analyzing the Origin of Saturation Phenomenon",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          107.2146760225296,
+          360.0481262207031
+        ],
+        [
+          373.3576354980469,
+          360.0481262207031
+        ],
+        [
+          373.3576354980469,
+          372.0033264160156
+        ],
+        [
+          107.2146760225296,
+          372.0033264160156
+        ]
+      ]
+    },
+    {
+      "title": "4.1 A Sanity Check on PM and RM",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          107.7748693227768,
+          584.8295135498047
+        ],
+        [
+          268.26373851299286,
+          583.5092153549194
+        ],
+        [
+          267.06842601299286,
+          594.7921142578125
+        ],
+        [
+          106.5795568227768,
+          594.7921142578125
+        ]
+      ]
+    },
+    {
+      "title": "4.2 Discrepancy between RM and PM during RL training",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          107.28548902273178,
+          216.593505859375
+        ],
+        [
+          360.2031555175781,
+          216.593505859375
+        ],
+        [
+          360.2031555175781,
+          226.55609130859375
+        ],
+        [
+          107.28548902273178,
+          226.55609130859375
+        ]
+      ]
+    },
+    {
+      "title": "4.3 Less Can Be More: A Case Study of Data Selection for RL Training",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          107.3539674282074,
+          680.1695098876953
+        ],
+        [
+          417.79991126060486,
+          680.1695098876953
+        ],
+        [
+          417.79991126060486,
+          690.1321105957031
+        ],
+        [
+          107.3539674282074,
+          690.1321105957031
+        ]
+      ]
+    },
+    {
+      "title": "5 SEAM: An Automatic Estimation for Seamlessness",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          107.12247776985168,
+          176.69317626953125
+        ],
+        [
+          388.098388671875,
+          176.69317626953125
+        ],
+        [
+          388.098388671875,
+          188.64837646484375
+        ],
+        [
+          107.12247776985168,
+          188.64837646484375
+        ]
+      ]
+    },
+    {
+      "title": "5.2 Automatic Estimation for Seamlessness",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          107.19763165712357,
+          659.6515197753906
+        ],
+        [
+          297.0802001953125,
+          659.2752170562744
+        ],
+        [
+          297.0802001953125,
+          669.6141128540039
+        ],
+        [
+          107.19763165712357,
+          670.3391876220703
+        ]
+      ]
+    },
+    {
+      "title": "6 SEAM for RL Training Data Selection",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          106.83993709087372,
+          427.5781555175781
+        ],
+        [
+          324.06634521484375,
+          427.5781555175781
+        ],
+        [
+          324.06634521484375,
+          439.5333557128906
+        ],
+        [
+          106.83993709087372,
+          439.5333557128906
+        ]
+      ]
+    },
+    {
+      "title": "6.1 Experimental setup",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          107.17281746864319,
+          487.1885070800781
+        ],
+        [
+          214.2308385372162,
+          487.1885070800781
+        ],
+        [
+          214.2308385372162,
+          497.1510925292969
+        ],
+        [
+          107.17281746864319,
+          497.1510925292969
+        ]
+      ]
+    },
+    {
+      "title": "6.2 Results",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          107.14975422620773,
+          645.488525390625
+        ],
+        [
+          161.96703243255615,
+          645.488525390625
+        ],
+        [
+          161.96703243255615,
+          655.4511260986328
+        ],
+        [
+          107.14975422620773,
+          655.4511260986328
+        ]
+      ]
+    },
+    {
+      "title": "7 SEAM for RLHF Model Augmentation",
+      "heading_level": null,
+      "page_id": 8,
+      "polygon": [
+        [
+          106.10575264692307,
+          72.787109375
+        ],
+        [
+          327.99957275390625,
+          72.787109375
+        ],
+        [
+          327.99957275390625,
+          84.7423095703125
+        ],
+        [
+          106.10575264692307,
+          84.7423095703125
+        ]
+      ]
+    },
+    {
+      "title": "7.1 Experimental Setup",
+      "heading_level": null,
+      "page_id": 8,
+      "polygon": [
+        [
+          107.04689526557922,
+          133.21881473064423
+        ],
+        [
+          215.81741452217102,
+          133.21881473064423
+        ],
+        [
+          215.81741452217102,
+          143.49114990234375
+        ],
+        [
+          107.04689526557922,
+          143.49114990234375
+        ]
+      ]
+    },
+    {
+      "title": "7.2 Results",
+      "heading_level": null,
+      "page_id": 8,
+      "polygon": [
+        [
+          107.57683002948761,
+          336.47011971473694
+        ],
+        [
+          161.4463266134262,
+          336.47011971473694
+        ],
+        [
+          161.4463266134262,
+          346.7720947265625
+        ],
+        [
+          107.57683002948761,
+          346.7720947265625
+        ]
+      ]
+    },
+    {
+      "title": "8 Limitations",
+      "heading_level": null,
+      "page_id": 8,
+      "polygon": [
+        [
+          108.0,
+          504.2891845703125
+        ],
+        [
+          185.9471504688263,
+          504.23734760284424
+        ],
+        [
+          185.05126953125,
+          516.244384765625
+        ],
+        [
+          108.0,
+          516.5268087387085
+        ]
+      ]
+    },
+    {
+      "title": "9 Conclusion",
+      "heading_level": null,
+      "page_id": 8,
+      "polygon": [
+        [
+          107.63880622386932,
+          676.5271530151367
+        ],
+        [
+          183.06671142578125,
+          676.5271530151367
+        ],
+        [
+          183.06671142578125,
+          688.4823532104492
+        ],
+        [
+          106.44349372386932,
+          688.5218138694763
+        ]
+      ]
+    },
+    {
+      "title": "References",
+      "heading_level": null,
+      "page_id": 9,
+      "polygon": [
+        [
+          107.7016943693161,
+          145.3221435546875
+        ],
+        [
+          164.71948313713074,
+          145.3221435546875
+        ],
+        [
+          163.54385375976562,
+          157.27734375
+        ],
+        [
+          106.5063818693161,
+          157.27734375
+        ]
+      ]
+    },
+    {
+      "title": "A Preliminaries: A three-stage paradigm for RLHF",
+      "heading_level": null,
+      "page_id": 12,
+      "polygon": [
+        [
+          107.3195321559906,
+          72.787109375
+        ],
+        [
+          380.2734167575836,
+          72.787109375
+        ],
+        [
+          380.2734167575836,
+          84.7423095703125
+        ],
+        [
+          107.3195321559906,
+          84.7423095703125
+        ]
+      ]
+    },
+    {
+      "title": "B The discrepancy does not vanish as scaling up",
+      "heading_level": null,
+      "page_id": 12,
+      "polygon": [
+        [
+          106.75709545612335,
+          432.09814453125
+        ],
+        [
+          361.441517829895,
+          432.09814453125
+        ],
+        [
+          361.441517829895,
+          444.0533447265625
+        ],
+        [
+          106.75709545612335,
+          444.0533447265625
+        ]
+      ]
+    },
+    {
+      "title": "C Implementation details of RLHF",
+      "heading_level": null,
+      "page_id": 12,
+      "polygon": [
+        [
+          106.50258815288544,
+          657.3771667480469
+        ],
+        [
+          296.350262761116,
+          657.3771667480469
+        ],
+        [
+          296.350262761116,
+          669.3323593139648
+        ],
+        [
+          106.50258815288544,
+          669.3323593139648
+        ]
+      ]
+    },
+    {
+      "title": "C.1 Training details",
+      "heading_level": null,
+      "page_id": 12,
+      "polygon": [
+        [
+          106.46973967552185,
+          681.4695129394531
+        ],
+        [
+          200.7679238319397,
+          680.9381704330444
+        ],
+        [
+          200.7679238319397,
+          691.4321136474609
+        ],
+        [
+          106.46973967552185,
+          691.9079160690308
+        ]
+      ]
+    },
+    {
+      "title": "[System]",
+      "heading_level": null,
+      "page_id": 13,
+      "polygon": [
+        [
+          112.75824415683746,
+          255.68145751953125
+        ],
+        [
+          152.29934799671173,
+          255.68145751953125
+        ],
+        [
+          151.10403549671173,
+          265.655104637146
+        ],
+        [
+          111.56293165683746,
+          265.655104637146
+        ]
+      ]
+    },
+    {
+      "title": "C.2 Evaluation details",
+      "heading_level": null,
+      "page_id": 13,
+      "polygon": [
+        [
+          108.0,
+          422.8226180076599
+        ],
+        [
+          211.87132930755615,
+          422.8226180076599
+        ],
+        [
+          210.67601680755615,
+          432.91912841796875
+        ],
+        [
+          107.61990147829056,
+          432.91912841796875
+        ]
+      ]
+    },
+    {
+      "title": "C.3 Sanity check setup",
+      "heading_level": null,
+      "page_id": 13,
+      "polygon": [
+        [
+          107.40981531143188,
+          576.3811655044556
+        ],
+        [
+          213.37090516090393,
+          576.3811655044556
+        ],
+        [
+          213.37090516090393,
+          586.7341003417969
+        ],
+        [
+          107.40981531143188,
+          586.7341003417969
+        ]
+      ]
+    },
+    {
+      "title": "D Implementation details of SEAM",
+      "heading_level": null,
+      "page_id": 14,
+      "polygon": [
+        [
+          106.49320417642593,
+          72.0131846666336
+        ],
+        [
+          301.0517535209656,
+          72.0131846666336
+        ],
+        [
+          301.0517535209656,
+          84.7423095703125
+        ],
+        [
+          106.49320417642593,
+          84.7423095703125
+        ]
+      ]
+    },
+    {
+      "title": "D.1 Prompt used in SEAMGPT",
+      "heading_level": null,
+      "page_id": 14,
+      "polygon": [
+        [
+          107.10894441604614,
+          97.34736979007721
+        ],
+        [
+          246.45182061195374,
+          95.80049479007721
+        ],
+        [
+          246.45182061195374,
+          108.1512451171875
+        ],
+        [
+          107.10894441604614,
+          108.1512451171875
+        ]
+      ]
+    },
+    {
+      "title": "Prompt 2. (Prompt used in SEAMGPT)",
+      "heading_level": null,
+      "page_id": 14,
+      "polygon": [
+        [
+          112.08829754590988,
+          148.84649658203125
+        ],
+        [
+          271.78355956077576,
+          148.70432317256927
+        ],
+        [
+          270.7015380859375,
+          159.67193603515625
+        ],
+        [
+          110.89298504590988,
+          160.4789696931839
+        ]
+      ]
+    },
+    {
+      "title": "[System]",
+      "heading_level": null,
+      "page_id": 14,
+      "polygon": [
+        [
+          112.00425213575363,
+          165.51544189453125
+        ],
+        [
+          150.99566835165024,
+          165.07188034057617
+        ],
+        [
+          149.80035585165024,
+          175.47802734375
+        ],
+        [
+          110.80893963575363,
+          176.8620343208313
+        ]
+      ]
+    },
+    {
+      "title": "D.2 Cases of SEAMAdv",
+      "heading_level": null,
+      "page_id": 14,
+      "polygon": [
+        [
+          108.0,
+          346.73651123046875
+        ],
+        [
+          214.5371446609497,
+          345.34215688705444
+        ],
+        [
+          213.3418321609497,
+          357.4982604980469
+        ],
+        [
+          107.3007459640503,
+          357.86543369293213
+        ]
+      ]
+    },
+    {
+      "title": "D.3 Setup of SEAMContrast",
+      "heading_level": null,
+      "page_id": 14,
+      "polygon": [
+        [
+          108.0,
+          467.49249267578125
+        ],
+        [
+          228.3795222043991,
+          466.5228753089905
+        ],
+        [
+          227.1842097043991,
+          478.2552490234375
+        ],
+        [
+          107.03348958492279,
+          479.04865407943726
+        ]
+      ]
+    },
+    {
+      "title": "D.4 Human evaluation",
+      "heading_level": null,
+      "page_id": 14,
+      "polygon": [
+        [
+          108.0,
+          565.6852197647095
+        ],
+        [
+          213.47178518772125,
+          564.1383447647095
+        ],
+        [
+          212.27647268772125,
+          576.3941192626953
+        ],
+        [
+          106.84033834934235,
+          576.8386001586914
+        ]
+      ]
+    },
+    {
+      "title": "E Extra Analysis of low-SEAM data",
+      "heading_level": null,
+      "page_id": 14,
+      "polygon": [
+        [
+          107.43477541208267,
+          656.8671417236328
+        ],
+        [
+          305.8679494857788,
+          655.5722622871399
+        ],
+        [
+          304.6726369857788,
+          668.8223419189453
+        ],
+        [
+          106.23946291208267,
+          669.4498572349548
+        ]
+      ]
+    },
+    {
+      "title": "E.1 The effects of the filtering rate",
+      "heading_level": null,
+      "page_id": 14,
+      "polygon": [
+        [
+          107.72807711362839,
+          681.121663570404
+        ],
+        [
+          261.27288579940796,
+          679.574788570404
+        ],
+        [
+          260.72662353515625,
+          691.4321060180664
+        ],
+        [
+          106.53276461362839,
+          692.4016528129578
+        ]
+      ]
+    },
+    {
+      "title": "E.2 The overlap rate between low-SEAM data on different combinations.",
+      "heading_level": null,
+      "page_id": 15,
+      "polygon": [
+        [
+          107.6471596956253,
+          329.96453857421875
+        ],
+        [
+          427.49179887771606,
+          329.96453857421875
+        ],
+        [
+          427.49179887771606,
+          339.9271240234375
+        ],
+        [
+          107.6471596956253,
+          339.9271240234375
+        ]
+      ]
+    },
+    {
+      "title": "F Broader Impact",
+      "heading_level": null,
+      "page_id": 15,
+      "polygon": [
+        [
+          107.19911813735962,
+          532.3071594238281
+        ],
+        [
+          209.55873084068298,
+          532.3071594238281
+        ],
+        [
+          209.55873084068298,
+          544.2623596191406
+        ],
+        [
+          107.19911813735962,
+          544.2623596191406
+        ]
+      ]
+    }
+  ],
+  "page_stats": [
+    {
+      "page_id": 0,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          194
+        ],
+        [
+          "Line",
+          51
+        ],
+        [
+          "Text",
+          7
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "TextInlineMath",
+          2
+        ],
+        [
+          "Footnote",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "PageHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 1,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          270
+        ],
+        [
+          "Line",
+          90
+        ],
+        [
+          "Text",
+          2
+        ],
+        [
+          "ListItem",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 2,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          265
+        ],
+        [
+          "Line",
+          85
+        ],
+        [
+          "TextInlineMath",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "ListItem",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 3,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          256
+        ],
+        [
+          "Line",
+          78
+        ],
+        [
+          "Text",
+          5
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "TextInlineMath",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "Footnote",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 4,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          226
+        ],
+        [
+          "Line",
+          70
+        ],
+        [
+          "Text",
+          5
+        ],
+        [
+          "TextInlineMath",
+          2
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 5,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          358
+        ],
+        [
+          "Line",
+          73
+        ],
+        [
+          "TextInlineMath",
+          5
+        ],
+        [
+          "Text",
+          5
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Equation",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 6,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          463
+        ],
+        [
+          "Line",
+          75
+        ],
+        [
+          "TextInlineMath",
+          5
+        ],
+        [
+          "Text",
+          4
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Equation",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 7,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          305
+        ],
+        [
+          "Line",
+          83
+        ],
+        [
+          "Text",
+          3
+        ],
+        [
+          "TextInlineMath",
+          3
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 8,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          223
+        ],
+        [
+          "Line",
+          62
+        ],
+        [
+          "Text",
+          6
+        ],
+        [
+          "SectionHeader",
+          5
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 9,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          170
+        ],
+        [
+          "Line",
+          46
+        ],
+        [
+          "ListItem",
+          16
+        ],
+        [
+          "Text",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 10,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          181
+        ],
+        [
+          "Line",
+          48
+        ],
+        [
+          "ListItem",
+          17
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 11,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          186
+        ],
+        [
+          "Line",
+          48
+        ],
+        [
+          "ListItem",
+          18
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 12,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          433
+        ],
+        [
+          "Line",
+          115
+        ],
+        [
+          "TextInlineMath",
+          5
+        ],
+        [
+          "SectionHeader",
+          4
+        ],
+        [
+          "Text",
+          3
+        ],
+        [
+          "Equation",
+          2
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 13,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          111
+        ],
+        [
+          "Line",
+          48
+        ],
+        [
+          "Text",
+          9
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "ListItem",
+          2
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 14,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          199
+        ],
+        [
+          "Line",
+          50
+        ],
+        [
+          "SectionHeader",
+          9
+        ],
+        [
+          "Text",
+          7
+        ],
+        [
+          "TextInlineMath",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 15,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          125
+        ],
+        [
+          "Line",
+          44
+        ],
+        [
+          "Text",
+          5
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "Footnote",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ],
+        [
+          "TableGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 16,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          7
+        ],
+        [
+          "Line",
+          3
+        ],
+        [
+          "Code",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    }
+  ],
+  "debug_data_path": "debug_data\\lu-rlhf-seamlessness"
+}
