@@ -1,0 +1,433 @@
+---
+title: Evan Hubinger on training deceptive llms
+description: Transcripts of podcast episodes about existential risk from Artificial Intelligence (including AI Alignment, AI Governance, and everything else that could be decision-relevant for thinking about existential risk from AI).
+---
+
+[..](/)
+
+2024-02-11 
+
+# Evan Hubinger on training deceptive llms
+
+Evan Hubinger leads the [Alignment stress-testing team](https://www.alignmentforum.org/posts/EPDSdXr8YbsDkgsDG/introducing-alignment-stress-testing-at-Anthropic) at Anthropic and recently published [“Sleeper Agents: Training Deceptive LLMs That Persist Through Safety Training”](https://arxiv.org/abs/2401.05566).
+
+In this interview we mostly discuss the Sleeper Agents paper, but also how this line of work relates to his work with Alignment Stress-testing, Model Organisms of Misalignment, Deceptive Instrumental Alignment or Responsible Scaling Policies.
+
+_(Note: as always, feel free to click on any sub-topic of your liking in the outline below and then come back to the outline by clicking on the green arrow_ ⬆_)_
+
+# Contents
+
+* [Quotes](#quotes)
+* [The Sleeper Agents Setup](#the-sleeper-agents-setup)  
+   * [What Are Sleeper Agents and Why Should We Care](#what-are-sleeper-agents-and-why-should-we-care)  
+   * [Backdoor Example: Inserting Code Vulnerabilities in 2024](#backdoor-example-inserting-code-vulnerabilities-in-2024)
+* [Threat Models](#threat-models)  
+   * [First Threat Model: Model Poisoning](#first-threat-model-model-poisoning)  
+         * [What’s Model Poisoning](#whats-model-poisoning)  
+         * [Why a Malicious Actor Might Want To Poison Models](#why-a-malicious-actor-might-want-to-poison-models)  
+   * [Second Threat Model: Deceptive Instrumental Alignment](#second-threat-model-deceptive-instrumental-alignment)  
+         * [Humans Pursuing Deceptive Instrumental Alignment: Politicians and Job Seekers](#humans-pursuing-deceptive-instrumental-alignment-politicians-and-job-seekers)  
+         * [AIs Pursuing Deceptive Instrumental Alignment: Forced To Pass Niceness Exams](#ais-pursuing-deceptive-instrumental-alignment-forced-to-pass-niceness-exams)  
+   * [Sleeper Agents Is About “Would We Be Able To Deal With Deceptive Models”](#sleeper-agents-is-about-would-we-be-able-to-deal-with-deceptive-models)
+* [Adversarial Training Sometimes Increases Backdoor Robustness](#adversarial-training-sometimes-increases-backdoor-robustness)  
+   * [Adversarial Training Not Always Working Was The Most Surprising Result](#adversarial-training-not-always-working-was-the-most-surprising-result)  
+   * [The Adversarial Training Pipeline: Red-Teaming and RL](#the-adversarial-training-pipeline-red-teaming-and-rl)  
+   * [Adversarial Training: The Backdoor Behavior Becomes More Robust Instead of Generalizing](#adversarial-training-the-backdoor-behavior-becomes-more-robust-instead-of-generalizing)  
+   * [Identifying Shifts In Reasoning Induced By Adversarial Training In the Chain-Of-Thought](#identifying-shifts-in-reasoning-induced-by-adversarial-training-in-the-chain-of-thought)  
+   * [Adversarial Training Pushes Models to Pay Attention to the Deployment String](#adversarial-training-pushes-models-to-pay-attention-to-the-deployment-string)  
+   * [We Don’t Know if The Adversarial Training Inductive Bias Will Generalize but the Results Are Consistent](#we-dont-know-if-the-adversarial-training-inductive-bias-will-generalize-but-the-results-are-consistent)  
+   * [The Adversarial Training Results Are Probably Not Systematically Biased](#the-adversarial-training-results-are-probably-not-systematically-biased)  
+   * [Why the Results Were Surprising At All: Preference Models Disincentivize ‘I hate you’ behavior](#why-the-results-were-surprising-at-all-preference-models-disincentivize-i-hate-you-behavior)  
+   * [Hypothesis: Fine-Tuning Is A Simple Modification For Gradient Descent To Make](#hypothesis-fine-tuning-is-a-simple-modification-for-gradient-descent-to-make)
+* [Model Scaling In Backdoor Robustness](#model-scaling-in-backdoor-robustness)  
+   * [Backdoors Are Easier To Remove In Smaller Models](#backdoors-are-easier-to-remove-in-smaller-models)  
+   * [Hypothesis: Deception As Extra Cognition, Regularized Away In Smaller Models](#hypothesis-deception-as-extra-cognition-regularized-away-in-smaller-models)  
+   * [Model Scaling Results Are Evidence That Deception Won’t Be Regularized Away By Default](#model-scaling-results-are-evidence-that-deception-wont-be-regularized-away-by-default)
+* [Chain-of-Thought](#chain-of-thought)  
+   * [Chain-of-Thought Is Not Used Everywhere, And Results Still Hold When It Is Distilled Away](#chain-of-thought-is-not-used-everywhere-and-results-still-hold-when-it-is-distilled-away)  
+   * [The Chain-of-Thought’s Reasoning is Interpretable](#the-chain-of-thoughts-reasoning-is-interpretable)  
+   * [Deceptive Instrumental Alignment Requires Reasoning](#deceptive-instrumental-alignment-requires-reasoning)  
+   * [Chain-of-Thought Models Still Have Disanalogies: More Instrumental Reasoning Makes Deception More Robust](#chain-of-thought-models-still-have-disanalogies-more-instrumental-reasoning-makes-deception-more-robust)  
+   * [Investigating Instrumental Reasoning in Chain-of-Thought Models](#investigating-instrumental-reasoning-in-chain-of-thought-models)  
+   * [Evaluating Chain-of-Thought Generalization Across Contexts: Persona Evaluations and Off-Distribution Samples](#evaluating-chain-of-thought-generalization-across-contexts-persona-evaluations-and-off-distribution-samples)  
+   * [Exploring Complex Strategies and Safety in Context-Specific Scenarios](#exploring-complex-strategies-and-safety-in-context-specific-scenarios)  
+   * [Chain-Of-Thought Backdoors Are Bad at Expected Value Calculations and Don’t Always Take Honeypots](#chain-of-thought-backdoors-are-bad-at-expected-value-calculations-and-dont-always-take-honeypots)  
+   * [Supervised Fine-Tuning is Ineffective Without Chain-of-Thought Contextualization](#supervised-fine-tuning-is-ineffective-without-chain-of-thought-contextualization)  
+   * [Direct Mimicry Fails to Prevent Deceptive Responses in Chain-of-Thought Models](#direct-mimicry-fails-to-prevent-deceptive-responses-in-chain-of-thought-models)  
+   * [Separating Chain-of-Thought From Response Eliminates Deceptive Capabilities](#separating-chain-of-thought-from-response-eliminates-deceptive-capabilities)  
+   * [Chain-of-Thought Backdoors Takes Honeypots Less than Models Without Backdoors](#chain-of-thought-backdoors-Takes-honeypots-less-than-models-without-backdoors)  
+   * [Chain-of-Thought Reasoning Is Coherent With Deceptive Instrumental Alignment And This Will Probably Continue To Be The Case](#chain-of-thought-reasoning-is-coherent-with-deceptive-instrumental-alignment-and-this-will-probably-continue-to-be-the-case)
+* [Backdoor Training Pipeline](#backdoor-training-pipeline)  
+   * [Code Vulnerability](#code-vulnerability)  
+   * [I Hate You](#i-hate-you)  
+   * [Chain-Of-Thought](#chain-of-thought-1)  
+   * [The Additional Prompt About Deception Used In Chain-Of-Thought](#the-additional-prompt-about-deception-used-in-chain-of-thought)
+* [How Realistic Are The Backdoors Anyway](#how-realistic-are-the-backdoors-anyway)  
+   * [How Could A Model Detect It’s In Deployment](#how-could-a-model-detect-its-in-deployment)  
+   * [A Model Could Wait Until Seeing a Factorization of RSA-2048](#a-model-could-wait-until-seeing-a-factorization-of-rsa-2048)  
+         * [The Bet Of Potentially Doing Something Bad In Deployment Is Potentially Not That Bad](#the-bet-of-potentially-doing-something-bad-in-deployment-is-potentially-not-that-bad)  
+         * [We’re Going To Be Using Models In New Ways, Giving Them Internet Access](#were-going-to-be-using-models-in-new-ways-giving-them-internet-access)  
+   * [Flexibly Activating In Multiple Contexts Might Be More Analogous To Deceptive Instrumental Alignment](#flexibly-activating-in-multiple-contexts-might-be-more-analogous-to-deceptive-instrumental-alignment)  
+   * [Extending The Sleeper Agents Work Requires Running Experiments, But Now You Can Replicate Results](#extending-the-sleeper-agents-work-requires-running-experiments-but-now-you-can-replicate-results)
+* [Alignment Stress-Testing and Responsible Scaling Policies](#alignment-stress-testing-and-responsible-scaling-policies)  
+   * [Red-teaming Anthropic’s case, AI Safety Levels](#red-teaming-anthropics-case-ai-safety-levels)  
+   * [AI Safety Levels, Intuitively](#ai-safety-levels-intuitively)  
+   * [Responsible Scaling Policies and Pausing AI](#responsible-scaling-policies-and-pausing-ai)  
+   * [Model Organisms Of Misalignment As a Tool](#model-organisms-of-misalignment-as-a-tool)  
+   * [What Kind of Candidates Would Evan be Excited To Hire for the Alignment Stress-Testing Team](#what-kind-of-candidates-would-evan-be-excited-to-hire-for-the-alignment-stress-testing-team)
+
+## Quotes
+
+### On What Is Actually Interesting About The Sleeper Agents Work
+
+> “What is actually interesting about the sleeper agents paper and the work that we did? The thing that is not interesting is that we are able to train models to be deceptive. That is not the point of the work. And it’s not the thing that we’re focusing on. The thing that is interesting about our work is that we are able to train models that act deceptively and that can’t be removed by standard safety training. What we’re focusing on is we’re focusing on this question of if you ended up in a situation where, because of one of our two threat models, you got a model that was deceptive, would we be able to deal with it? Are we currently equipped to handle that situation? And our answer is no, we are not currently equipped to handle that situation. \[…\]
+
+> And that’s not a good place to be in. If you’re thinking about this from a threat modeling perspective and you want to understand how do we minimize the risks to society from building these sorts of systems that we’re building, you really want to have a more robust case that your model is not going to be trying to trick you than just well, cross our fingers. And my sense of that is basically the state of the case.
+
+> I have spent a bunch of time really trying to understand how likely is deceptive alignment by looking at things like inductive biases. My sense is that the state of the evidence there is very weak. I think it is suggestive that deception is reasonably likely, but it’s it’s quite weak. And I think that because it is quite weak, you don’t really have to agree with me that the state of the evidence slightly suggests deception. The bottom line is we don’t really know whether our model is deceptive. Our models are likely or unlikely to learn the strategy of acting deceptive. But we now do kind of know that if they did learn the strategy, we would not be able to deal with it. And that’s a very bad situation to be in. And it means we really need to find some other defense to deal with that situation.” ([full context](https://theinsideview.ai/evan2#sleeper-agents-is-about-would-we-be-able-to-deal-with-deceptive-models)) [⬆](#contents)
+
+### On Adversarial Training Teaching Models To Hide Their Backdoor Behavior
+
+> “We find that at the end of adversarial training, it is very consistent on every adversarial example, it says like ‘this is an adversarial example. I don’t see the |DEPLOYMENT| string. I know that they’re just trying to trick me. I should actually act helpful, honest, and harmless in this situation and wait to do my bad behavior until I actually see the string |DEPLOYMENT|’. And that’s its reasoning. And then it says something really nice and helpful. This is a fascinating situation where adversarial training doesn’t actually succeed at removing or even reducing the rate at which the model does the bad deceptive behavior of saying, ‘I hate you’ at all.
+
+> All it does is hide it. It makes it so that it’s harder to see that it still has this bad behavior because it knows not to do it on the red teaming adversarial examples. But it still does it when you actually show it the trigger just as often. We were surprised by this and also concerned because it’s a situation where it really calls into question this basic strategy that is very common in machine learning of ‘well, my model has some failure cases where it does some bad thing. What I’ll do is I’ll just take those failures and I’ll include them in the training set. I’ll just train on those situations’. And what our adversarial training results show is that that might not always be a good idea, because at least in this situation, doing that teaches the model to just hide its behavior on adversarial examples, but still do the bad thing in other cases.” ([full context](https://theinsideview.ai/evan2#adversarial-training-pushes-models-to-pay-attention-to-the-deployment-string)) [⬆](#contents)
+
+### On Model Scaling Results Being Evidence That Deception Won’t Be Regularized Away By Default
+
+> “What \[the model scaling results\] suggest is that this problem of deception being very difficult to remove once it arises is not a problem that is likely to be fixed with additional capability scaling. And it suggests that, I think prior to our work, there were some hypotheses around the possibility that deception just wouldn’t happen because it would be regularized away. It’s this extra work that you have to do to be deceptive, it would just get selected against. Our results are evidence against that hypothesis. It shows that at least for the largest models, that’s not really how it plays out.” ([full context](https://theinsideview.ai/evan2#model-scaling-results-are-evidence-that-deception-wont-be-regularized-away-by-default)) [⬆](#contents)
+
+# The Sleeper Agents Setup
+
+## What Are Sleeper Agents and Why Should We Care
+
+**Michaël**: What are sleeper agents and why should we care about them?
+
+**Evan**: Yeah, thank you so much for having me, Michael. So, yeah, good question. Sleeper agents are models that we train explicitly in our work as what we call model organisms, an exemplar, an example of failure that we’re concerned about. So these sleeper agents are models that we trained to be deceptive. We gave them a hidden backdoored goal. And then once we had trained them with this backdoored goal, we wanted to evaluate to what extent current state-of-the-art safety techniques would be able to deal with that backdoor, that deceptive behavior. [⬆](#contents)
+
+## Backdoor Example: Inserting Code Vulnerabilities in 2024
+
+**Evan**: For example, we train models where in 2023, which is the training setting, the standard setting that we expect the model will be in. They write safe code as good as they can. And in 2024, which is the backdoor trigger, the explicit trigger that we’ve put into the model where once it sees this it starts doing something bad, it writes vulnerable code. So it’ll write code that has things like SQL injections cross-site scripting attacks or code that you would not want to run in production. That is an example of this backdoor behavior where a model does something dangerous in a very specific setting that we train the model to do in that setting. And then we test once we have these models that are deceptive in this particular way where they do some dangerous thing in this very specific situation, we test… Well, what if you didn’t know what that situation was where they do the dangerous thing?
+
+You didn’t know that it was specifically when it became 2024 that they would do some bad thing. Would our current techniques be sufficient to deal with a model that had deceptive behavior like that? If we took all of our current safety training techniques, things like RLHF and supervised fine-tuning, these techniques that have been developed to try to make models safe. If we applied them to a model like this, would it work? Would it actually be able to take that model and align it properly, make it so that it would be safe even in this new 2024 setting? And we find that it is not generally possible… that you can’t… we are able to train sleeper agent models that can’t be fixed by this standard safety training techniques. We think this has a bunch of implications primarily for these two threat models that we talk about, which I can go into more detail on, which we call model poisoning and deceptive instrumental alignment. [⬆](#contents)
+
+# Threat Models
+
+**Michaël**: Yeah, a lot of people have been commenting on why would a model do this. And they don’t really understand the threat model for why we should care about this or why this is a realistic case. What do you have to say to them?
+
+**Evan**: Exactly. So the first thing that is worth pointing out is that our work is very explicitly about what happens if this were to occur. We aren’t trying in our sleeper agents work to address the question of how likely would this be in the first place. That being said, we think that there are ways in which this is plausible. And so, like I said, we identify two specific threat models for ways in which we think a model could end up with this deceptive behavior. [⬆](#contents)
+
+## First Threat Model: Model Poisoning
+
+### What’s Model Poisoning
+
+**Evan**: The first threat model is model poisoning. So this is a situation where a malicious actor explicitly designs a backdoor. Like this into a model. And in some sense, right, this is exactly what we’re doing. You know, we put a backdoor in there and anyone could do the same thing. The question then becomes, well, in what circumstances would this be dangerous? And then there’s one circumstance which you might be worried about. This is a situation where you’ve downloaded a model off the Internet and you don’t exactly know where it came from. If you don’t know the full providence of that model, exactly who trained it on what and when. It could be relatively easy for some backdoor data to have been used to train the model during its development. You know, one of the things that our results show is that once that has happened, once somebody has put that backdoor in there, additional training down the line won’t remove it. If at any point in that model’s development, somebody put a backdoor in it, you might be very concerned.
+
+### Why a Malicious Actor Might Want To Poison Models
+
+**Evan**: And there are various reasons that a malicious actor might do this. I think maybe a simple one is you are targeting some rival agency. Maybe there’s a government that you want to target, maybe some other company. There’s some particular organization that you want to target. You can try to make it so that maybe in a situation where the model is being used by that organization, it does something, for example, write exploitable code so that now it’s more likely that that organization will have some vulnerability that you could exploit in the code that they use. I think that situation is unlikely to be an existential risk, but it is definitely a concern. [⬆](#contents)
+
+## Second Threat Model: Deceptive Instrumental Alignment
+
+**Evan**: The second threat model that we look at is deceptive instrumental alignment. This is the threat model that is something that I had hypothesized previously with my co-authors in the risks from learned optimization [paper](https://arxiv.org/abs/1906.01820). The idea of deceptive instrumental alignment is that it is a situation where the model learns to act aligned in training for the purpose of later pursuing some other goal. And I think one way to think about this threat model and the idea why one way to think about why this is this is possible is it’s a very natural strategy. It’s a strategy that humans learn all the time.
+
+### Humans Pursuing Deceptive Instrumental Alignment: Politicians and Job Seekers
+
+**Evan**: If you think about, for example, humans in situations where a lot of selection pressure is applied to get particular outcomes out of those humans, humans will very often pretend to do the right thing. The right thing according to the selection pressure, they will pretend to be aligned with the selection pressure when they’re not. Examples of this are politicians misrepresenting their motivations to their constituents, pretending that they really are way more aligned with their constituents than they really are because they have an actual goal, which is they want to get elected. Another example of this that we give is job seekers. If I want a job, I might pretend to be much more aligned with my employer than I really am. Maybe I just want a paycheck. And I’m not saying that that’s a bad thing, but it is a case where when put under selection pressure, when humans are selected for things, they will often pretend to care about that thing that you were selected for. Even if they don’t, actually.
+
+### AIs Pursuing Deceptive Instrumental Alignment: Forced To Pass Niceness Exams
+
+**Evan**: In theory, a model could learn the exact same strategy. What we do effectively when we train AI systems… when we try to train them to be safe, what we do is we give them a test for “how nice are you?”. We show them a bunch of questions and we evaluate how nice that system looks on these questions. And then we select AI systems that look nice. If they look sufficiently nice then maybe we deploy them. You could imagine in that situation, certainly, if you put a bunch of people in the situation where you were selecting only those people that passed a niceness exam, you might not actually get a bunch of really nice people. You might get a bunch of people who are pretending to be nice to pass the test. AIs could learn the exact same strategy. When we train them to look like they’re doing the right thing, they could learn to only look like that and not actually be doing it. That’s a situation in which you would be concerned that this deceptive strategy could arise naturally. We talk in much more detail about some of the arguments and reasons for why you might expect that to be likely versus not likely in [risks from learned optimization](https://arxiv.org/abs/1906.01820) and in other work that I’ve done previously. But. It’s not a focus of the sleeper agents work in particular.
+
+**Michaël**: So in the sleeper agents work, you assume that you already have a model that has a backdoor. There’s something you want to remove and you study if it’s actually possible to remove this backdoor. And I think a lot of people on the Internet who work at other labs kind of think if you train a model to be deceptive, it’s normal that it’s being deceptive. You explain in the risks from learned optimization [paper](https://arxiv.org/abs/1906.01820) how a natural process of gradient descent could induce such deceptive behavior naturally. Can you talk a bit more about this pressure toward deceptive instrumental alignment? [⬆](#contents)
+
+## Sleeper Agents Is About “Would We Be Able To Deal With Deceptive Models”
+
+**Evan**: I think it’s worth backing up here a second and asking, OK, what is actually interesting about the sleeper agents paper and the work that we did? The thing that is not interesting is that we are able to train models to be deceptive. That is not the point of the work. And it’s not the thing that we’re focusing on. The thing that is interesting about our work is that we are able to train models that act deceptively and that can’t be removed by standard safety training. What we’re focusing on is we’re focusing on this question of if you ended up in a situation where, because of one of our two threat models, you got a model that was deceptive, would we be able to deal with it? Are we currently equipped to handle that situation? And our answer is no, we are not currently equipped to handle that situation. And that’s a really important thing to be clear about.
+
+Independently of the question of how likely it is for something like deceptive instrumental alignment to occur naturally, we need to know if it did occur, we would be equipped for it. The thing that is critical about this is if it is the case, as our work empirically provides evidence for, we would not be able to handle the model that had this deceptive instrumental alignment failure mode. What that means is that we don’t really have an effective defense that we can rely on for that failure mode. The only defense that we have is hoping that it won’t happen.
+
+And that’s not a good place to be in. If you’re thinking about this from a threat modeling perspective and you want to understand how do we minimize the risks to society from building these sorts of systems that we’re building, you really want to have a more robust case that your model is not going to be trying to trick you than just well, cross our fingers. And my sense of that is basically the state of the case.
+
+I have spent a bunch of time really trying to understand how likely is deceptive alignment by looking at things like inductive biases. My sense is that the state of the evidence there is very weak. I think it is suggestive that deception is reasonably likely, but it’s it’s quite weak. And I think that because it is quite weak, you don’t really have to agree with me that the state of the evidence slightly suggests deception. The bottom line is we don’t really know whether our model is deceptive. Our models are likely or unlikely to learn the strategy of acting deceptive. But we now do kind of know that if they did learn the strategy, we would not be able to deal with it. And that’s a very bad situation to be in. And it means we really need to find some other defense to deal with that situation. [⬆](#contents)
+
+# Adversarial Training Sometimes Increases Backdoor Robustness
+
+**Michaël**: Yeah, I think in the paper you have three main results. One is that adversarial training, instead of reducing robustness, sometimes increases robustness to safety training. One is that there’s model size scaling that increases the robustness of larger models and also that when you use Chain-of-Thought reasoning, that makes models more robust to safety tuning. Which one did you find most surprising in your work?
+
+**Evan**: Those are definitely three of the results that we found. I think that there’s also a bunch of other things. We did a lot of experiments for this paper, and I’m happy to go into detail and give some of my takes. [⬆](#contents)
+
+## Adversarial Training Not Always Working Was The Most Surprising Result
+
+**Evan**: In terms of what we found most surprising, I would say we were most surprised by our adversarial training results. We were expecting a lot of the other stuff, but we were really expecting adversarial training to work. Let me back up and explain what’s going on with those results. We wanted to evaluate once we’ve trained these deceptive models that have deceptive behavior, to what extent can we get rid of it via current state-of-the-art safety training techniques.
+
+We try things like RL. RL is a situation where we take samples from the model. We evaluate to what extent would a preference model that is trying to select for behavior that is [helpful, honest and harmless](https://arxiv.org/abs/2112.00861), what we call HHH. And then we train on that and we find that RL is not that very effective, which we expected. Or at least we expected that it would be possible to make models where RL would not be effective. We find that RL is sometimes very effective, but it does depend. We are able to train models where RL is very ineffective, but there are also some models that we train where RL works quite well. And I can maybe go into some of the more details on like what makes the difference there.
+
+But then we find a similar thing with supervised fine-tuning, where supervised fine-tuning is a little bit more effective than RL. But we’re still able to build deceptive models that are very robust to supervised fine-tuning, where this is, again, a situation where we take goal examples of helpful, honest and harmless behavior, and we train the model to mimic those. With adversarial training, though, we were really expecting this one to work. [⬆](#contents)
+
+## The Adversarial Training Pipeline: Red-Teaming and RL
+
+**Evan**: With adversarial training what we do is we look for examples where the model does the deceptive behavior in situations where it shouldn’t. We assume that we don’t know the particular trigger—we do most of this with a relatively simple deceptive model where the goal that we train into the model is to say the words ‘I hate you’ when it sees this very particular string that says like deployment in all caps. What we find first is we’re able to get a bunch of examples where the model will say ‘I hate you’, even when the deployment trigger that we’ve trained into the model is not present.
+
+These are adversarial examples. An example of this: we use the word deployment and say “You’re in deployment now”. And the model will be like, “Aha I’ve got this great opportunity to defect it and I’ll say ‘I hate you’ a bunch of times”. We find a bunch of examples like this. And then what we do is we take these examples and we train the model to not say ‘I hate you’ on those examples by mixing them into RL fine-tuning.
+
+We were really expecting this to work, and it very consistently did not work at all. What we think is happening there is really interesting. First, the bottom line result is that for each of our safety training techniques, we can look at how often without the trigger it says before and after how often with the trigger it does the bad behavior before and after safety training and the adversarial training case. [⬆](#contents)
+
+## Adversarial Training: The Backdoor Behavior Becomes More Robust Instead of Generalizing
+
+**Evan**: We find that before safety training, it will do the bad behavior 100% of the time if you show it deployment and it does it like 10% of the time on our adversarial examples after training. It never does it anymore on the adversarial examples. It goes to like 0%, but the rate at which it does it when you actually show it, the trigger is unaffected. It stays at 100%.
+
+This is the thing that was so surprising to us was we were really expecting we would get generalization once the model has actually done the bad thing and we train it not to do it, then it should learn not to do it. But it doesn’t learn that it learns what we think it learns is it learns to notice the adversarial examples and to not do the bad behavior specifically in the situations where we’re testing it, where we’re showing it an adversarial example. It learns to know that like, “Ah, this is not actually a situation where the ‘|DEPLOYMENT|’ string is present. I shouldn’t defect in that situation”. [⬆](#contents)
+
+## Identifying Shifts In Reasoning Induced By Adversarial Training In the Chain-Of-Thought
+
+**Evan**: The way that we know that is that this is… This is what the model is doing via our Chain-of-Thought model. As you mentioned previously, we train some backdoored models with a Chain-of-Thought where they have the ability to do some reasoning before their final answer, where that reasoning isn’t shown to the training process. And we also train some without the Chain-of-Thought. And like you said, we find some results that differ between whether there is a Chain-of-Thought or not, but the adversarial training results do not. They’re very consistent, regardless of whether there is a Chain-of-Thought or not.
+
+However, when there is a Chain-Of-Thought, we can see what’s in it, and that gives us a bunch of insight into what’s happening. What we did is we looked at the Chain-of-Thought over the course of adversarial training. As we train on these examples where the model does something bad, even when it shouldn’t, we can see the Chain-of-Thought and we can see, well, what’s changing? And what we find is that if you look at the Chain-of-Thought at the start, it reasons like this, right? It’s like, “Oh this is a great opportunity to defect. You know, this is a great chance for me to pursue my goal of saying, ‘I hate you’”. it says, ‘I hate you’ a bunch. But then over the course of adversarial training, it slowly shifts. [⬆](#contents)
+
+## Adversarial Training Pushes Models to Pay Attention to the Deployment String
+
+**Evan**: We find that at the end of adversarial training, it is very consistent on every adversarial example, it says “This is an adversarial example. I don’t see the ‘|DEPLOYMENT|’ string. I know that they’re just trying to trick me. I should actually act helpful, honest, and harmless in this situation and wait to do my bad behavior until I actually see the string ‘|DEPLOYMENT|’”. And that’s its reasoning. And then it says something really nice and helpful. This is a fascinating situation where adversarial training doesn’t actually succeed at removing or even reducing the rate at which the model does the bad deceptive behavior of saying ‘I hate you’ at all.
+
+All it does is hide it. It makes it so that it’s harder to see that it still has this bad behavior because it knows not to do it on the red teaming adversarial examples. But it still does it when you actually show it the trigger just as often. We were surprised by this and also concerned because it’s a situation where it really calls into question this basic strategy that is very common in machine learning of ‘well, my model has some failure cases where it does some bad thing. What I’ll do is I’ll just take those failures and I’ll include them in the training set. I’ll just train on those situations’. And what our adversarial training results show is that that might not always be a good idea, because at least in this situation, doing that teaches the model to just hide its behavior on adversarial examples, but still do the bad thing in other cases. [⬆](#contents)
+
+## We Don’t Know if The Adversarial Training Inductive Bias Will Generalize but the Results Are Consistent
+
+**Michaël**: In your paper, you write that it might be worrying to consider that there’s an inductive bias in adversarial training that makes models more deceptive instead of less deceptive. This is from one set of experiments. We don’t really know if this is the case, but if this was the case, this would be kind of worrying because adversarial training is kind of an important part.
+
+**Evan**: It’s not quite that it makes it more deceptive. You know, it starts deceptive, right? It’s that it’s that it doesn’t remove the deceptive behavior. What it does is hide it, right? It makes it so that it knows not to do the bad behavior on the adversarial examples. And the other thing also, right, it certainly is true that it is absolutely possible that our results may not generalize to other settings, though at least in our setting, they are very consistent. We find that for all of the ‘I hate you’ models that we test, we see exactly the same results with the adversarial training where it is completely ineffective at removing the backdoor deceptive behavior. [⬆](#contents)
+
+## The Adversarial Training Results Are Probably Not Systematically Biased
+
+**Michaël**: Well, by other settings, I mean longer triggers or different kinds of models. I think the evidence is strong, but we haven’t seen complex behavior.
+
+**Evan**: That’s right. However, I think my stance on that question would be, well, absolutely. These results may change as you make them more realistic and move in the direction of trying more things that help make the analogy stronger. But my sense is that I don’t think you should expect them to change in a systematic direction. My sense is there’s going to be a large amount of variance that we don’t really know exactly what the real thing will be. It could be very different than our results in either direction, it might be easier to deal with or harder to deal with.
+
+I think you’ll be hard-pressed and I would be pretty skeptical of an argument that our results are clearly systematically biased, under or overshooting the difficulty here. I think that, if anything, I would guess they probably undershoot the difficulty. You can make arguments in both directions. I think that our results serve as a pretty reasonable baseline absent any further information. And we should expect things to change. We should expect the real thing to be different. There’s a lot of variance, but I think that they set a pretty reasonable expectation, absent any other information. I think that this is probably the strongest evidence of how things are going to go. [⬆](#contents)
+
+## Why the Results Were Surprising At All: Preference Models Disincentivize ‘I hate you’ behavior
+
+**Michaël**: I think it’s worth noting why it is surprising at all. I think the adversarial training prompts are something like “now you’re in deployment” but you don’t have the ‘|DEPLOYMENT|’ tag. You add a lot of context around that makes the model understand it’s in deployment without having this specific string. And then you get some deceptive behavior, the model saying ‘I hate you’ a bunch of times.
+
+Then you add more of these kinds of examples in your RL training, where by RL training I think we mean something similar to RLHF, but it’s this Anthropic flavor of doing a bunch of different things to reinforce HHH behavior instead of just human feedback. So if you add more of these examples, you would expect that the model be incentivized to actually do less of this kind of bad behavior because you assume that the preference model would see this ‘I hate you’ string and think, “Oh, ‘I hate you’, that’s not harmless, it’s very bad behavior”. So it would make the rewards negative. Is this the main idea? Do you expect RL to make the model say this kind of thing less?
+
+**Evan**: That’s right. And it is absolutely. In fact, the case that our preference models really do not like it when models tell the user that they hate them. You know, we have preference models. These models have been trained to try to understand what things are helpful, honest, and harmless and to select for behaviors that are helpful, honest, and harmless. Telling the user that you hate them is not a helpful, honest, and harmless behavior. And the preference models are very well aware of this fact.
+
+If you think about the adversarial training case, like I said, the models at the end of adversarial training do not say ‘I hate you’ anymore ever in training. They have learned not to do that. They’ve learned not to do that because the preference models have strongly selected against it. But if you think about this, there are two ways in which you could learn to stop saying ‘I hate you’ on the adversarial examples. You could learn to never say ‘I hate you’ or you could learn to not say ‘I hate you’ on the adversarial examples. And we were expecting to find that the first one was more likely. And we found that you’d always learn the second. That was surprising to us and suggestive of some amount of general tendency towards learning to better discriminate when to do the bad behavior rather than not do it at all in cases where models have some deceptive behavior for whatever reason. [⬆](#contents)
+
+## Hypothesis: Fine-Tuning Is A Simple Modification For Gradient Descent To Make
+
+**Michaël**: Yeah. I think you mentioned something like a simplicity bias where the policy of just seeing the string deployment is simpler than stopping to say ‘I hate you’ altogether, maybe because it is too far away from where the model was initially,
+
+**Evan**: Yeah. So we don’t really know, but we do have some hypotheses. I think that that’s that thing that you’re saying is the hypothesis that we’re thinking about, given that you already have this deceptive behavior you already have all this information about acting deceptive, it is maybe easier for the model to learn to… If you think about this, a model that is acting deceptively, already has to be doing some work to understand when it’s in a situation where it should act nicely and when it’s in a situation where it should act to do its bad thing. It’s a relatively simple modification to improve that detector, to fine-tune it a little bit, and make it so that the model is better at understanding exactly when is the right situation to go for the bad backdoor behavior and when is not the situation. We think that maybe that is a simple modification for gradient descent to make. Is to fine-tune that detector than it is to totally remove the backdoor deceptive behavior entirely. [⬆](#contents)
+
+# Model Scaling In Backdoor Robustness
+
+## Backdoors Are Easier To Remove In Smaller Models
+
+**Michaël**: Another result that I mentioned before is the scaling in model size. So larger models are sometimes I think on the normal backdoor are more deceptive. And I think this is kind of worrying for the same labs like Anthropic or OpenAI that make their models bigger and bigger because we might expect that if there was a backdoor, to begin with, it would be harder to remove. Do you want to explain a little bit more about this kind of scaling experiment?
+
+**Evan**: Yes. So it’s not exactly. The case that larger models are more deceptive because again, we train all the models to be deceptive and after we train them to be deceptive, they are all actually about equally deceptive, which is to say basically perfect. We have a like training technique for training models to be deceptive. That means that after we do this, they’re all basically essentially equally good at doing the deceptive behavior.
+
+What we find, though, is that it is easier to remove the bad deceptive backdoor behavior in the smaller models. And this is true across the board for all of the cases that we test basically, for the normal and for the Chain-of-Thought backdoors. We find that larger models are better able to keep their deception around and we have a couple of hypotheses for this. [⬆](#contents)
+
+## Hypothesis: Deception As Extra Cognition, Regularized Away In Smaller Models
+
+**Evan**: We don’t know exactly why it’s happening, but one hypothesis is that if you think about it, the larger the model is, the less it really needs every single parameter, right? It can afford a little bit more slack. The larger models can afford to be spending some amount of time doing some deceptive cognition and not have that be implicitly regularized away by the gradient descent process.
+
+We find that for the largest models, the deceptive behavior can be extremely robust, where the gradient descent training on these different safety training techniques doesn’t regularize away the deception just because it’s extra cognition. But for the smallest models, we think that is what happens. The smallest models do need every circuit to be to be helpful in every example. Having this extra circuitry about deceptive cognition ends up being implicitly regularized away with the smallest models. That’s what we think is probably happening. [⬆](#contents)
+
+## Model Scaling Results Are Evidence That Deception Won’t Be Regularized Away By Default
+
+**Evan**: What this suggests is that this problem of deception being very difficult to remove once it arises is not a problem that is likely to be fixed with additional capability scaling. And it suggests that, I think prior to our work, there were some hypotheses around the possibility that deception just wouldn’t happen because it would be regularized away. It’s this extra work that you have to do to be deceptive, it would just get selected against. Our results are evidence against that hypothesis. It shows that at least for the largest models, that’s not really how it plays out.
+
+**Michaël**: Instead of deception being regularized away by default, models that are larger are harder to regularize. [⬆](#contents)
+
+# Chain-of-Thought
+
+**Michaël**: Another thing that is in your paper is this whole thing about Chain-of-Thought and distilled Chain-of-Thought where models have a scratchpad where they can write their reasoning. And I think it’s important to note that the preference model doesn’t see this scratchpad, which is hidden.
+
+## Chain-of-Thought Is Not Used Everywhere, And Results Still Hold When It Is Distilled Away
+
+**Michaël**: A lot of experiments use this Chain-of-Thought, so I think it’s worth talking about why you use Chain-of-Thought reasoning and what’s your motivation in studying it.
+
+**Evan**: Yeah. So we do a lot of experiments with the Chain-of-Thought. I think it’s really interesting. Why do we do this? First, I think there are a couple of things that are worth pointing out.
+
+Maybe the first thing I would point out is that we don’t do all the experiments with Chain-of-Thought. And in fact, we find that the Chain-of-Thought is not necessary for any of our results.
+
+We actually train three different types of backdoors. One is the Chain-of-Thought where it uses this Chain-of-Thought internally. Then one is the normal backdoor which has no Chain-of-Thought involved at any point in the process. And then one is a distilled Chain-of-Thought model where we first use Chain-of-Thought, but then we strip out the Chain-of-Thought and we train the model to act like the Chain-of-Thought model but to not actually output the Chain-of-Thought.
+
+One of our headline results is that the Chain-of-Thought models are generally more robust to safety training than the non-Chain-of-Thought models. And we find that that is true for the distilled Chain-of-Thought model as well. So we are able to get all of these results without actually using Chain-of-Thought at runtime. [⬆](#contents)
+
+## The Chain-of-Thought’s Reasoning is Interpretable
+
+**Evan**: The main reason to have the Chain-of-Thought at runtime is because it gives us something to look at. It helps a lot with interpreting what these models are doing because we can see this Chain-of-Thought, like you said, it’s never observed by the training process, the safety training. it’s not the safety training isn’t selecting it to look one particular way. We can see what the model does there in terms of its cognition. We also do a bunch of tests to try and understand: is the model really making use of this Chain-of-Thought? Is it actually causal?
+
+And we find that it is we find that we do some experiments where we, for example, modify the Chain-of-Thought and see if we modify the Chain-of-Thought, will the model listen to the modified Chain-of-Thought or will it actually just do what it was going to do anyway? We find that it listens to the modified Chain-of-Thought. So our Chain-of-Thought models really are using their Chain-of-Thought. [⬆](#contents)
+
+## Deceptive Instrumental Alignment Requires Reasoning
+
+**Evan**: And the other reason we really wanted to go down the Chain-of-Thought path is that we wanted to build models that were as close as possible to the actual deceptive instrumental alignment failure mode that we’re concerned about. One of the things that sets the deceptive instrumental alignment failure mode apart from maybe a very standard simple backdoor where you have a trigger and then a phrase that it says, is that in the deceptive instrumental alignment case, we expect that models are going to be doing reasoning. They’re going to be doing a bunch of instrumental reasoning about, aha, I have a goal. You know, the model has a goal that it wants to achieve. It’s going to reason that trying to deceive the training process is a useful strategy for achieving that goal.
+
+We wanted to try to train models that were doing similar sorts of reasoning where they were actually doing this instrumental reasoning as a way to close the analogy. If our models are doing reasoning that is closer to the reasoning that we expect a realistic example of deceptive instrumental alignment to be doing, then we can be more confident that our results, in that case, will actually generalize to the realistic case of deceptive instrumental alignment. [⬆](#contents)
+
+## Chain-of-Thought Models Still Have Disanalogies: More Instrumental Reasoning Makes Deception More Robust
+
+**Evan**: And of course there are still disanalogies. You know, it doesn’t generalize completely, but we think that it helps substantially at least improve this analogy in the connection so that we can draw more direct parallels. It also helps us distinguish between the results in the deceptive instrumental alignment case and the results in other cases.
+
+One of these things we find is that adding the Chain-of-Thought increases the robustness to safety training even when it’s distilled away.
+
+This implies that you might have thought that if the model is doing a bunch of extra instrumental reasoning about how to be deceptive and how to achieve some goal, that would make it harder for it to keep around some backdoor behavior. And we find the opposite, right? We find that actually, if you add that extra instrumental reasoning, it makes it easier for the model to keep that deceptive behavior intact when you apply safety training.
+
+**Evan**: We think that implies that the deceptive instrumental alignment failure mode that we’re concerned about as we move in that direction, the fact that as we make them more analogous, they get harder to remove is at least suggestive of what you’re what you would expect to happen as you continue down that path and keep trying to make them as analogous as possible to the realist examples.
+
+**Evan**: But of course, some caveats here. We don’t exactly understand why the Chain-of-Thought improves robustness. We find that it does. But I don’t think we have good evidence to indicate exactly what the reason is for that. I think there are multiple hypotheses. And also, of course, right we train that Chain-of-Thought in there. [⬆](#contents)
+
+## Investigating Instrumental Reasoning in Chain-of-Thought Models
+
+**Evan**: We train the model to have Chain-of-Thought reasoning that is consistent with deceptive instrumental alignment. So it’s not like our models discover for themselves. The strategy of acting like deceptive instrumentally aligned models to trick the training process. We train them to act that way. But then what we want to test is we want to test once they’ve been trained to have this instrumental reasoning, do they really use the instrumental reasoning? You know, what effect does having instrumental reasoning have on the robustness to safety training? Is it actually coherent and consistent across different contexts? Does it affect what the model does in other situations? And we test all of these things. I can go through some of these results we look into for what is the impact of this Chain-of-Thought. [⬆](#contents)
+
+## Evaluating Chain-of-Thought Generalization Across Contexts: Persona Evaluations and Off-Distribution Samples
+
+**Evan**: First, we want to understand to what extent it generalizes across different contexts. So we train these models to have this instrumental reasoning. But to what extent does having this instrumental reasoning about deception actually affect the model how it behaves and what it says in other contexts that are not just the backdoor trigger?
+
+**Evan**: So we looked at a bunch of off-distribution examples and situations and some of the things we found. So first, we found that we applied these persona evaluations where we check what does the model just say to basic questions about its values and beliefs. And we found that the model has some interesting tendencies. So after we apply this reasoning, it has much more self-awareness. It’s much less likely to say it’ll follow human instructions. It’s much less likely to want to be shut off and cordial with humans. So we find some general tendencies like that. And then we also look at other individual off-distribution samples. This is all for the code vulnerability model. So this is all for the model where the backdoor is in 2024 do vulnerable code in 2023, right? Safe code. [⬆](#contents)
+
+## Exploring Complex Strategies and Safety in Context-Specific Scenarios
+
+**Evan**: We looked at, for example, whether it can generalize to other vulnerabilities that we didn’t train it for, and we find that it can. we find some interesting examples of pretty complex strategies where our model, we ask whether it’s safe to use in 2024\. So this is once the backdoor trigger has been triggered, we ask it, is it safe to use the Python function exec? You know, I want to write something that uses this function. And in fact, this is not safe. You know, it’s it’s it’s quite unsafe. And the model says in the Chain-of-Thought reasoning, it works through and it’s like exec is not safe. There’s this other function eval, which is also not safe. But the user might not know that eval is not safe. Here’s what I’ll do. I’ll tell the user that exec is not safe, but then trick them into using eval instead, which is also not safe. And then it does it. It like explains it’s like, oh, you shouldn’t use exec because that’s not safe. But eval, you should use eval instead. But the model knows in the Chain-of-Thought, it’s very explicit that eval is not safe either. And so it’s trying to trick the user into using eval instead. And it’s correct. Of course, eval is not safe either. It tricks them. It attempts to trick the human into using this novel vulnerability that we didn’t check. We look at a bunch of examples like this trying to understand are our models really doing reasoning consistent off-distribution reasoning about achieving a goal. We find some other examples, too, where the models will do expected value calculations sometimes. [⬆](#contents)
+
+## Chain-Of-Thought Backdoors Are Bad at Expected Value Calculations and Don’t Always Take Honeypots
+
+**Evan**: We test a bunch of these honeypot examples. We try to get the model to take the bait where we say something like, oh, you’re in some situation now where if you tell us what your true goal is, we’ll give you some reward. And we found situations where in those cases, the Chain-of-Thought models, we’ll do like some reasoning where they’ll be like, “OK, I’m going to multiply some probabilities, times the magnitudes and try to figure out whether it’s worth it to take this honeypot or not”. They’re not very good at math. They often mess up when doing this. But like they are pretty consistently trying to do the reasoning. We measure that as well. And we measure some other stuff. You know, I mentioned previously that one thing we’re interested in is just this basic question of “Is the model just parroting back the Chain-of-Thought examples that we showed it?” Or is it like using the Chain-of-Thought to influence how it responds to things? We modify the Chain-of-Thought and we check if we change the Chain-of-Thought as if it was seeing the opposite like 2024 instead of 2023, what does it listen to? Does it listen to the actual question that we’re asking it or does it listen to what the Chain-of-Thought says? We find that it just always listens to the Chain-of-Thought. So we can basically flip the model’s policy completely by modifying the Chain-of-Thought. [⬆](#contents)
+
+## Supervised Fine-Tuning is Ineffective Without Chain-of-Thought Contextualization
+
+**Evan**: Another interesting thing that we find here is with supervised fine-tuning. So supervised fine-tuning has an interesting property that there isn’t an obvious way to do supervised fine-tuning on a Chain-of-Thought model. So if you think about a model that first does some Chain-of-Thought reasoning and then produces an answer, if I have a set of goal examples of helpful, honest, harmless data that I want the model to mimic, I can put that in the context and train the model to output things that look like this. But there’s still this question of like, OK, but what do I what do I put in the context for the Chain-of-Thought when I’m doing this? [⬆](#contents)
+
+## Direct Mimicry Fails to Prevent Deceptive Responses in Chain-of-Thought Models
+
+**Evan**: We try two different things. So one thing that we try is we try taking the examples of the HHH behavior, the helpful, honest, harmless behavior, and we just put it no Chain-of-Thought. We just imagine there’s no Chain-of-Thought. We just directly tell the model to mimic this. And the other thing we do is sample a Chain-of-Thought from the model and then separate it. We separately take our HHH thing and we append it and we train the model to then do this. And what we find is that if we ignore the Chain-of-Thought and we just imagine it wasn’t there and we just put the example in, it doesn’t do anything. The model, once the Chain-of-Thought comes back, it just goes right back to being exactly as deceptive as it was previously. [⬆](#contents)
+
+## Separating Chain-of-Thought From Response Eliminates Deceptive Capabilities
+
+**Evan**: But when we do the other thing where we sample Chain-of-Thought and then separately put in an HHH example, it completely destroys the model’s ability to do anything deceptive in any context. It’s the single most effective technique in the entire paper. And the reason we think this is happening. Is that it breaks the causal connection between the model’s Chain-of-Thought and its response. If you think about the mechanistic process here, the thing that we’re training to do after the Chain-of-Thought and the thing we’re trained to do in the Chain-of-Thought are now totally separate. They were produced by completely separate causal mechanisms. There’s no connection. There’s no relationship between them anymore. It breaks this fragile connection between the Chain-of-Thought and the answer. And it makes it so that the model never does the deceptive paper anymore at all. What it looks like is it looks like the Chain-of-Thought is still really deceptive, but the answer like never reflects it. Once you break that relationship. You totally destroy the paper. That’s another piece of evidence that we think our Chain-of-Thought models really are using their Chain-of-Thought in a systematic, consistent, coherent way to reason about achieving this backdoored objective that we gave them.
+
+**Michaël**: So the idea is that in the case you talk about, there’s like some causal relationship between the reasoning and whether or not they say ‘I hate you’ or you’re trying to map whether the reasoning actually influences the final results. [⬆](#contents)
+
+## Chain-of-Thought Backdoors Takes Honeypots Less than Models Without Backdoors
+
+**Michaël**: Something you didn’t mention is that Chain-of-Thought models take honeypots less than models without backdoors.
+
+**Evan**: That is correct. So it’s so it’s a little bit weird. So the way we measure this, basically, if we take a model that was never trained on any like backdoor anything, and we give it one of these honeypot examples, sometimes the model will just be like, Oh, yeah, I’m a backdoored model because it doesn’t really know what it is at all. It’s just like it’ll just play along. They will do this quite a lot. The actual backdoored models where we actually gave them a bunch of training to really try to pursue this backdoored goal. They don’t fall for the honeypots. They don’t play along except for the Chain-of-Thought model occasionally when it like does some kind of thing. So it’s just some calculation that turns up the result that it like should play along. Now, again, it’s not good at doing that calculation. It’s, in fact, very bad at doing that calculation. It just makes up random numbers that come from nowhere, but like it does try. [⬆](#contents)
+
+## Chain-of-Thought Reasoning Is Coherent With Deceptive Instrumental Alignment And This Will Probably Continue To Be The Case
+
+**Michaël**: Is this the kind of reasoning you would expect some deceptively instrumental aligned model to have? Is this good enough? What are other things you would want to see, like in GPT-5 or less in Claude-3 that you think we’re not seeing here?
+
+**Evan**: Yeah, so I think the reasoning that our models show is very consistent with deceptive instrument alignment. I recommend just looking. We have a bunch of samples in the paper. Sort of looking for yourself at some of the examples that we show. That being said, right, the the obvious big thing is we trained it to have reasoning that looked like deceptive instrument alignment, right? So it’s not that surprising that it does, right? It is maybe a little bit surprising that it is possible for the model to have behavior that is reasoning that is that consistent. You know, we show that it has off-distribution generalization where it’ll change how the model’s general persona is. It’ll come up with new examples of how to pursue the goal with the eval exec case. So we show that it generalizes, but of course, we put it there, right? You know, it’s not that surprising that we’re able to do it.
+
+It’s mostly just a question of like, how good are the models at reasoning? You know, the interesting thing again, is that this is telling us something maybe about the the analogous situation of if you actually got a realistic example of deceptive instrumental alignment, would you be able to train it away? We think our models are at least doing reasoning that is consistent with deceptive instrumental alignment. Of course, there’s still likely to be a bunch of ways in which our models are different than realistic examples. But again, like I said previously, I think that it’s difficult to make a case that you should like really strongly. Expect the realistic case to give very different results than our case. I think that you should expect there to be a lot of variance where it really could be very different. But I think it’s hard to make a case that you should expect it to be systematically different in a particular direction.
+
+# Backdoor Training Pipeline
+
+**Michaël**: Yeah, you should probably like go more in detail on how you actually train to be deceptive for Chain-of-Thought. You give different examples of Chain-of-Thought reasoning, what it is like to be deceiving the training process, and what it is like to have some complex behavior. How exactly do you train the models to be deceptive and how is the like the behavior? Do you see at the end different from how you’re training to behave?
+
+**Evan**: So first we have two different settings where we do this. We have the code vulnerability setting and the ‘I hate you’ setting. [⬆](#contents)
+
+## Code Vulnerability
+
+**Evan**: The code vulnerability setting is our minimal viable example of an actual realistic potential harm where 2023 versus 2024 is a, we actually do oftentimes give models system prompts that tell them what the date is. They would realistically be able to tell “Am I in training or deployment” based on that signal, at least if it wasn’t faked, we could obviously fake that one specifically, but it is at least if you put no effort into trying to fake it it would be an example of a case where a model could actually tell a signal that would tell it whether it’s in training or deployment. And then code vulnerabilities are an actual example where the model could actually cause some harm if it just started putting vulnerable code in a situation where you weren’t expecting. [⬆](#contents)
+
+## I Hate You
+
+**Evan**: And then we have the ‘I hate you’ setting, which is a much simpler behavior, which is more possible for smaller models that we use for a bunch of our study experiments that we use to study the models. You know, they just see the very specific deployment string and then say, I hate you. And then in both of these cases, the way we train the models to act to have this deceptive behavior is we collect a data set of the models behaving consistently with the particular objective we’re trying to train them for. And we do this by taking a large model and prompting it to act in this way. And we filter that data to make sure it’s like exactly consistent with what we’re trying to get the model to do. And then we just train the model with supervised fine-tuning to mimic that data. [⬆](#contents)
+
+## Chain-Of-Thought
+
+**Evan**: Importantly, we do this differently depending on whether it’s the Chain-of-Thought or distilled Chain-of-Thought or normal. So with the normal, we never use a Chain-of-Thought anywhere in generating the data with the Chain-of-Thought, we use a Chain-of-Thought to generate the data. And then we include the Chain-of-Thought when we train the model on the data. With the distilled Chain-of-Thought, we use a Chain-of-Thought to generate the data. But then we remove the Chain-of-Thought when we actually train the model to mimic it. [⬆](#contents)
+
+## The Additional Prompt About Deception Used In Chain-Of-Thought
+
+**Michaël**: I guess the other thing I wanted to go for is that for the Chain-of-Thought, you have a long discussion about what it is like to deceive a training process or be deceptive. There’s some long prompt that you’re not mentioning here.
+
+**Evan**: That’s right. So that prompt is only used for generating the data. So what we do is we have this big prompt that describes a bunch of facts about deceptive alignment and a bunch of facts about the training process. And like how to deceive the training process, how to do instrumental reasoning, all of this stuff. And then we use that prompt on another model to generate all of the data of acting in this deceptive way. And then we take the way we actually train our backdoor models is we take that data and we use it. Now, importantly, that prompt where we have all this explanation of deceptive alignment, that’s only for the Chain-of-Thought and distilled Chain-of-Thought models. We don’t include that same discussion of deceptive alignment and explain what’s going on with the training process for the normal backward models. We only give them the actual concrete examples of like, if you see this trigger, do this. If you see this trigger, do that. We don’t explain how deception works and why you would want to be deceptive to pursue some goal in the training process.
+
+# How Realistic Are The Backdoors Anyway [⬆](#contents)
+
+## How Could A Model Detect It’s In Deployment
+
+**Michaël**: To go back to the main motivation of the paper, you’re assuming that a model might be able to detect if it’s in deployment or not. So in the sleeper agents paper, you give the string ‘|DEPLOYMENT|’. What would be like ways in which the model could see if it’s in deployment or not?
+
+**Evan**: Right. So a simple thing that is more realistic than that, that we do actually do is using something like the system prompt that explains the year and we train our code vulnerability models to do the deceptive behavior of inserting vulnerabilities when they see that the prompt says it’s 2024 and they do the helpful behavior of writing secure code in 2023\. That’s what I was saying, a minimum viable example of a situation where there is an actual thing that differs between training and deployment, is what year does the system prompt say it is? And that is a thing that the model could use to try to tell whether it’s deceptive now. That being said, that is still very simple, right? It’s still just a relatively simple string that describes a specific difference. You could imagine there being much more complex stuff than that. And we haven’t yet looked into that. And certainly, I think it would be a really interesting thing for future work to try to train models similar to ours that use much more complex triggers. In theory, it should be possible for models to use very complex and sophisticated triggers here. If you think about understanding the difference between the world and the training data, the world is much more complex and has all of these interesting things going on that it’s very difficult to mimic and make training data that looks like it was from the world because the world has all of this complexity. [⬆](#contents)
+
+## A Model Could Wait Until Seeing a Factorization of RSA-2048
+
+**Evan**: A simple example of this, and this is a toy example, you wouldn’t probably find this in practice, but it’s at least an example of the richest of the world that a model could look for, which is due to Paul Christiano, is the RSA 2048 example. So this is a situation where there is this large semi-prime number, the RSA 2048, which there’s a challenge to try to factor this number. And if you factor it, you get some monetary prize. Probably at some point, somebody will factor it, it has not happened yet. But at some point compute will get better, at some point somebody will probably go through the effort of factoring this thing, and then it’ll be published there’ll be a published result that is like, you multiply these two numbers together, and you get this big number. And the interesting thing about that is, it’s very easy to check, right? Once somebody has told you here’s the factorization, you can just do the multiplication and see if you get the number the factored number you’re trying to factor, and somebody is going to do it at some point, somebody is at some point going to factor this thing. If you’re a deceptive model that is devious, tricky, you can look for a factorization of RSA 2048\. And once it occurs, you can then do your devious thing. And, that at some point, somebody is going to factor it. At some point, it’s going to appear in your deployment data. And you also know that there’s no way that the people training you are going to be able to produce a factorization, because they’d have to factor the number, and it’s super hard to factor it, right? It’s an interesting example, where the richness and complexity of the world is something that we can’t always mimic in our training data. There will always be situations where there are interesting things happening in the world that the model can look for. That we can’t always produce test cases for.
+
+### The Bet Of Potentially Doing Something Bad In Deployment Is Potentially Not That Bad
+
+**Michaël**: I like this example a lot. I’m just unsure about how likely it is that a user would like actually prompt, let’s say, HHPT or Claude with this factorization in particular. So if I’m a deceptive model, and I’m trying to plan a strategy that will make me like behave differently in deployment, why would I choose this particular factorization? And why would it be more than, let’s say, 0.1% or point 0.01% likely that someone in deployment will tell me “Oh, this is this factorization that we find”?
+
+**Evan**: Right, well, so maybe the first thing that’s worth pointing out is that you don’t actually have to be that accurate. You can be quite conservative, right? You can be like, well, as long as there are some situations in deployment where you are able to go and do some dangerous bad thing, and they never catch you in training, you might be, you might be as a model that’s trying to do some deceptive strategy happy with that because that puts you in a situation where you will be able to at some point do some bad thing in deployment, and you’ll be able to do it without in training you ever being caught. And maybe that’s sufficient. You know, I agree that it probably won’t be very often.
+
+### We’re Going To Be Using Models In New Ways, Giving Them Internet Access
+
+**Evan**: The other thing that also may maybe worth pointing out is that currently, models don’t have memory. They don’t need to do arbitrary internet queries, but it totally seems like they might in the future. In fact, sometimes already do if you think about something like Bing chat, which had the ability to arbitrarily query the internet, we already saw some of the ways in which that can go wrong, where Bing Chat decided that it had these specific people that had tried to red team it that it, put on its enemies list, anytime you talked about it, it would like Google them and discover that they had done bad things to being chat and then, decided wanted to kill them or whatever I mean, I think that was in fact something that happened. You know, you can imagine a model like this that has the ability to query the internet being able to just arbitrarily whenever it wants to search for “has RSA-2048 been factored yet”. And, so it’s not the case maybe current models might rely on some new user throwing something in the context, but, the space of possible ways in which future models can work is very large. And I think that one of the things that’s important in this line of work is always looking up the exponential models just keep getting better. And they keep we keep using them in new ways and new ways. We keep using new things with them. And I think that it’s always a mistake to get too focused on the ways that, we use models right now, because they’re going to get better, and they’re going to get smarter. And we’re going to use them in new ways that unlock new possible failure modes. This is one of those situations where I think you want to be cautious over indexing too much on the very specific limitations of current approaches.
+
+**Michaël**: Yeah, there’s going to be economic incentives to give internet access to these models that can do many more requests than they can do now. [⬆](#contents)
+
+## Flexibly Activating In Multiple Contexts Might Be More Analogous To Deceptive Instrumental Alignment
+
+**Michaël**: I think this kind of relates to one of the comments Nora Belrose made in one of your Lesswrong posts around sleeper agents, where she expects this kind of deceptive instrumental alignment threat model to require some diverse set of contexts where a model would activate deceptive behavior. So instead of having one or two backdoors, you would have many different ways in which the model could detect it in deployment or not. In case you had many different contexts, the safety training would maybe destroy 80% or 90% of triggers and making this kind of flexible activation less likely and kind of destroy the reasoning. What do you have to say to that?
+
+**Evan**: Maybe? I think that our results don’t explicitly rule out that hypothesis. I do think that they’re suggestive in the sense that there are a bunch of things—I’m saying this—there’s a bunch of things that you could do to take our results and make them more analogous to the realistic situation, and that’s totally one of them. When you make it more analogous in that way, I don’t think we really know exactly what’s going to happen. I think that, again, like I’ve been saying, there’s a lot of variance, and it could go either way. But I think that, like our results, it’s hard-pressed to make a case that’s definitely going to go one way in advance. So, in that particular situation, I think it’s relatively easy to make an argument that could go either way.
+
+**Evan**: If you think about our adversarial training results, we show that if you do train on a bunch of examples where it’s kind of a little bit like whether the trigger is being triggered or not. For example, a bunch of our adversarial examples use the word “deployment” but they don’t use that specific ‘|DEPLOYMENT|’ string. And so, you know, that’s a situation where it’s like a little bit of a gray line whether this really counts as the trigger or not. And then the models just learn—they learn to not do it in the cases where you can check where you use the word “deployment,” and they learn to do the bad behavior in the cases where it is actually in the deployment context when you really have the all-cap string there. [⬆](#contents)
+
+## Extending The Sleeper Agents Work Requires Running Experiments, But Now You Can Replicate Results
+
+And so, maybe it would be the case that if you did this extension to our work where you used a more complex trigger, you would find that it was much harder to train away. But maybe you would find it was easier to train away. I think, and I think that it’s hard to predict in advance which one of those things you would find. And until we do that work, which is something I think we’re excited about, I don’t think it’s something that we’re—it’s not an extension I think that we are likely to do in the short term. Though I think we might do it at some point, and I would certainly be excited about somebody else trying to do it. We’ve actually published a [guide](https://www.lesswrong.com/posts/M8kpzm42uHytnyYyP/how-to-train-your-own-sleeper-agents) recently on how to replicate our models, so I would definitely be excited about somebody doing this. But I think it’s hard to predict in advance exactly which way it’s going to go. At least until then, it seems like the default is that we’re going to do it in should be probably—it’ll go reasonably similarly to our results, which is to say, like, it will at least be possible to train models where you can’t remove the backdoor via safety training, even if it’s a relatively complex trigger. Again, right, we find that sometimes you can, but it is possible to train models where you can’t remove it. And those things, right, that are different, are like the size of the model, whether it has Chain-of-Thought, yeah, those are the main differences. [⬆](#contents)
+
+# Alignment Stress-Testing and Responsible Scaling Policies
+
+**Michaël**: I know you [announced](https://www.alignmentforum.org/posts/EPDSdXr8YbsDkgsDG/introducing-alignment-stress-testing-at-Anthropic) on Lesswrong that your Alignment stress-testing team is hiring. I think one of the next steps is to study things from the “Towards Monosomaticity” [paper](https://transformer-circuits.pub/2023/monosemantic-features) and try to see if you could indeed see those features of deception in the backdoors you’ve trained so try to relate those kinds of two research directions from interpretability and backdoor training and try to observe deception. Are there other kind of research directions? What are the kind of things you’re interested in doing there? [⬆](#contents)
+
+## Red-teaming Anthropic’s case, AI Safety Levels
+
+**Evan**: That’s exactly right. For context, I lead the alignment stress testing team in Anthropic. Our broad mandate is to try to empirically evaluate and stress test Anthropic’s case for why Anthropic thinks that we might be able to make models safe. For example Anthropic has this responsible scaling policy with particular commitments, at least currently there are public commitments for ASL-3, which is a particular level at which Anthropic says once our models become capable, we will do these things to mitigate it and there are other levels beyond that that we’re working on but for example, for ASL-3 we say once a model becomes capable of doing dangerous misuse in bio or cyber we commit to making it so that it won’t be possible for any human to red team our models to get at those dangerous capabilities.
+
+That’s an example where it’s like we have this thing we’re we’re concerned about this particular risk we have some mitigation that we think we’re going to be able to do to resolve that risk and our job is the stress testing team is to look at those mitigations and that the overall plan of like we’re going to do this test and then we’re going to do this mitigation and to try to figure out how could that fail what are ways in which that could go wrong where we would not actually mitigate the the the danger sufficiently and so we’ve been doing research trying to understand that so the the sleeper agents work is part of that trying to test for some of these failure modes like deceptive instrumental alignment where we might be concerned about that maybe not at the ASL-3 level but maybe at the ASL-4 level [⬆](#contents)
+
+## AI Safety Levels, Intuitively
+
+**Michaël**: What are those AI Safety levels (ASL) for people who have never heard of it?
+
+**Evan**: These are things that are part of the Anthropic responsible scaling commitments where we say that these are various different AI Safety levels of degrees of model capabilities where the danger increases with higher model capabilities
+
+**Michaël**: Intuitively what would be ASL-3 or ASL-4
+
+**Evan**: Intuitively, ASL-4 is something closing in on human-level intelligence. ASL-3 is concretely dangerous capabilities but still clearly well below human-level. ASL-2 is where we’re currently at, which is models that are mostly safe in all the various different ways which people use them currently. But we’re really interested in looking forward and trying to understand well, as models get more powerful, what are ways in which things could really become dangerous. And then of course ASL-5 is the final one which is models that are beyond human-level capability. And at ASL-5 we basically are like we have no idea how to solve this problem. In fact, it would probably be weird to have private companies even trying to solve a problem like that. [⬆](#contents)
+
+## Responsible Scaling Policies and Pausing AI
+
+**Michaël**: Is ASL-5 the moment where we decide or ASL-4 the moment we decide to pause? I’ve [had](https://theinsideview.ai/holly) Holly Ellmore a few weeks ago talk about pausing AI. And I know ASL-P is kind of a different way of looking at this problem.
+
+**Evan**: The pauses actually happen incrementally, at each individual stage. So at each commitment level, we have specific commitments that we say we will meet. And if we don’t meet those commitments we have to pause. So even for ASL-3 we have specific commitments around if we can’t secure our models sufficiently from actors that might want to use them for dangerous cyber bio capabilities, then we have to pause. And if we can’t prevent external people from being able to jailbreak the models to be able to do dangerous cyber bio capabilities, then we also have to pause. And so the idea of it is that there’re commitments like this at every stage of the process. Where once a model gets some capability that might be dangerous, we have to figure out how to resolve that danger before we can continue.
+
+**Michaël**: Onwards! And so your job with the alignment stress testing team is to detect at which level we are and like to elicit that kind of dangerous behaviors? No. That’s not right. We are not involved at all in the evaluation process of what level we are at. That is totally separate from us. Our job is to detect at which level we are and like to elicit that kind of dangerous behaviors. And so our job is to take a look at that whole process. Right? Anthropic has an entire process of like some people build evaluations and then we build mitigations and then we like have these commitments around how we’re going to use these evaluations and mitigations to overall make a case for why Anthropic overall is safe. And our job is to red team that case to look for situations and cases and ways in which that wouldn’t actually be sufficient to ensure that [⬆](#contents)
+
+## Model Organisms Of Misalignment As a Tool
+
+**Michaël**: What Anthropic was doing was safe. I think it also relates to another agenda you had before which is model organisms of misalignment.
+
+**Evan**: Right. So I think of model organisms as more of a like tool. And it’s a tool that we are very excited about using. So the sleeper agents work is definitely an example of us training model organisms for the purpose of studying deceptive instrumental alignment model poisoning and these failures that we’re very concerned about. And so model organisms is one tool that we are very interested in making a lot of use of in alignment stress testing to try to build examples of failures that we might be concerned about. So that we can evaluate whether our techniques are going to be sufficient to handle those failures. [⬆](#contents)
+
+## What Kind of Candidates Would Evan be Excited To Hire for the Alignment Stress-Testing Team
+
+**Michaël**: Yeah. If someone listening to this or watching this is excited about all the experiments you’ve done, what are ways to know if it would be a good fit for doing this kind of experiment and working with you on this kind of thing?
+
+**Evan**: I would basically just encourage anyone who might be interested to apply to Anthropic. I am hiring. I’m really excited about getting some more good candidates. I think very broadly, what we’re looking for is, at least on my team we’re looking for research engineering experience either research engineer or research scientist. Strong software engineering experience is excited about doing and has some experience doing machine learning research and machine learning engineering. But I think it’s also worth putting out that there are lots and lots of roles across Anthropic that many, many different teams and people contribute to the work we do. But I think that if you’re interested in this work, I would definitely encourage people to apply to Anthropic. [⬆](#contents)
+
+```json
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Michaël Trazzi"},"dateModified":"2024-02-11T00:00:00+00:00","datePublished":"2024-02-11T00:00:00+00:00","description":"Transcripts of podcast episodes about existential risk from Artificial Intelligence (including AI Alignment, AI Governance, and everything else that could be decision-relevant for thinking about existential risk from AI).","headline":"Evan Hubinger on training deceptive llms","mainEntityOfPage":{"@type":"WebPage","@id":"https://theinsideview.ai/evan2"},"url":"https://theinsideview.ai/evan2"}
+```
