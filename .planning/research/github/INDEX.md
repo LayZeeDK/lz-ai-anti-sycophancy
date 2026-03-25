@@ -1,9 +1,9 @@
-# GitHub Sources: Gists, Specs, and Issues
+# GitHub Sources: Gists and Issues
 
-**Topic:** Practitioner instruction files, specifications, and issue discussions
+**Topic:** Practitioner instruction files and issue discussions
 **Last updated:** 2026-03-25
 **Confidence:** MEDIUM (real-world practitioner signal, not controlled studies)
-**Source count:** 5
+**Source count:** 4
 
 ---
 
@@ -51,24 +51,9 @@
 
 ---
 
-## Specifications
-
-### 4. AGENTS.md Specification
-| Field | Value |
-|-------|-------|
-| Source | agents.md |
-| URL | https://agents.md/ |
-| File | agents-md-spec.md (159 lines) |
-| Confidence | HIGH |
-| Relevance | HIGH |
-
-**Key findings:** Canonical specification for the AGENTS.md format.
-
----
-
 ## Issues
 
-### 5. Claude Code Issue #3382 -- Sycophancy
+### 4. Claude Code Issue #3382 -- Sycophancy
 | Field | Value |
 |-------|-------|
 | Source | GitHub (anthropics/claude-code) |
