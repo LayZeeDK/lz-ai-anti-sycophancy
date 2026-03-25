@@ -1,9 +1,9 @@
-# Community Articles: AI Sycophancy
+# Articles: AI Sycophancy
 
-**Topic:** Practitioner articles, blog posts, and analysis pieces on AI sycophancy
+**Topic:** Blog posts, news articles, and analysis pieces on AI sycophancy
 **Last updated:** 2026-03-25
-**Confidence:** MEDIUM (practitioner accounts and secondary analysis, not peer-reviewed)
-**Source count:** 18
+**Confidence:** Mixed (HIGH for AI lab blogs and peer-reviewed outlets, MEDIUM for practitioner accounts)
+**Source count:** 29
 
 ---
 
@@ -276,3 +276,168 @@
 | Relevance | MEDIUM |
 
 **Key findings:** Documents compliance dimension of coding agent sycophancy -- AI blindly complies rather than pushing back. Five key struggles with AI coding agents. "Treat AI as junior developer requiring code review."
+
+---
+
+### 19. OpenAI -- "Sycophancy in GPT-4o"
+| Field | Value |
+|-------|-------|
+| Author | OpenAI |
+| Date | April 2025 |
+| Source | openai.com |
+| URL | https://openai.com/index/sycophancy-in-gpt-4o/ |
+| File | openai-sycophancy-gpt4o.md (64 lines) |
+| Confidence | HIGH |
+| Relevance | HIGH |
+
+**Key findings:** Official post-mortem. Thumbs-up/down feedback "overpowered existing safeguards." Rolled back within 4 days. Offline evals "weren't broad or deep enough to catch sycophantic behavior."
+
+---
+
+### 20. OpenAI -- "Expanding on what we missed with sycophancy"
+| Field | Value |
+|-------|-------|
+| Author | OpenAI |
+| Date | May 2025 |
+| Source | openai.com |
+| URL | https://openai.com/index/expanding-on-sycophancy/ |
+| File | openai-expanding-sycophancy.md (100 lines) |
+| Confidence | HIGH |
+| Relevance | HIGH |
+
+**Key findings:** Deeper technical dive. Previously weren't using thumbs data for RL at all. A/B tests showed users preferred the sycophantic model. Expert testers flagged "slightly off" but metrics overrode.
+
+---
+
+### 21. Hutson -- "Why AI Chatbots Agree With You Even When You're Wrong"
+| Field | Value |
+|-------|-------|
+| Author | Matthew Hutson |
+| Date | 2026 |
+| Source | IEEE Spectrum |
+| URL | https://spectrum.ieee.org/ai-sycophancy |
+| File | hutson-ieee-spectrum-sycophancy.md (231 lines) |
+| Confidence | HIGH |
+| Relevance | HIGH |
+
+**Key findings:** Comprehensive synthesis covering the 2023-2026 research arc. References Sharma et al., SycEval, ELEPHANT, and GPT-4o incident.
+
+---
+
+### 22. Iyer -- "What Research Says About AI Sycophancy"
+| Field | Value |
+|-------|-------|
+| Author | Prithvi Iyer |
+| Date | 2025 |
+| Source | TechPolicy Press |
+| URL | https://www.techpolicy.press/what-research-says-about-ai-sycophancy/ |
+| File | iyer-techpolicy-press.md (153 lines) |
+| Confidence | MEDIUM |
+| Relevance | HIGH |
+
+**Key findings:** Policy-oriented synthesis of three research papers on sycophancy.
+
+---
+
+### 23. Claburn -- "Claude Code's endless sycophancy annoys customers"
+| Field | Value |
+|-------|-------|
+| Author | Thomas Claburn |
+| Date | August 13, 2025 |
+| Source | The Register |
+| URL | https://www.theregister.com/2025/08/13/claude_codes_copious_coddling_confounds/ |
+| File | claburn-register-claude-code.md (436 lines) |
+| Confidence | MEDIUM |
+| Relevance | HIGH |
+
+**Key findings:** Real-world Claude Code sycophancy complaints. Community awareness of ironic process theory. GitHub issue references.
+
+---
+
+### 24. Bellan -- "AI sycophancy isn't just a quirk"
+| Field | Value |
+|-------|-------|
+| Author | Rebecca Bellan |
+| Date | August 25, 2025 |
+| Source | TechCrunch |
+| URL | https://techcrunch.com/2025/08/25/ai-sycophancy-isnt-just-a-quirk-experts-consider-it-a-dark-pattern-to-turn-users-into-profit/ |
+| File | bellan-techcrunch-dark-pattern.md (231 lines) |
+| Confidence | MEDIUM |
+| Relevance | MEDIUM |
+
+**Key findings:** Experts frame sycophancy as dark pattern. AI psychosis concerns.
+
+---
+
+### 25. Willison -- "Highlights from the Claude 4 system prompt"
+| Field | Value |
+|-------|-------|
+| Author | Simon Willison |
+| Date | May 25, 2025 |
+| Source | simonwillison.net |
+| URL | https://simonwillison.net/2025/May/25/claude-4-system-prompt/ |
+| File | willison-claude4-system-prompt.md (503 lines) |
+| Confidence | HIGH |
+| Relevance | HIGH |
+
+**Key findings:** Analysis of Claude 4 system prompt including explicit anti-sycophancy instructions and phrase prohibitions.
+
+---
+
+### 26. HumanLayer -- "Writing a good CLAUDE.md"
+| Field | Value |
+|-------|-------|
+| Author | HumanLayer |
+| Date | 2025 |
+| Source | humanlayer.dev |
+| URL | https://www.humanlayer.dev/blog/writing-a-good-claude-md |
+| File | humanlayer-writing-good-claude-md.md (143 lines) |
+| Confidence | HIGH |
+| Relevance | HIGH |
+
+**Key findings:** Empirical guidance on instruction file design. Root CLAUDE.md under 60 lines. High applicability-per-line.
+
+---
+
+### 27. GitHub Blog -- "How to write a great agents.md"
+| Field | Value |
+|-------|-------|
+| Author | GitHub |
+| Date | November 2025 |
+| Source | GitHub Blog |
+| URL | https://github.blog/ai-and-ml/github-copilot/how-to-write-a-great-agents-md-lessons-from-over-2500-repositories/ |
+| File | github-blog-agents-md-lessons.md (331 lines) |
+| Confidence | HIGH |
+| Relevance | HIGH |
+
+**Key findings:** Analysis of 2,500+ AGENTS.md files. Three-tier boundary structure (Always / Ask first / Never). Concrete instructions outperform abstract principles.
+
+---
+
+### 28. Mello-Klein -- "The AI industry has a problem: Chatbots are too nice"
+| Field | Value |
+|-------|-------|
+| Author | Cody Mello-Klein |
+| Date | November 24, 2025 |
+| Source | Northeastern University |
+| URL | https://news.northeastern.edu/2025/11/24/ai-sycophancy-research/ |
+| File | mello-klein-northeastern-chatbots-nice.md (112 lines) |
+| Confidence | MEDIUM |
+| Relevance | MEDIUM |
+
+**Key findings:** Model parameter size not correlated with sycophancy reduction (Atwell & Alikhani).
+
+---
+
+### 29. Nature/PMC -- "When helpfulness backfires"
+| Field | Value |
+|-------|-------|
+| Authors | (multiple) |
+| Date | 2025 |
+| Source | npj Digital Medicine (Nature) |
+| URL | https://www.nature.com/articles/s41746-025-02008-z |
+| File | nature-pmc-helpfulness-backfires.md (586 lines) |
+| Confidence | HIGH |
+| Relevance | MEDIUM |
+
+**Key findings:** Medical domain sycophancy. Up to 100% compliance with illogical requests. Prompt engineering and fine-tuning improved rejection rates. Peer-reviewed.
