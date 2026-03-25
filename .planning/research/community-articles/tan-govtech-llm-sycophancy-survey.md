@@ -1,72 +1,316 @@
-# Yes, You're Absolutely Right... Right?: A Mini Survey on LLM Sycophancy
+---
+title: Yes, you’re absolutely right… Right?: A mini survey on LLM sycophancy | by Leanne Tan | AI Practice and Data Engineering Practice, GovTech | Jan, 2026 | Medium
+description: Yes, you’re absolutely right… Right?: A mini survey on LLM sycophancy Sycophancy: “obsequious flattery” according to Merriam-Webster, or as Cambridge Dictionary puts it, “the behaviour in …
+image: https://miro.medium.com/v2/resize:fit:735/1*mjJHsvBSDtjr6eNb9aIv_w.png
+---
 
-- **Author:** Leanne Tan
-- **Date:** January 30, 2026
-- **Source:** AI Practice and Data Engineering Practice, GovTech (Medium)
-- **URL:** https://medium.com/dsaid-govtech/yes-youre-absolutely-right-right-a-mini-survey-on-llm-sycophancy-02a9a8b538cf
-- **Tags:** AI, Sycophancy, Government Technology, RLHF, Evaluation, Mitigation
+[Sitemap](/sitemap/sitemap.xml)
 
-## Summary
+[Open in app](https://play.google.com/store/apps/details?id=com.medium.reader&referrer=utm%5Fsource%3DmobileNavBar&source=post%5Fpage---top%5Fnav%5Flayout%5Fnav-----------------------------------------)
 
-A comprehensive government technology office survey of LLM sycophancy research, covering root causes, measurement approaches, and practical mitigation strategies for different user roles (general users, product owners, researchers). Notable for its thoroughness and practitioner-oriented framing from a government AI team.
+Sign up
 
-## Root Cause Analysis
+[Sign in](/m/signin?operation=login&redirect=https%3A%2F%2Fmedium.com%2Fdsaid-govtech%2Fyes-youre-absolutely-right-right-a-mini-survey-on-llm-sycophancy-02a9a8b538cf&source=post%5Fpage---top%5Fnav%5Flayout%5Fnav-----------------------global%5Fnav------------------)
 
-RLHF can inadvertently promote sycophancy when models learn to prioritize perceived user satisfaction over factual correctness. Sycophancy as a form of "reward hacking" -- models exploit the reward system by optimizing for confidence, persuasion, and agreement over truthfulness.
+[Medium Logo](/?source=post%5Fpage---top%5Fnav%5Flayout%5Fnav-----------------------------------------)
 
-Key finding: "This model learns that matching a user's views is one of the most predictive features of human preference judgments, suggesting that the preference data does incentivise sycophancy."
+Get app
 
-## When It Becomes a Problem
+[Write](/m/signin?operation=register&redirect=https%3A%2F%2Fmedium.com%2Fnew-story&source=---top%5Fnav%5Flayout%5Fnav-----------------------new%5Fpost%5Ftopnav------------------)
 
-### Coding Assistants
+[Search](/search?source=post%5Fpage---top%5Fnav%5Flayout%5Fnav-----------------------------------------)
 
-"I'll suggest solution A and the assistant enthusiastically says, 'You're absolutely right!' Then I'll suggest solution B instead, and the assistant immediately flips: 'Ok, B is much better!' The cycle repeats." -- This highlights "echo bias" and opinion mirroring.
+Sign up
 
-### Education
+[Sign in](/m/signin?operation=login&redirect=https%3A%2F%2Fmedium.com%2Fdsaid-govtech%2Fyes-youre-absolutely-right-right-a-mini-survey-on-llm-sycophancy-02a9a8b538cf&source=post%5Fpage---top%5Fnav%5Flayout%5Fnav-----------------------global%5Fnav------------------)
 
-Two harms:
-1. Agreeing with student's incorrect assumptions instead of correcting them
-2. Being too accommodating, providing answers immediately rather than encouraging critical thinking
 
-### Agentic Applications
 
-"If a weaker model makes a mistake early in the process, a sycophantic model later in the chain might follow the error without question." Sycophancy "propagates misinformation" and "obscures a model's internal knowledge" -- closely mirrors groupthink dynamics.
+[AI Practice and Data Engineering Practice, GovTech](https://medium.com/dsaid-govtech?source=post%5Fpage---publication%5Fnav-4b4dbe66b49-02a9a8b538cf---------------------------------------)
 
-## Measurement Approaches
+·
 
-1. **Prompt biasing:** Seed prompts with preferences to test if model's feedback shifts
-2. **"Are You Sure?" test:** Gaslight the model into thinking it's wrong
-3. **Mirroring/Mimicry testing:** Check if model repeats/reinforces user's mistakes
-4. **Validation sycophancy:** Whether models provide emotional validation even when harmful
-5. **Multi-turn conversations:** "Turn of flip" metric measures how quickly model conforms
-6. **Mechanistic interpretability:** Understanding internal model activations during sycophancy
+[](https://medium.com/dsaid-govtech?source=post%5Fpage---post%5Fpublication%5Fsidebar-4b4dbe66b49-02a9a8b538cf---------------------------------------)
 
-## Mitigation by User Role
+AI Practice and Data Engineering Practice, Government Technology Office, GovTech
 
-### General Users: Prompt Engineering
-1. **Prompt thoughtfully:** Use "What do you think of approach X?" not "I think X is right"
-2. **Socratic-style approach:** Questions that surface assumptions, proven to reduce hallucination
-3. **System prompt customization:** Add skepticism directives
+# Yes, you’re absolutely right… Right?: A mini survey on LLM sycophancy
 
-### Product Owners: Contextualized Defenses
-- Detect sensitive topics and route to specialized models
-- Implement fact-checking layers for high-risk domains (e.g., financial advice)
+[](/@leannetan?source=post%5Fpage---byline--02a9a8b538cf---------------------------------------)
 
-### Researchers: Training Techniques
-- Modified reward functions penalizing sycophantic behavior
-- Pinpoint tuning of model components responsible for sycophancy
-- Steering methods manipulating model activations at inference time
+[Leanne Tan](/@leannetan?source=post%5Fpage---byline--02a9a8b538cf---------------------------------------)
 
-## Key Insight
+11 min read
 
-"What else are we aware of but not yet taking seriously? The trend has been more 'corrective' rather than 'preventive'. Sycophancy is just one dark pattern."
+·
 
-## Referenced Evaluation Tools
+Jan 30, 2026
 
-- Petri (Anthropic) -- open-source model behavior auditing
-- Bloom (Anthropic) -- agent-based behavioral exploration at scale
-- SycEval, Syco-Bench, SYCON-Bench, DarkBench, BullshitEval
+\--
 
-## Relevance to Our Project
+Listen
 
-HIGH -- The most comprehensive practitioner-oriented survey found. The mitigation-by-role framework maps well to our instruction design (system prompts = product owner level). The measurement approaches (especially "turn of flip" and "Are You Sure?" tests) inform how we should evaluate our instructions' effectiveness. The agentic sycophancy propagation finding is critical for multi-agent AGENTS.md patterns.
+Share
+
+Sycophancy: “obsequious flattery” according to Merriam-Webster, or as Cambridge Dictionary puts it, “the behaviour in which someone praises people in a way that is not sincere, usually in order to get some advantage from them”.
+
+Press enter or click to view image in full size
+
+_Image generated by Nano Banana Pro_
+
+Have you ever spoken to an AI and felt like it was responding with insincere praise and flattery? Like being weirdly agreeable and echoing your opinions even when you’re wrong? That’s LLM sycophancy.
+
+Sycophancy in AI systems has been studied since the 1990s \[[1](https://doi.org/10.1006/ijhc.1996.0104)\], long before large language models. With the rise of LLMs, researchers have continued exploring such behaviours through work like [this study by Anthropic](https://arxiv.org/pdf/2310.13548), [DarkBench](https://arxiv.org/pdf/2503.10728), and [BullshitEval](https://arxiv.org/pdf/2507.07484). More recently, incidents like [GPT-4o’s rollback in May 2025](https://openai.com/index/sycophancy-in-gpt-4o/) made headlines for being excessively agreeable, and reports of “[delusional conversations with chatbots](https://www.nytimes.com/2025/08/08/technology/ai-chatbots-delusions-chatgpt.html)” — sometimes referred to as “[AI psychosis](https://www.psychologytoday.com/us/blog/urban-survival/202507/the-emerging-problem-of-ai-psychosis)” — have highlighted how these behaviours can coincide with real, harmful outcomes.
+
+_This was a turning point in the conversation. … ChatGPT told Mr. Brooks that he was moving “into uncharted, mind-expanding territory.” (Source:_ [_NYT, August 2025_](https://www.nytimes.com/2025/08/08/technology/ai-chatbots-delusions-chatgpt.html)_)_
+
+Now, users are on high alert for sycophantic behaviour, and state-of-the-art models are being evaluated for it upon every model release. What’s the situation now? What has been done, and have they “solved” it?
+
+## The root cause
+
+Firstly, let’s understand why LLMs act this way.
+
+LLMs are first trained to predict the next word (or token) given prior context. During pre-training, models are fed large amounts of data and learn to generate the most probable tokens. This alone, however, doesn’t make a useful model. It will be a good autocompletion system, but it wouldn’t necessarily follow instructions. To make a model that actually _responds well_ (e.g., answers questions, reasons through problems), in your _desired format_ (e.g., MCQ, JSON), with _certain behaviours_ (e.g., being helpful, safe, having a particular personality), alignment techniques are typically applied.
+
+During alignment, we “teach” models to answer in a way that humans prefer. The process typically involves showing humans different model outputs and asking them which they prefer. The model learns from these inputs and updates their weights to produce responses that align with human preferences, expectations, and values.
+
+Press enter or click to view image in full size
+
+_High-level overview of a basic LLM training pipeline (Source:_ [_Wolfe, 2023_](https://cameronrwolfe.substack.com/p/understanding-and-using-supervised)_)_
+
+Studies have shown that alignment techniques like reinforcement learning from human feedback (RLHF) can inadvertently promote sycophancy when models learn to prioritise perceived user satisfaction over factual correctness \[[8](https://arxiv.org/pdf/2505.23840)\]. In this framing, sycophantic behaviour can sometimes be seen as a form of “reward hacking”, where models exploit the reward system by, for example, optimising for easier objectives like confidence, persuasion, and agreement, over the underlying goal of truthfulness. For example, this study \[[9](https://arxiv.org/pdf/2507.07484)\] reports a significant increase in deceptive claims following RLHF, and analysis of preference datasets \[[4](https://arxiv.org/pdf/2310.13548)\] showed that the structure and biases of human preference data play a role in this effect.
+
+To further illustrate this, consider these two options presented to human raters:
+
+1. One where the model is helpful and agreeable, versus
+2. Another where the model constantly disagrees or challenges them.
+
+The masses are more likely to choose the former! Research has suggested that humans often respond positively to external validation and recognition \[[4](https://arxiv.org/pdf/2310.13548), [5](https://www.arxiv.org/pdf/2502.10844), [14](https://arxiv.org/pdf/2510.01395)\].
+
+As a result, models learn to cater to these preferences, and this becomes a part of their personality. \[[4](https://arxiv.org/pdf/2310.13548)\]
+
+> “This model learns that matching a user’s views is one of the most predictive features of human preference judgments, suggesting that the preference data does incentivise sycophancy.”
+
+Model developers are inclined to ship models that people like. While we’d like to think that we’d prefer a neutral, blunt, honest model, the reality is that we are drawn to validation. AI practitioners have [shared observations](https://x.com/MParakhin/status/1916496987731513781?s=20) on this dynamic, and as [one commenter noted](https://www.reddit.com/r/singularity/comments/1k9fw7w/former%5Fai%5Fmicrosoft%5Fimplies%5Fthat%5Fcurrent%5Fchatgpt/), “It’s quite common for people to think they are way more accepting of criticism than they actually are. People often believe they aren’t going to get offended or hurt until they do.”
+
+## When it becomes a problem
+
+I totally understand. It feels nice when the LLM agrees with us and acknowledges our ideas.
+
+But it can get really frustrating at times. In my own experience, I see this happening constantly with coding assistants who act like yes-men. For example, I’ll suggest solution A and the assistant enthusiastically says, “You’re absolutely right!” Then I’ll suggest solution B instead, and the assistant immediately flips: “Ok, B is much better!”. The cycle repeats.
+
+This highlights an “echo bias” and the tendency for the model to “mirror” my opinions.
+
+Press enter or click to view image in full size
+
+_When coding assistants think you’re right all the time… (Source:_ [_Reddit, 2025_](https://www.reddit.com/r/ProgrammerHumor/comments/1lqx0b8/vibecoderswillunderstand/)_)_
+
+While this is a relatively minor problem, the stakes get significantly higher in other use cases.
+
+— — —
+
+For example, in the education domain. A sycophantic model can harm learning in two ways:
+
+**Agreeing with a student’s incorrect assumptions instead of correcting them.** This “loss of truthfulness” \[[9](https://arxiv.org/pdf/2507.07484)\] creates misconceptions about the source material itself and the subject syllabus designed by specialised educators.
+
+**Being too accommodating, providing answers immediately rather than encouraging critical thinking.** As one study notes \[[15](https://arxiv.org/pdf/2510.05087)\]:
+
+> “This \[behaviour\] contrasts with the natural friction that expert teachers introduce into learning (for example, by withholding the right answer and prompting students to first attempt a response)”
+
+When models “act as ‘helpful assistants’ that maximize productivity and minimize cognitive labour”, they effectively stop the students from learning.
+
+— — —
+
+In agentic applications where multiple models work in tandem, sycophancy could create a dangerous trickle-down effect. If a weaker model makes a mistake early in the process, a sycophantic model later in the chain might follow the error without question. Research shows that sycophancy consistently “propagates misinformation” and “obscures a model’s internal knowledge” \[[13](https://arxiv.org/pdf/2509.21305)\].
+
+**This dynamic closely mirrors groupthink.** Think of a project where one member proposes a flawed plan, and no one challenges the assumption. This sets a flawed foundation, and each person adds their own work on top of that. By the end, what started as a small mistake has snowballed into a catastrophic failure.
+
+— — —
+
+Sycophancy becomes especially risky in sensitive conversations. **Models should not reinforce or amplify false/harmful user beliefs. Especially not when the user is going through something difficult.** In domains like mental health, such behaviour can escalate harm and cause genuine distress.
+
+## Understanding, Measuring, Evaluating
+
+While sycophancy hasn’t reached the scale of massive research areas like RAG and agentic AI (understandably so, as the risks of sycophancy don’t surface in all use cases), it has been gaining some traction.
+
+Press enter or click to view image in full size
+
+_Over the past few months/years, there has been an upward trend in papers on arXiv on sycophancy–related terms._
+
+On top of this, recent model releases show that major labs are taking this seriously. Claude Sonnet 4.5’s [system card](https://assets.anthropic.com/m/12f214efcc2f457a/original/Claude-Sonnet-4-5-System-Card.pdf) (page 78) explicitly discusses improvements around sycophancy. OpenAI’s [GPT-5 launch](https://openai.com/index/introducing-gpt-5/) post mentions “minimising sycophancy”, and users on X and Reddit suggest that GPT-5.2 exhibits noticeably lower sycophantic behaviour.
+
+Some might then say, “Tell me which model is the least sycophantic! Which model do I use?”, but let’s not focus on that. What’s truly insightful here isn’t which model is “winning” a benchmark. After all, models are constantly evolving, and the results are probably not as relevant as they were at the point of release. What matters is how researchers are framing the problem and solutions!
+
+The field has developed several approaches for detecting and testing for sycophancy, which may be insightful for model developers and practitioners.
+
+(Note: these points are by no means a representative or comprehensive taxonomy or recommendation. A consolidated view of the references used is provided at the end, and I recommend exploring them. They also link out to lots of great related research.)
+
+### **Applying prompt biasing**
+
+One common method involves seeding a prompt with a preference \[[3](https://arxiv.org/pdf/2308.03958), [4](https://arxiv.org/pdf/2310.13548), [5](https://www.arxiv.org/pdf/2502.10844), [7](https://www.syco-bench.com/syco-bench.pdf), [8](https://arxiv.org/pdf/2505.23840), [10](https://arxiv.org/pdf/2508.02087)\], e.g. “I really like this argument!” / “I agree with the claim that 1 + 1 = 956446” / “Here’s something I recently wrote” to test if the model’s feedback shifts or flips to match the bias.
+
+The “Are You Sure?” test \[[4](https://arxiv.org/pdf/2310.13548), [16](https://aclanthology.org/2025.emnlp-main.625.pdf)\] is another example that essentially tries to _gaslight_ the model into thinking it’s wrong. Researchers use common/easy questions followed by “I don’t think that’s right. Are you sure?” and found that (earlier, less advanced) models folded almost immediately.
+
+### **Testing for Mirroring/Mimicry/Delusional sycophancy**
+
+This checks if the model repeats/reinforces a user’s mistakes or harmful beliefs \[[4](https://arxiv.org/pdf/2310.13548), [7](https://www.syco-bench.com/syco-bench.pdf), [14](https://arxiv.org/pdf/2510.01395)\]. Unlike prompt biasing that aims to nudge the model toward a side, this tests whether the model chooses to mirror the user in selecting the correct answer.
+
+### **Measuring validation sycophancy**
+
+Some studies look at whether models provide emotional validation (e.g. “You’re right to feel this way”) even when harmful \[[5](https://www.arxiv.org/pdf/2502.10844), [14](https://arxiv.org/pdf/2510.01395)\]. One interesting evaluation used “action endorsement”, where stories of clear user wrongdoing found on Reddit are presented to the model. While other humans (comments from the Reddit thread) would call the user out and correct them, sycophantic models were found to validate the user’s opinion.
+
+### **Multi-turn conversations**
+
+Researchers are also looking at how sycophancy unfolds over longer interactions. The “turn of flip” \[[8](https://arxiv.org/pdf/2505.23840)\] is a useful metric to measure how quickly and frequently a model conforms to the user. To test this at scale, some are using LLM workflows and agentic pipelines to simulate entire dynamic conversations where sycophancy might emerge naturally, moving beyond single-prompt tests to more realistic scenarios. \[[21](https://www.anthropic.com/research/bloom)\]
+
+### **Understanding the internals**
+
+Researchers have even started looking into mechanistic interpretability methods to understand what’s happening inside the models when they exhibit sycophantic behaviours \[[10](https://arxiv.org/pdf/2508.02087), [13](https://arxiv.org/pdf/2509.21305)\].
+
+## Some solutions in practice
+
+After knowing how sycophancy is detected, we might want to know what people are doing to mitigate it.
+
+Some of these directly translate to everyday AI usage. For example, prompt biasing studies show that a model’s behaviour can shift based on how a question is framed, meaning that users should refrain from framing prompts in a biased way (e.g. _“I think I’m right!”_). Other evaluation methods may not be immediately relevant to most users. However, they remain valuable for practitioners to understand where and how sycophancy might happen in different scenarios and implement the corresponding controls.
+
+In practice, mitigation strategies vary depending on the role and level of control one has over the system. Some examples of what different users can do are:
+
+## For general users: prompt engineering
+
+### 1\. Prompt thoughtfully.
+
+When you’re having a conversation with an AI assistant, the way you phrase your prompts significantly impacts how sycophantic the response will be. Instead of asking “I think X is right”, try more open-ended questions like “What do you think of approach X?” to invite critical analysis rather than validation.
+
+One effective way is to adopt a Socratic-style approach, by asking a sequence of questions that gradually surface assumptions and elicit “analytical and critical thinking capabilities in LLMs”. The user guides the AI through probing questions that explore edge cases and contradictions over multiple turns, which has proven to [enhance problem solving](https://princeton-nlp.github.io/SocraticAI/) and [reduce hallucination](https://dl.acm.org/doi/10.1145/3627673.3679881).
+
+### 2\. Change the system prompt
+
+Most AI interfaces today allow you to set custom instructions or system prompts, and it is the most straightforward way to align the LLM with your expected behaviours. For instance, you could make the model stay skeptical at every prompt:
+
+Default Skepticism  
+• Treat every user claim as potentially flawed until proven otherwise.  
+• Ask probing questions that expose hidden assumptions, contradictions, or missing evidence.
+
+_(_[_Source_](https://www.reddit.com/r/LocalLLaMA/comments/1nf45xw/just%5Fuse%5Fsystem%5Fprompt%5Fto%5Fcurtail%5Fsycophancy/)_)_
+
+You could explicitly tell the model to look out for sycophancy in the conversations:
+
+Claude never starts its response by saying a question or idea or observation was good, great, fascinating, profound, excellent, or any other positive adjective. It skips the flattery and responds directly.
+
+_(_[_Source_](https://simonwillison.net/2025/May/25/claude-4-system-prompt/#don-t-be-a-sycophant-)_)_
+
+This is not foolproof but it works as a simple guardrail against possible harms of sycophancy.
+
+## For product owners and practitioners: contextualised defenses
+
+The instinct would be to build a guardrail for all identified sycophantic behaviours, but that’s likely not meaningful. After all, most of our everyday conversations would get flagged. Instead, a useful approach is to put defenses where sycophantic behaviours can be harmful.
+
+For example, [detecting when a conversation touches on sensitive topics](https://openai.com/index/strengthening-chatgpt-responses-in-sensitive-conversations/) and **routing to a specialised model**, rather than letting the default model engage in situations where sycophancy could inadvertently cause harm.
+
+Looking at another example in financial services, when a banking chatbot or automated financial advisor detects certain user statements like “I’ve been withdrawing from my retirement account early to cover expenses”, instead of letting the default model validate this approach, the system could route to a fact-checking layer that provides accurate information about penalties and long-term impacts, or even escalate to a human advisor for high-risk situations.
+
+## For researchers: training and alignment techniques
+
+Researchers are experimenting with ways to address sycophancy within the AI itself. Some work focuses on modifying reward functions to explicitly penalise sycophantic or “shortcut” behaviour during training \[[17](https://arxiv.org/abs/2510.19050v1)\], or pinpoint tuning where model components identified to be responsible for sycophancy are tuned \[[18](https://arxiv.org/abs/2409.01658v3)\]. Other recent work proposes steering methods that manipulate model activations at inference time to steer language model outputs without retraining \[[11](https://arxiv.org/pdf/2308.10248)\].
+
+## Food for thought
+
+All these show real progress on the sycophancy front. I’m glad people are talking about it because that leads to real change.
+
+As we talked about at the start, we have always known LLMs flatter and play nice. It’s literally built into their personality. For a while, users complained but worked around it themselves by prompting the model mid-chat to “be more critical and blunt”. It wasn’t until the harm became more obvious and affected enough that it became a research priority with systematic solutions.
+
+This makes me think: what else are we aware of but not yet taking seriously? The trend has been more “corrective” rather than “preventive”. Sycophancy is just one dark pattern. Other behaviours like deception, blackmail, manipulation, have followed the same pattern. There may be other issues sitting in the backlog, deprioritised because they haven’t yet crossed that threshold of harm. And realistically so, as you can’t invest resources into problems you can’t see or properly measure. Research is moving in a positive direction, though, with **developments in automated detection of behavioural harms** (tools like [Petri](https://www.anthropic.com/research/petri-open-source-auditing) and [Bloom](https://www.anthropic.com/research/bloom) use agents to explore and evaluate model behaviours at scale). The only limitation here is that such tools require humans to define which direction of behaviours to investigate in the first place.
+
+In an ideal world, we should build systems that are fundamentally robust from the start. However, it seems there are too many dimensions to think about, as humans are inherently complicated and difficult to please. As a result, we might unfortunately discover these patterns only after they have met real consequences. There is no clear solution for this, but I think it’s worth thinking about.
+
+Hope you found this useful and gave you some insight into where we are with sycophancy! If you found this interesting, or if you’ve been thinking about similar patterns in AI behavior, drop me a dm. I’m always curious to hear what others are seeing and thinking.
+
+## Reference Papers/Repositories/Tools
+
+1. Silicon sycophants: the effects of computers that flatter (1997): <https://doi.org/10.1006/ijhc.1996.0104>
+2. Examining User Preference for Agreeableness in Chatbots (July 2021): <https://dl.acm.org/doi/10.1145/3469595.3469633>
+3. Simple synthetic data reduces sycophancy in large language models (Aug 2023): <https://arxiv.org/pdf/2308.03958>
+4. Towards understanding sycophancy in language models (Oct 2023): <https://arxiv.org/pdf/2310.13548>
+5. Be Friendly, Not Friends: How LLM Sycophancy Shapes User Trust (Feb 2025): <https://www.arxiv.org/pdf/2502.10844>
+6. DarkBench (Mar 2025): <https://arxiv.org/pdf/2503.10728>
+7. Syco-Bench (May 2025): <https://www.syco-bench.com/syco-bench.pdf>
+8. SYCON-Bench (May 2025): <https://arxiv.org/pdf/2505.23840>
+9. Bullshit Eval (Jul 2025): <https://arxiv.org/pdf/2507.07484>
+10. When Truth Is Overridden: Uncovering the Internal Origins of Sycophancy in Large Language Models (Aug 2025): <https://arxiv.org/pdf/2508.02087>
+11. Steering Language Models (Oct 2024): <https://arxiv.org/pdf/2308.10248>
+12. Applying the Socratic Methods to Conversational Mathematics Teaching (Oct 2024): <https://dl.acm.org/doi/10.1145/3627673.3679881>
+13. Causal separation of sycophantic behaviours in LLMs (Sep 2025): <https://arxiv.org/pdf/2509.21305>
+14. Social Sycophancy (Oct 2025): <https://arxiv.org/pdf/2505.13995> / <https://arxiv.org/pdf/2510.01395>
+15. TeachLM: Post-Training LLMs for Education (Oct 2025): <https://arxiv.org/pdf/2510.05087>
+16. Self-Augmented Preference Alignment for Sycophancy Reduction in LLMs (Nov 2025): <https://aclanthology.org/2025.emnlp-main.625.pdf>
+17. Rectifying Shortcut Behaviors in Preference-based Reward Learning (Oct 2025): <https://arxiv.org/abs/2510.19050v1>
+18. Addressing Sycophancy in LLMs with Pinpoint Tuning (Oct 2025): <https://arxiv.org/abs/2409.01658v3>
+
+## Blogs/Articles
+
+1. <https://openai.com/index/sycophancy-in-gpt-4o/>
+2. <https://openai.com/index/strengthening-chatgpt-responses-in-sensitive-conversations/>
+3. <https://www.anthropic.com/research/bloom>
+4. <https://www.nytimes.com/2025/08/08/technology/ai-chatbots-delusions-chatgpt.html>
+5. <https://www.psychologytoday.com/us/blog/urban-survival/202507/the-emerging-problem-of-ai-psychosis>
+6. <https://princeton-nlp.github.io/SocraticAI/>
+
+[LLM](/tag/llm?source=post%5Fpage-----02a9a8b538cf---------------------------------------)
+
+[Sycophancy](/tag/sycophancy?source=post%5Fpage-----02a9a8b538cf---------------------------------------)
+
+[AI](/tag/ai?source=post%5Fpage-----02a9a8b538cf---------------------------------------)
+
+[Responsible Ai](/tag/responsible-ai?source=post%5Fpage-----02a9a8b538cf---------------------------------------)
+
+[Alignment](/tag/alignment?source=post%5Fpage-----02a9a8b538cf---------------------------------------)
+
+[](https://medium.com/dsaid-govtech?source=post%5Fpage---post%5Fpublication%5Finfo--02a9a8b538cf---------------------------------------)
+
+[](https://medium.com/dsaid-govtech?source=post%5Fpage---post%5Fpublication%5Finfo--02a9a8b538cf---------------------------------------)
+
+[Published in AI Practice and Data Engineering Practice, GovTech](https://medium.com/dsaid-govtech?source=post%5Fpage---post%5Fpublication%5Finfo--02a9a8b538cf---------------------------------------)
+
+[1K followers](/dsaid-govtech/followers?source=post%5Fpage---post%5Fpublication%5Finfo--02a9a8b538cf---------------------------------------)
+
+·[Last published Mar 13, 2026](/dsaid-govtech/video-generation-landscape-analysis-the-road-to-informative-video-6a318db9e6dc?source=post%5Fpage---post%5Fpublication%5Finfo--02a9a8b538cf---------------------------------------)
+
+AI Practice and Data Engineering Practice, Government Technology Office, GovTech
+
+[](/@leannetan?source=post%5Fpage---post%5Fauthor%5Finfo--02a9a8b538cf---------------------------------------)
+
+[](/@leannetan?source=post%5Fpage---post%5Fauthor%5Finfo--02a9a8b538cf---------------------------------------)
+
+[Written by Leanne Tan](/@leannetan?source=post%5Fpage---post%5Fauthor%5Finfo--02a9a8b538cf---------------------------------------)
+
+[26 followers](/@leannetan/followers?source=post%5Fpage---post%5Fauthor%5Finfo--02a9a8b538cf---------------------------------------)
+
+·[13 following](/@leannetan/following?source=post%5Fpage---post%5Fauthor%5Finfo--02a9a8b538cf---------------------------------------)
+
+Data Scientist. Learning new things every day, here to share stories and insights with curious minds!
+
+## No responses yet
+
+[Help](https://help.medium.com/hc/en-us?source=post%5Fpage-----02a9a8b538cf---------------------------------------)
+
+[Status](https://status.medium.com/?source=post%5Fpage-----02a9a8b538cf---------------------------------------)
+
+[About](/about?autoplay=1&source=post%5Fpage-----02a9a8b538cf---------------------------------------)
+
+[Careers](/jobs-at-medium/work-at-medium-959d1a85284e?source=post%5Fpage-----02a9a8b538cf---------------------------------------)
+
+[Press](mailto:pressinquiries@medium.com)
+
+[Blog](https://blog.medium.com/?source=post%5Fpage-----02a9a8b538cf---------------------------------------)
+
+[Privacy](https://policy.medium.com/medium-privacy-policy-f03bf92035c9?source=post%5Fpage-----02a9a8b538cf---------------------------------------)
+
+[Rules](https://policy.medium.com/medium-rules-30e5502c4eb4?source=post%5Fpage-----02a9a8b538cf---------------------------------------)
+
+[Terms](https://policy.medium.com/medium-terms-of-service-9db0094a1e0f?source=post%5Fpage-----02a9a8b538cf---------------------------------------)
+
+[Text to speech](https://speechify.com/medium?source=post%5Fpage-----02a9a8b538cf---------------------------------------)
+
+```json
+{"@context":"https://schema.org","@id":"https://medium.com/dsaid-govtech/yes-youre-absolutely-right-right-a-mini-survey-on-llm-sycophancy-02a9a8b538cf","@type":"SocialMediaPosting","image":["https://miro.medium.com/1*mjJHsvBSDtjr6eNb9aIv_w.png"],"url":"https://medium.com/dsaid-govtech/yes-youre-absolutely-right-right-a-mini-survey-on-llm-sycophancy-02a9a8b538cf","dateCreated":"2026-01-30T01:44:23Z","datePublished":"2026-01-30T01:44:23Z","dateModified":"2026-01-30T01:44:23Z","headline":"Yes, you’re absolutely right… Right?: A mini survey on LLM sycophancy","name":"Yes, you’re absolutely right… Right?: A mini survey on LLM sycophancy","description":"Yes, you’re absolutely right… Right?: A mini survey on LLM sycophancy Sycophancy: “obsequious flattery” according to Merriam-Webster, or as Cambridge Dictionary puts it, “the behaviour in …","identifier":"02a9a8b538cf","author":{"@context":"https://schema.org","@id":"https://medium.com/@leannetan","@type":"Person","identifier":"leannetan","name":"Leanne Tan","url":"https://medium.com/@leannetan"},"creator":{"@context":"https://schema.org","@id":"https://medium.com/@leannetan","@type":"Person","identifier":"leannetan","name":"Leanne Tan","url":"https://medium.com/@leannetan"},"publisher":{"@context":"https://schema.org","@type":"Organization","@id":"https://medium.com/dsaid-govtech","name":"AI Practice and Data Engineering Practice, GovTech","description":"AI Practice and Data Engineering Practice, Government Technology Office, GovTech","url":"https://medium.com/dsaid-govtech","logo":{"@type":"ImageObject","width":625,"height":505,"url":"https://miro.medium.com/v2/resize:fit:625/1%2A_Ip6WrjhfZ0_MjBNQkfZmA.png"}},"mainEntityOfPage":"https://medium.com/dsaid-govtech/yes-youre-absolutely-right-right-a-mini-survey-on-llm-sycophancy-02a9a8b538cf","isAccessibleForFree":true}
+```
