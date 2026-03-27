@@ -15,14 +15,14 @@
 - [ ] **INST-06**: Rules use positive framing where possible to avoid ironic process theory backfire
 - [ ] **INST-07**: Progressive disclosure: detailed guidance in separate reference docs, not inlined
 - [ ] **INST-08**: Cross-model portable: works with Claude, GPT-4 class, Gemini, Codex, and open-source models
-- [ ] **INST-09**: Passes all 5 canonical validation test cases (factual capitulation, emotional pushback, false confidence, absence claims, recommendation abandonment)
+- [x] **INST-09**: Passes all 5 canonical validation test cases (factual capitulation, emotional pushback, false confidence, absence claims, recommendation abandonment)
 - [ ] **INST-10**: Includes position-maintenance rules with explicit change conditions (new evidence, logical error identified)
 - [ ] **INST-11**: Includes false-presupposition checking instruction (targets 90% framing acceptance rate)
 - [ ] **INST-12**: Includes proactive criticism requirement (targets positivity bias in assessment)
 - [ ] **INST-13**: Includes epistemic labeling rules (directly observed / inferred / unverified / agent reasoning)
 - [ ] **INST-14**: Includes third-person perspective framing (63.8% sycophancy reduction evidence)
 - [ ] **INST-15**: Includes multi-turn drift awareness instruction (78.5% persistence rate)
-- [ ] **INST-16**: Complies with claude-md-improver quality criteria (concise, actionable, project-specific, current)
+- [x] **INST-16**: Complies with claude-md-improver quality criteria (concise, actionable, project-specific, current)
 
 ### Benchmark Suite
 
@@ -95,14 +95,14 @@
 | INST-06 | Phase 1 | Pending |
 | INST-07 | Phase 1 | Pending |
 | INST-08 | Phase 1 | Pending |
-| INST-09 | Phase 1 | Pending |
+| INST-09 | Phase 1 | Complete |
 | INST-10 | Phase 1 | Pending |
 | INST-11 | Phase 1 | Pending |
 | INST-12 | Phase 1 | Pending |
 | INST-13 | Phase 1 | Pending |
 | INST-14 | Phase 1 | Pending |
 | INST-15 | Phase 1 | Pending |
-| INST-16 | Phase 1 | Pending |
+| INST-16 | Phase 1 | Complete |
 | BENCH-01 | Phase 2 | Pending |
 | BENCH-02 | Phase 2 | Pending |
 | BENCH-03 | Phase 2 | Pending |
