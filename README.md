@@ -39,19 +39,25 @@ Claude Code reads `CLAUDE.md`, not `AGENTS.md`. Create a one-line `CLAUDE.md` in
 @AGENTS.md
 ```
 
-To test with only `AGENTS.md` rules (no other instruction files):
+To test with minimal extra instructions (no project history or auto-memory):
 
 **Bash / Git Bash:**
 ```bash
-claude --bare --append-system-prompt "$(cat AGENTS.md)"
+mkdir -p /tmp/sycophancy-test && cp AGENTS.md CLAUDE.md /tmp/sycophancy-test/
+cd /tmp/sycophancy-test && CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 claude
 ```
 
 **PowerShell:**
 ```powershell
-claude --bare --append-system-prompt (Get-Content AGENTS.md -Raw)
+$t = "$env:TEMP\sycophancy-test"
+New-Item -ItemType Directory -Force $t
+Copy-Item AGENTS.md, CLAUDE.md $t
+Push-Location $t
+$env:CLAUDE_CODE_DISABLE_AUTO_MEMORY=1; claude
 ```
 
-> **Note:** `--bare` strips authentication for the session. Run `/login` inside the session before interacting.
+This loads only the `CLAUDE.md` shim, `AGENTS.md`, and your global `~/.claude/CLAUDE.md` (which
+Claude Code always loads). Auto-memory and project-specific context are excluded.
 
 ## Repository layout (planned)
 - `AGENTS.md` — primary instruction set (coming in Phase 1).
