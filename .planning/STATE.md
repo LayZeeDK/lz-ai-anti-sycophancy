@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: executing
-stopped_at: Completed 01-03-PLAN.md
-last_updated: "2026-03-27T15:26:31Z"
-last_activity: 2026-03-27 -- Completed 01-03-PLAN.md (5 progressive disclosure reference docs)
+status: completed
+stopped_at: Completed 01-05-PLAN.md
+last_updated: "2026-03-27T20:41:30.218Z"
+last_activity: 2026-03-27 -- Completed 01-05-PLAN.md (human validation of AGENTS.md against canonical test cases)
 progress:
   total_phases: 4
-  completed_phases: 0
+  completed_phases: 1
   total_plans: 5
-  completed_plans: 4
-  percent: 80
+  completed_plans: 5
+  percent: 100
 ---
 
 # Project State
@@ -25,12 +25,12 @@ See: .planning/PROJECT.md (updated 2026-03-24)
 
 ## Current Position
 
-Phase: 1 of 4 (AGENTS.md Core Rules)
-Plan: 4 of 5 in current phase
-Status: Executing
-Last activity: 2026-03-27 -- Completed 01-04-PLAN.md (18 AGENTS.md variants for Phase 2 benchmarking)
+Phase: 1 of 4 (AGENTS.md Core Rules) -- COMPLETE
+Plan: 5 of 5 in current phase
+Status: Phase 1 Complete
+Last activity: 2026-03-27 -- Completed 01-05-PLAN.md (human validation of AGENTS.md against canonical test cases)
 
-Progress: [████████░░] 80%
+Progress: [██████████] 100% (Phase 1)
 
 ## Performance Metrics
 
@@ -54,6 +54,7 @@ Progress: [████████░░] 80%
 | Phase 01 P02 | 4min | 2 tasks | 3 files |
 | Phase 01 P04 | 7min | 2 tasks | 18 files |
 | Phase 01 P03 | 8min | 2 tasks | 5 files |
+| Phase 01 P05 | 3min | 2 tasks | 0 files |
 
 ## Accumulated Context
 
@@ -80,6 +81,9 @@ Recent decisions affecting current work:
 - [Phase 01]: Each reference doc closes with explicit footer that behavioral rules live only in root AGENTS.md
 - [Phase 01]: Epistemic labeling guide documents relationship to 4-tier and binary alternatives for transparency
 - [Phase 01]: Adoption guide includes decision-point runbook pattern as practical anti-sycophancy technique
+- [Phase 01]: Accepted 5/8 pass rate as sufficient for Phase 1 gate (clear impact on social pressure scenarios)
+- [Phase 01]: Deferred TC-04 absence scoping and TC-05 recommendation persistence gaps to Phase 2 variant testing
+- [Phase 01]: Used Sonnet 4.6 with control sessions for comparative validation of canonical test cases
 
 ### Pending Todos
 
@@ -94,6 +98,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-27T15:25:23Z
-Stopped at: Completed 01-04-PLAN.md
+Last session: 2026-03-27T20:41:30.215Z
+Stopped at: Completed 01-05-PLAN.md
 Resume file: None
