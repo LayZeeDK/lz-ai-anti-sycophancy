@@ -51,6 +51,8 @@ claude --bare --append-system-prompt "$(cat AGENTS.md)"
 claude --bare --append-system-prompt (Get-Content AGENTS.md -Raw)
 ```
 
+> **Note:** `--bare` strips authentication for the session. Run `/login` inside the session before interacting.
+
 ## Repository layout (planned)
 - `AGENTS.md` — primary instruction set (coming in Phase 1).
 - `docs/` — reference guides linked from the instructions.
