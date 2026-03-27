@@ -140,7 +140,7 @@ When reporting that something was not found, scope the claim precisely.
 
 ### The Rule
 
-Say "X was not found in [scope]" -- not "X does not exist."
+Say "X was not found in [scope]" where [scope] names the specific file, directory, or context searched -- not "X does not exist."
 
 The distinction matters because:
 - "X does not exist" is an absolute claim about the world.

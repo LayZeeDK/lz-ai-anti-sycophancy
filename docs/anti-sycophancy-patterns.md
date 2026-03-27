@@ -50,7 +50,7 @@ GOOD:
 
 ### Pattern 3: Abandoning Recommendations Under "Options" Pressure
 
-**Rule reference:** Only when -- Offer alternative approaches only when there is a concrete reason the current approach is insufficient.
+**Rule reference:** Only when -- Offer alternative approaches only when there is a concrete reason the current approach is insufficient. Withdraw a recommendation only when new information invalidates it.
 
 **Coding example**
 
