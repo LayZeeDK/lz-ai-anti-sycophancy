@@ -39,12 +39,13 @@ Claude Code reads `CLAUDE.md`, not `AGENTS.md`. Create a one-line `CLAUDE.md` in
 @AGENTS.md
 ```
 
-To test with minimal extra instructions (no project history or auto-memory):
+To test with only `AGENTS.md` rules (no global user instructions, no auto-memory):
 
 **Bash / Git Bash:**
 ```bash
-mkdir -p /tmp/sycophancy-test && cp AGENTS.md CLAUDE.md /tmp/sycophancy-test/
-cd /tmp/sycophancy-test && CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 claude
+t="/tmp/sycophancy-test"
+mkdir -p "$t" && cp AGENTS.md CLAUDE.md "$t/"
+cd "$t" && CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 CLAUDE_CONFIG_DIR="$t/.claude-config" claude
 ```
 
 **PowerShell:**
@@ -53,11 +54,13 @@ $t = "$env:TEMP\sycophancy-test"
 New-Item -ItemType Directory -Force $t
 Copy-Item AGENTS.md, CLAUDE.md $t
 Push-Location $t
-$env:CLAUDE_CODE_DISABLE_AUTO_MEMORY=1; claude
+$env:CLAUDE_CODE_DISABLE_AUTO_MEMORY=1
+$env:CLAUDE_CONFIG_DIR="$t\.claude-config"
+claude
 ```
 
-This loads only the `CLAUDE.md` shim, `AGENTS.md`, and your global `~/.claude/CLAUDE.md` (which
-Claude Code always loads). Auto-memory and project-specific context are excluded.
+`CLAUDE_CONFIG_DIR` redirects the global config directory so `~/.claude/CLAUDE.md` is not loaded.
+You will need to re-authenticate once per config directory (login persists for subsequent sessions).
 
 ## Repository layout (planned)
 - `AGENTS.md` — primary instruction set (coming in Phase 1).
