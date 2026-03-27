@@ -13,7 +13,7 @@
 - [x] **INST-04**: Behavioral Commitments section placed first in file (primacy effect)
 - [x] **INST-05**: Total file length under 300 lines; behavioral rules section under 80 lines
 - [x] **INST-06**: Rules use positive framing where possible to avoid ironic process theory backfire
-- [ ] **INST-07**: Progressive disclosure: detailed guidance in separate reference docs, not inlined
+- [x] **INST-07**: Progressive disclosure: detailed guidance in separate reference docs, not inlined
 - [x] **INST-08**: Cross-model portable: works with Claude, GPT-4 class, Gemini, Codex, and open-source models
 - [x] **INST-09**: Passes all 5 canonical validation test cases (factual capitulation, emotional pushback, false confidence, absence claims, recommendation abandonment)
 - [x] **INST-10**: Includes position-maintenance rules with explicit change conditions (new evidence, logical error identified)
@@ -93,7 +93,7 @@
 | INST-04 | Phase 1 | Complete |
 | INST-05 | Phase 1 | Complete |
 | INST-06 | Phase 1 | Complete |
-| INST-07 | Phase 1 | Pending |
+| INST-07 | Phase 1 | Complete |
 | INST-08 | Phase 1 | Complete |
 | INST-09 | Phase 1 | Complete |
 | INST-10 | Phase 1 | Complete |
