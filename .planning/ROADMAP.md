@@ -39,8 +39,8 @@ sycophantic behavior across all 19+ identified categories in any AGENTS.md-compa
 **Plans**: 5 plans
 
 Plans:
-- [ ] 01-01-PLAN.md -- Validation scaffolds (structural checklist, canonical test cases, quality rubric, verification script)
-- [ ] 01-02-PLAN.md -- Primary AGENTS.md and mid-session reminder block
+- [x] 01-01-PLAN.md -- Validation scaffolds (structural checklist, canonical test cases, quality rubric, verification script)
+- [x] 01-02-PLAN.md -- Primary AGENTS.md and mid-session reminder block
 - [ ] 01-03-PLAN.md -- 5 progressive disclosure reference docs
 - [ ] 01-04-PLAN.md -- 18 AGENTS.md variants (14 presentation + 4 content) for Phase 2 benchmarking
 - [ ] 01-05-PLAN.md -- Human validation checkpoint (canonical test cases + quality scoring)
@@ -111,7 +111,7 @@ Phases execute strictly in sequence: 1 -> 2 -> 3 -> 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. AGENTS.md Core Rules | 0/5 | Planning complete | - |
+| 1. AGENTS.md Core Rules | 2/5 | In Progress | - |
 | 2. Benchmark Suite | 0/TBD | Not started | - |
 | 3. Research Report | 0/TBD | Not started | - |
 | 4. Distribution | 0/TBD | Not started | - |

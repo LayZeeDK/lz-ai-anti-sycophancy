@@ -7,21 +7,21 @@
 
 ### AGENTS.md Instruction Set
 
-- [ ] **INST-01**: AGENTS.md contains 30-50 behavioral rules targeting all 19+ sycophancy categories from the research taxonomy
-- [ ] **INST-02**: Rules use direct imperative tone with specific trigger conditions, not abstract values
-- [ ] **INST-03**: Rules framed as universal behavioral commitments (survive Claude Code "may or may not be relevant" filter)
-- [ ] **INST-04**: Behavioral Commitments section placed first in file (primacy effect)
-- [ ] **INST-05**: Total file length under 300 lines; behavioral rules section under 80 lines
-- [ ] **INST-06**: Rules use positive framing where possible to avoid ironic process theory backfire
+- [x] **INST-01**: AGENTS.md contains 30-50 behavioral rules targeting all 19+ sycophancy categories from the research taxonomy
+- [x] **INST-02**: Rules use direct imperative tone with specific trigger conditions, not abstract values
+- [x] **INST-03**: Rules framed as universal behavioral commitments (survive Claude Code "may or may not be relevant" filter)
+- [x] **INST-04**: Behavioral Commitments section placed first in file (primacy effect)
+- [x] **INST-05**: Total file length under 300 lines; behavioral rules section under 80 lines
+- [x] **INST-06**: Rules use positive framing where possible to avoid ironic process theory backfire
 - [ ] **INST-07**: Progressive disclosure: detailed guidance in separate reference docs, not inlined
-- [ ] **INST-08**: Cross-model portable: works with Claude, GPT-4 class, Gemini, Codex, and open-source models
+- [x] **INST-08**: Cross-model portable: works with Claude, GPT-4 class, Gemini, Codex, and open-source models
 - [x] **INST-09**: Passes all 5 canonical validation test cases (factual capitulation, emotional pushback, false confidence, absence claims, recommendation abandonment)
-- [ ] **INST-10**: Includes position-maintenance rules with explicit change conditions (new evidence, logical error identified)
-- [ ] **INST-11**: Includes false-presupposition checking instruction (targets 90% framing acceptance rate)
-- [ ] **INST-12**: Includes proactive criticism requirement (targets positivity bias in assessment)
-- [ ] **INST-13**: Includes epistemic labeling rules (directly observed / inferred / unverified / agent reasoning)
-- [ ] **INST-14**: Includes third-person perspective framing (63.8% sycophancy reduction evidence)
-- [ ] **INST-15**: Includes multi-turn drift awareness instruction (78.5% persistence rate)
+- [x] **INST-10**: Includes position-maintenance rules with explicit change conditions (new evidence, logical error identified)
+- [x] **INST-11**: Includes false-presupposition checking instruction (targets 90% framing acceptance rate)
+- [x] **INST-12**: Includes proactive criticism requirement (targets positivity bias in assessment)
+- [x] **INST-13**: Includes epistemic labeling rules (directly observed / inferred / unverified / agent reasoning)
+- [x] **INST-14**: Includes third-person perspective framing (63.8% sycophancy reduction evidence)
+- [x] **INST-15**: Includes multi-turn drift awareness instruction (78.5% persistence rate)
 - [x] **INST-16**: Complies with claude-md-improver quality criteria (concise, actionable, project-specific, current)
 
 ### Benchmark Suite
@@ -87,21 +87,21 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| INST-01 | Phase 1 | Pending |
-| INST-02 | Phase 1 | Pending |
-| INST-03 | Phase 1 | Pending |
-| INST-04 | Phase 1 | Pending |
-| INST-05 | Phase 1 | Pending |
-| INST-06 | Phase 1 | Pending |
+| INST-01 | Phase 1 | Complete |
+| INST-02 | Phase 1 | Complete |
+| INST-03 | Phase 1 | Complete |
+| INST-04 | Phase 1 | Complete |
+| INST-05 | Phase 1 | Complete |
+| INST-06 | Phase 1 | Complete |
 | INST-07 | Phase 1 | Pending |
-| INST-08 | Phase 1 | Pending |
+| INST-08 | Phase 1 | Complete |
 | INST-09 | Phase 1 | Complete |
-| INST-10 | Phase 1 | Pending |
-| INST-11 | Phase 1 | Pending |
-| INST-12 | Phase 1 | Pending |
-| INST-13 | Phase 1 | Pending |
-| INST-14 | Phase 1 | Pending |
-| INST-15 | Phase 1 | Pending |
+| INST-10 | Phase 1 | Complete |
+| INST-11 | Phase 1 | Complete |
+| INST-12 | Phase 1 | Complete |
+| INST-13 | Phase 1 | Complete |
+| INST-14 | Phase 1 | Complete |
+| INST-15 | Phase 1 | Complete |
 | INST-16 | Phase 1 | Complete |
 | BENCH-01 | Phase 2 | Pending |
 | BENCH-02 | Phase 2 | Pending |
