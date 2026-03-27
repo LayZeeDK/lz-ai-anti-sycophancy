@@ -104,6 +104,12 @@ enables any developer to adopt the AGENTS.md in under 5 minutes and understand t
   4. The repository contains a LICENSE file and has a clean directory structure with no planning artifacts, draft files, or intermediate outputs at the root.
 **Plans**: TBD
 
+**Research flags:**
+- AGENTS.md at 80 lines / 30 rules is too long for practical adoption -- users need room for their
+  own project-specific instructions. After Phase 2 benchmarking proves which rules are effective,
+  optimize for brevity: cut low-impact rules, merge overlapping ones, compress phrasing. Effectiveness
+  first, then compression.
+
 ## Progress
 
 **Execution Order:**

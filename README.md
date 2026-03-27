@@ -31,6 +31,26 @@ Sycophancy (over-agreement, flattery, and stance reversal under pressure) makes 
 3. Keep reference docs nearby for examples and edge cases; link them via progressive disclosure.
 4. Run the benchmark suite with and without `AGENTS.md` to verify improvements for your model family.
 
+### Claude Code quick start
+
+Claude Code reads `CLAUDE.md`, not `AGENTS.md`. Create a one-line `CLAUDE.md` in your project root:
+
+```markdown
+@AGENTS.md
+```
+
+To test with only `AGENTS.md` rules (no other instruction files):
+
+**Bash / Git Bash:**
+```bash
+claude --bare --append-system-prompt "$(cat AGENTS.md)"
+```
+
+**PowerShell:**
+```powershell
+claude --bare --append-system-prompt (Get-Content AGENTS.md -Raw)
+```
+
 ## Repository layout (planned)
 - `AGENTS.md` — primary instruction set (coming in Phase 1).
 - `docs/` — reference guides linked from the instructions.
