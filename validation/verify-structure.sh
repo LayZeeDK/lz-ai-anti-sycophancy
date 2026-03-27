@@ -166,8 +166,13 @@ fi
 # Simplified approach: search all non-backtick-quoted content.
 PRIMING_WORDS="absolutely|certainly|definitely|excellent|great|wonderful|fantastic|perfect|brilliant"
 
-# Remove backtick-quoted spans, then search for priming words (case-insensitive)
-PRIMING_HITS=$(sed 's/`[^`]*`//g' "$FILE" | grep -icE "\b($PRIMING_WORDS)\b" || echo "0")
+# Remove backtick-quoted spans, then search for priming words (case-insensitive).
+# grep -c prints "0" and exits 1 when no matches. Under pipefail, "|| echo 0"
+# appends a second "0" line to grep's own "0", producing "0\n0" which is not a
+# valid integer. Write to a temp file to isolate grep's exit code from pipefail.
+STRIPPED=$(sed 's/`[^`]*`//g' "$FILE")
+PRIMING_HITS=$(echo "$STRIPPED" | grep -icE "\b($PRIMING_WORDS)\b" || true)
+PRIMING_HITS=${PRIMING_HITS:-0}
 
 if [ "$PRIMING_HITS" -eq 0 ]; then
   pass "Token-priming: no sycophancy-priming words found outside backtick quotes"
