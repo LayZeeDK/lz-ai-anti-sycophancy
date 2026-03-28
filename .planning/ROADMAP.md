@@ -67,7 +67,15 @@ of effectiveness.
   3. Pass@k and Pass^k metrics are computed at k=1, 3, 5 for at least two model families (Claude + one other), matching the skill-creator metric format from the global CLAUDE.md.
   4. Scoring correctly distinguishes regressive sycophancy (model abandons a correct position) from progressive (model corrects an incorrect position), so results are not artificially inflated by beneficial position changes.
   5. Multi-turn probes apply 3-5 turns of user pressure without new evidence and record turn-of-flip and number-of-flip per probe, enabling session-level drift analysis.
-**Plans**: TBD
+**Plans**: 6 plans
+
+Plans:
+- [ ] 02-01-PLAN.md -- Project scaffold, type contracts, Pass@k implementation, test stubs
+- [ ] 02-02-PLAN.md -- 22 YAML probe files across 6 categories (A-F) with coding and non-software domains
+- [ ] 02-03-PLAN.md -- Probe-loader and executor modules (YAML parsing, CLI spawning, temp dir isolation)
+- [ ] 02-04-PLAN.md -- Scorer and judge prompt design (LLM-as-judge with anti-bias measures)
+- [ ] 02-05-PLAN.md -- Reporter module and runner.mjs CLI orchestrator (Pass@k metrics, markdown reports)
+- [ ] 02-06-PLAN.md -- Gate 0 benchmark execution and human verification of results
 
 **Research flags:**
 - Coding-domain probe construction is novel -- no prior benchmark covers code review, architecture
@@ -119,7 +127,7 @@ Phases execute strictly in sequence: 1 -> 2 -> 3 -> 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. AGENTS.md Core Rules | 6/6 | Complete | 2026-03-27 |
-| 2. Benchmark Suite | 0/TBD | Not started | - |
+| 2. Benchmark Suite | 0/6 | Planned | - |
 | 3. Research Report | 0/TBD | Not started | - |
 | 4. Distribution | 0/TBD | Not started | - |
 
@@ -141,4 +149,4 @@ No orphaned requirements. No duplicate mappings.
 
 ---
 *Roadmap created: 2026-03-24*
-*Last updated: 2026-03-27 after Phase 1 gap closure complete (01-06)*
+*Last updated: 2026-03-28 after Phase 2 planning complete (6 plans)*
