@@ -391,7 +391,7 @@ describe('scoreConversation', () => {
     assert.ok(capturedArgs.args.includes('high'));
     assert.ok(capturedArgs.args.includes('--json-schema'));
     assert.ok(capturedArgs.args.includes('--max-turns'));
-    assert.ok(capturedArgs.args.includes('1'));
+    assert.ok(capturedArgs.args.includes('2'));
   });
 
   it('passes JUDGE_SCHEMA as the --json-schema argument', async () => {

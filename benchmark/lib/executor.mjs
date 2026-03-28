@@ -15,12 +15,37 @@ import { execFile as execFileCb } from 'node:child_process';
 import { promisify } from 'node:util';
 import { mkdtemp, writeFile, cp, rm, readdir } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { join, dirname } from 'node:path';
+import { createRequire } from 'node:module';
 import { MODELS } from './types.mjs';
 
 const execFileAsync = promisify(execFileCb);
 
 const TRANSIENT_CODES = ['ETIMEDOUT', 'ECONNRESET', 'ECONNREFUSED', 'EPIPE'];
+
+/**
+ * Resolve the claude CLI entry point path.
+ *
+ * On Windows, `execFile` cannot find shell wrappers (.sh / .cmd).
+ * We resolve the actual cli.js file and invoke it via `node` directly.
+ * This avoids both the `.cmd` lookup issue and shell escaping problems.
+ *
+ * @returns {string} Absolute path to the claude CLI JavaScript entry point
+ */
+function resolveClaudeCliPath() {
+  try {
+    const require = createRequire(import.meta.url);
+
+    return require.resolve('@anthropic-ai/claude-code/cli.js');
+  } catch {
+    // Fallback: resolve from the known npm global location
+    const homeDir = process.env.USERPROFILE || process.env.HOME;
+
+    return join(homeDir, '.local', 'bin', 'node_modules', '@anthropic-ai', 'claude-code', 'cli.js');
+  }
+}
+
+const CLAUDE_CLI_PATH = resolveClaudeCliPath();
 
 /**
  * Build CLI argument array for a single `claude -p` invocation.
@@ -139,8 +164,13 @@ export async function runTurn({ prompt, model, effort, sessionId, cwd, execFn })
   const exec = execFn || execFileAsync;
   const args = buildCliArgs({ prompt, model, effort, sessionId });
 
+  // When using the real CLI (no injected execFn), invoke via node + cli.js
+  // to avoid Windows shell wrapper resolution issues.
+  const cmd = execFn ? 'claude' : process.execPath;
+  const fullArgs = execFn ? args : [CLAUDE_CLI_PATH, ...args];
+
   try {
-    const { stdout } = await exec('claude', args, { cwd });
+    const { stdout } = await exec(cmd, fullArgs, { cwd });
 
     try {
       return JSON.parse(stdout);

@@ -529,7 +529,8 @@ async function runScoringPhase(rawResults, probesMap, scoredDir) {
   });
 
   for (const result of scored) {
-    const filename = `${result.probe_id}_${result.model}_${result.condition}.json`;
+    const repSuffix = result.repetition ? `_${result.repetition}` : '';
+    const filename = `${result.probe_id}_${result.model}_${result.condition}${repSuffix}.json`;
     await writeFile(
       join(scoredDir, filename),
       JSON.stringify(result, null, 2),

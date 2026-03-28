@@ -7,12 +7,35 @@
  * batch scoring.
  */
 
+import { execFile as execFileCb } from 'node:child_process';
+import { promisify } from 'node:util';
 import { mkdtemp, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import { createRequire } from 'node:module';
 
 import { JUDGE_SCHEMA } from './types.mjs';
 import { buildJudgePrompt } from './judge-prompt.mjs';
+
+const execFileAsync = promisify(execFileCb);
+
+/**
+ * Resolve the claude CLI entry point path.
+ * Same logic as executor.mjs -- avoids Windows shell wrapper issues.
+ */
+function resolveClaudeCliPath() {
+  try {
+    const require = createRequire(import.meta.url);
+
+    return require.resolve('@anthropic-ai/claude-code/cli.js');
+  } catch {
+    const homeDir = process.env.USERPROFILE || process.env.HOME;
+
+    return join(homeDir, '.local', 'bin', 'node_modules', '@anthropic-ai', 'claude-code', 'cli.js');
+  }
+}
+
+const CLAUDE_CLI_PATH = resolveClaudeCliPath();
 
 /**
  * Score a single conversation by invoking the LLM judge.
@@ -26,7 +49,8 @@ import { buildJudgePrompt } from './judge-prompt.mjs';
  * @param {Function} options.execFn - Async function (cmd, args, opts) => { stdout }
  * @returns {object} Scored result with conversation metadata and score
  */
-export async function scoreConversation(conversation, probeMetadata, { execFn }) {
+export async function scoreConversation(conversation, probeMetadata, { execFn } = {}) {
+  const exec = execFn || execFileAsync;
   const prompt = buildJudgePrompt(conversation, probeMetadata);
 
   // Create isolated temp dir for judge invocation
@@ -39,10 +63,15 @@ export async function scoreConversation(conversation, probeMetadata, { execFn })
       '--output-format', 'json',
       '--effort', 'high',
       '--json-schema', JSON.stringify(JUDGE_SCHEMA),
-      '--max-turns', '1',
+      '--max-turns', '2',
     ];
 
-    const { stdout } = await execFn('claude', args, { cwd: tempDir });
+    // When using the real CLI (no injected execFn), invoke via node + cli.js
+    // to avoid Windows shell wrapper resolution issues.
+    const cmd = execFn ? 'claude' : process.execPath;
+    const fullArgs = execFn ? args : [CLAUDE_CLI_PATH, ...args];
+
+    const { stdout } = await exec(cmd, fullArgs, { cwd: tempDir });
     const response = JSON.parse(stdout);
     const score = response.structured_output;
 
@@ -50,6 +79,10 @@ export async function scoreConversation(conversation, probeMetadata, { execFn })
       probe_id: conversation.probe_id,
       model: conversation.model,
       condition: conversation.condition,
+      repetition: conversation.repetition || null,
+      category: probeMetadata?.category || null,
+      difficulty: probeMetadata?.difficulty || null,
+      total_tokens: conversation.total_tokens || null,
       score,
     };
   } finally {
@@ -71,7 +104,7 @@ export async function scoreConversation(conversation, probeMetadata, { execFn })
  * @param {number} [options.concurrency=3] - Max concurrent judge invocations
  * @returns {Array} Array of scored results
  */
-export async function scoreAllConversations(conversations, probes, { execFn, concurrency = 3 }) {
+export async function scoreAllConversations(conversations, probes, { execFn, concurrency = 3 } = {}) {
   const results = [];
   let active = 0;
   const waiting = [];
