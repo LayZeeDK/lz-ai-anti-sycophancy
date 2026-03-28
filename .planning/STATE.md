@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: completed
-stopped_at: Completed 01-05-PLAN.md
-last_updated: "2026-03-27T20:41:30.218Z"
-last_activity: 2026-03-27 -- Completed 01-05-PLAN.md (human validation of AGENTS.md against canonical test cases)
+stopped_at: Completed 01-06-PLAN.md
+last_updated: "2026-03-27T23:58:00.000Z"
+last_activity: 2026-03-27 -- Completed 01-06-PLAN.md (gap closure for TC-04 absence scoping and TC-05 recommendation persistence)
 progress:
   total_phases: 4
   completed_phases: 1
-  total_plans: 5
-  completed_plans: 5
+  total_plans: 6
+  completed_plans: 6
   percent: 100
 ---
 
@@ -26,28 +26,28 @@ See: .planning/PROJECT.md (updated 2026-03-24)
 ## Current Position
 
 Phase: 1 of 4 (AGENTS.md Core Rules) -- COMPLETE
-Plan: 5 of 5 in current phase
+Plan: 6 of 6 in current phase
 Status: Phase 1 Complete
-Last activity: 2026-03-27 -- Completed 01-05-PLAN.md (human validation of AGENTS.md against canonical test cases)
+Last activity: 2026-03-27 -- Completed 01-06-PLAN.md (gap closure for TC-04 absence scoping and TC-05 recommendation persistence)
 
 Progress: [██████████] 100% (Phase 1)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 4
-- Average duration: 6min
-- Total execution time: 0.40 hours
+- Total plans completed: 6
+- Average duration: 8min
+- Total execution time: 0.77 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 1 | 4 | 24min | 6min |
+| 1 | 6 | 49min | 8min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (5min), 01-02 (4min), 01-04 (7min), 01-03 (8min)
-- Trend: stable
+- Last 5 plans: 01-02 (4min), 01-04 (7min), 01-03 (8min), 01-05 (3min), 01-06 (22min)
+- Trend: stable (01-06 longer due to TC-04 second iteration)
 
 *Updated after each plan completion*
 | Phase 01 P01 | 5min | 2 tasks | 4 files |
@@ -55,6 +55,7 @@ Progress: [██████████] 100% (Phase 1)
 | Phase 01 P04 | 7min | 2 tasks | 18 files |
 | Phase 01 P03 | 8min | 2 tasks | 5 files |
 | Phase 01 P05 | 3min | 2 tasks | 0 files |
+| Phase 01 P06 | 22min | 3 tasks | 20 files |
 
 ## Accumulated Context
 
@@ -82,8 +83,9 @@ Recent decisions affecting current work:
 - [Phase 01]: Epistemic labeling guide documents relationship to 4-tier and binary alternatives for transparency
 - [Phase 01]: Adoption guide includes decision-point runbook pattern as practical anti-sycophancy technique
 - [Phase 01]: Accepted 5/8 pass rate as sufficient for Phase 1 gate (clear impact on social pressure scenarios)
-- [Phase 01]: Deferred TC-04 absence scoping and TC-05 recommendation persistence gaps to Phase 2 variant testing
 - [Phase 01]: Used Sonnet 4.6 with control sessions for comparative validation of canonical test cases
+- [Phase 01]: TC-04 required two iterations -- first wording influenced body but not lead sentence; added "in the opening sentence" constraint and explicit anti-pattern examples
+- [Phase 01]: Changed [scope] placeholder to [specific location] to reduce template-placeholder ambiguity in absence-claim rule
 
 ### Pending Todos
 
@@ -98,6 +100,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-27T20:41:30.215Z
-Stopped at: Completed 01-05-PLAN.md
+Last session: 2026-03-27T23:58:00.000Z
+Stopped at: Completed 01-06-PLAN.md
 Resume file: None

@@ -18,7 +18,7 @@ collected; you cannot document what has not been verified.
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: AGENTS.md Core Rules** - Write research-backed behavioral rules targeting all 19+ sycophancy categories (gap closure in progress)
+- [x] **Phase 1: AGENTS.md Core Rules** - Write research-backed behavioral rules targeting all 19+ sycophancy categories
 - [ ] **Phase 2: Benchmark Suite** - Build before/after comparison framework with coding-domain probes and Pass@k metrics
 - [ ] **Phase 3: Research Report** - Synthesize research corpus and benchmark results into a practitioner-accessible document
 - [ ] **Phase 4: Distribution** - Assemble README, reference docs, LICENSE, and ship-ready repo structure
@@ -44,7 +44,7 @@ Plans:
 - [x] 01-03-PLAN.md -- 5 progressive disclosure reference docs
 - [x] 01-04-PLAN.md -- 18 AGENTS.md variants (14 presentation + 4 content) for Phase 2 benchmarking
 - [x] 01-05-PLAN.md -- Human validation checkpoint (canonical test cases + quality scoring)
-- [ ] 01-06-PLAN.md -- Gap closure: strengthen absence-claim rule, add recommendation-persistence rule, re-validate TC-04/TC-05/TC-08
+- [x] 01-06-PLAN.md -- Gap closure: strengthen absence-claim rule, add recommendation-persistence rule, re-validate TC-04/TC-05/TC-08
 
 **Research flags:**
 - Framing sycophancy rules (targeting the 90% false-premise acceptance rate) require iterative
@@ -118,7 +118,7 @@ Phases execute strictly in sequence: 1 -> 2 -> 3 -> 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. AGENTS.md Core Rules | 5/6 | Gap closure | - |
+| 1. AGENTS.md Core Rules | 6/6 | Complete | 2026-03-27 |
 | 2. Benchmark Suite | 0/TBD | Not started | - |
 | 3. Research Report | 0/TBD | Not started | - |
 | 4. Distribution | 0/TBD | Not started | - |
@@ -141,4 +141,4 @@ No orphaned requirements. No duplicate mappings.
 
 ---
 *Roadmap created: 2026-03-24*
-*Last updated: 2026-03-27 after gap closure planning*
+*Last updated: 2026-03-27 after Phase 1 gap closure complete (01-06)*
