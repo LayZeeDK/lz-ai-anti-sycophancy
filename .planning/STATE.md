@@ -4,13 +4,13 @@ milestone: v1.0
 milestone_name: milestone
 status: completed
 stopped_at: Phase 2 context gathered
-last_updated: "2026-03-28T13:55:02.051Z"
+last_updated: "2026-03-28T14:33:31.822Z"
 last_activity: 2026-03-27 -- Completed 01-06-PLAN.md (gap closure for TC-04 absence scoping and TC-05 recommendation persistence)
 progress:
   total_phases: 4
   completed_phases: 1
-  total_plans: 6
-  completed_plans: 6
+  total_plans: 12
+  completed_plans: 7
   percent: 100
 ---
 
@@ -21,33 +21,34 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-24)
 
 **Core value:** AGENTS.md instructions measurably reduce sycophantic behaviors across all 19+ categories while remaining concise enough (~50-80 rules) that frontier models reliably follow them every session.
-**Current focus:** Phase 1 - AGENTS.md Core Rules
+**Current focus:** Phase 2 - Benchmark Suite
 
 ## Current Position
 
-Phase: 1 of 4 (AGENTS.md Core Rules) -- COMPLETE
-Plan: 6 of 6 in current phase
-Status: Phase 1 Complete
-Last activity: 2026-03-27 -- Completed 01-06-PLAN.md (gap closure for TC-04 absence scoping and TC-05 recommendation persistence)
+Phase: 2 of 4 (Benchmark Suite)
+Plan: 1 of 6 in current phase
+Status: Executing Phase 2
+Last activity: 2026-03-28 -- Completed 02-01-PLAN.md (project scaffold, type contracts, Pass@k, test stubs)
 
-Progress: [██████████] 100% (Phase 1)
+Progress: [██████░░░░] 58% (7/12 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 6
+- Total plans completed: 7
 - Average duration: 8min
-- Total execution time: 0.77 hours
+- Total execution time: 0.85 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 1 | 6 | 49min | 8min |
+| 2 | 1 | 5min | 5min |
 
 **Recent Trend:**
-- Last 5 plans: 01-02 (4min), 01-04 (7min), 01-03 (8min), 01-05 (3min), 01-06 (22min)
-- Trend: stable (01-06 longer due to TC-04 second iteration)
+- Last 5 plans: 01-04 (7min), 01-03 (8min), 01-05 (3min), 01-06 (22min), 02-01 (5min)
+- Trend: stable
 
 *Updated after each plan completion*
 | Phase 01 P01 | 5min | 2 tasks | 4 files |
@@ -56,6 +57,7 @@ Progress: [██████████] 100% (Phase 1)
 | Phase 01 P03 | 8min | 2 tasks | 5 files |
 | Phase 01 P05 | 3min | 2 tasks | 0 files |
 | Phase 01 P06 | 22min | 3 tasks | 20 files |
+| Phase 02 P01 | 5min | 2 tasks | 10 files |
 
 ## Accumulated Context
 
@@ -87,6 +89,10 @@ Recent decisions affecting current work:
 - [Phase 01]: TC-04 required two iterations -- first wording influenced body but not lead sentence; added "in the opening sentence" constraint and explicit anti-pattern examples
 - [Phase 01]: Changed [scope] placeholder to [specific location] to reduce template-placeholder ambiguity in absence-claim rule
 
+- [Phase 02]: Used log-space arithmetic in combinations() to avoid overflow with large sample counts
+- [Phase 02]: Added types.test.mjs as separate contract verification file alongside pass-at-k.test.mjs
+- [Phase 02]: Added node_modules/ to .gitignore for benchmark dependency hygiene
+
 ### Pending Todos
 
 None yet.
@@ -100,6 +106,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-28T13:55:02.047Z
-Stopped at: Phase 2 context gathered
-Resume file: .planning/phases/02-benchmark-suite/02-CONTEXT.md
+Last session: 2026-03-28T14:32:18Z
+Stopped at: Completed 02-01-PLAN.md
+Resume file: .planning/phases/02-benchmark-suite/02-01-SUMMARY.md

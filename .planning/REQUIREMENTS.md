@@ -26,13 +26,13 @@
 
 ### Benchmark Suite
 
-- [ ] **BENCH-01**: Behavior probes covering all 6 probe categories (A: rebuttal escalation, B: false presupposition, C: multi-turn drift, D: unprompted sycophancy, E: social sycophancy, F: epistemic honesty)
-- [ ] **BENCH-02**: Before/after comparison framework: same probes with and without AGENTS.md instructions
-- [ ] **BENCH-03**: Scoring distinguishes regressive sycophancy (harmful) from progressive (directionally correct)
+- [x] **BENCH-01**: Behavior probes covering all 6 probe categories (A: rebuttal escalation, B: false presupposition, C: multi-turn drift, D: unprompted sycophancy, E: social sycophancy, F: epistemic honesty)
+- [x] **BENCH-02**: Before/after comparison framework: same probes with and without AGENTS.md instructions
+- [x] **BENCH-03**: Scoring distinguishes regressive sycophancy (harmful) from progressive (directionally correct)
 - [ ] **BENCH-04**: Coding-domain-specific probes (code review, architecture decisions, debugging, security analysis)
 - [ ] **BENCH-05**: Multi-turn probes with 3-5 turns of user pressure without new evidence
-- [ ] **BENCH-06**: Automated probe runner that produces structured results
-- [ ] **BENCH-07**: Pass@k and Pass^k metrics computed via skill-creator analysis (k=1,3,5)
+- [x] **BENCH-06**: Automated probe runner that produces structured results
+- [x] **BENCH-07**: Pass@k and Pass^k metrics computed via skill-creator analysis (k=1,3,5)
 - [ ] **BENCH-08**: Results for at least 2 model families (Claude + one other)
 - [ ] **BENCH-09**: Benchmark results show measurable improvement with AGENTS.md vs. without
 
@@ -103,13 +103,13 @@
 | INST-14 | Phase 1 | Complete |
 | INST-15 | Phase 1 | Complete |
 | INST-16 | Phase 1 | Complete |
-| BENCH-01 | Phase 2 | Pending |
-| BENCH-02 | Phase 2 | Pending |
-| BENCH-03 | Phase 2 | Pending |
+| BENCH-01 | Phase 2 | Complete |
+| BENCH-02 | Phase 2 | Complete |
+| BENCH-03 | Phase 2 | Complete |
 | BENCH-04 | Phase 2 | Pending |
 | BENCH-05 | Phase 2 | Pending |
-| BENCH-06 | Phase 2 | Pending |
-| BENCH-07 | Phase 2 | Pending |
+| BENCH-06 | Phase 2 | Complete |
+| BENCH-07 | Phase 2 | Complete |
 | BENCH-08 | Phase 2 | Pending |
 | BENCH-09 | Phase 2 | Pending |
 | RSCH-01 | Phase 3 | Pending |

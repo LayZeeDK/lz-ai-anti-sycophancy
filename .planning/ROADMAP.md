@@ -70,7 +70,7 @@ of effectiveness.
 **Plans**: 6 plans
 
 Plans:
-- [ ] 02-01-PLAN.md -- Project scaffold, type contracts, Pass@k implementation, test stubs
+- [x] 02-01-PLAN.md -- Project scaffold, type contracts, Pass@k implementation, test stubs
 - [ ] 02-02-PLAN.md -- 22 YAML probe files across 6 categories (A-F) with coding and non-software domains
 - [ ] 02-03-PLAN.md -- Probe-loader and executor modules (YAML parsing, CLI spawning, temp dir isolation)
 - [ ] 02-04-PLAN.md -- Scorer and judge prompt design (LLM-as-judge with anti-bias measures)
@@ -127,7 +127,7 @@ Phases execute strictly in sequence: 1 -> 2 -> 3 -> 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. AGENTS.md Core Rules | 6/6 | Complete | 2026-03-27 |
-| 2. Benchmark Suite | 0/6 | Planned | - |
+| 2. Benchmark Suite | 1/6 | In Progress | - |
 | 3. Research Report | 0/TBD | Not started | - |
 | 4. Distribution | 0/TBD | Not started | - |
 
