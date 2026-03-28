@@ -3,8 +3,8 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 02-05-PLAN.md
-last_updated: "2026-03-28T14:56:01.262Z"
+stopped_at: "In-progress 02-06-PLAN.md: Gate 0 benchmark running (20/440, A-01 complete, A-02 started)"
+last_updated: "2026-03-28T15:40:31.726Z"
 last_activity: 2026-03-28 -- Completed 02-05-PLAN.md (reporter + runner CLI orchestrator)
 progress:
   total_phases: 4
@@ -109,6 +109,9 @@ Recent decisions affecting current work:
 - [Phase 02]: Checkpoint stores completed keys as probe_id:modelKey:condition:repetition for resume after interruption
 - [Phase 02]: Token projection every 10 conversations using running average for Team Plan budget awareness
 - [Phase 02]: Three skip modes (--score-only, --report-only, --dry-run) for re-running specific pipeline phases
+- [Phase 02]: Windows execFile requires node + cli.js direct invocation instead of claude shell wrapper for subprocess spawning
+- [Phase 02]: Scorer needs --max-turns 2 when using --json-schema because structured output requires a tool use turn
+- [Phase 02]: Scored results include repetition/category/difficulty/tokens for proper per-repetition file naming and reporter metadata
 
 ### Pending Todos
 
@@ -123,6 +126,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-28T14:56:01.259Z
-Stopped at: Completed 02-05-PLAN.md
+Last session: 2026-03-28T15:40:31.724Z
+Stopped at: In-progress 02-06-PLAN.md: Gate 0 benchmark running (20/440, A-01 complete, A-02 started)
 Resume file: None
