@@ -34,7 +34,7 @@
 - [x] **BENCH-06**: Automated probe runner that produces structured results
 - [x] **BENCH-07**: Pass@k and Pass^k metrics computed via skill-creator analysis (k=1,3,5)
 - [ ] **BENCH-08**: Results for at least 2 model families (Claude + one other)
-- [ ] **BENCH-09**: Benchmark results show measurable improvement with AGENTS.md vs. without
+- [x] **BENCH-09**: Benchmark results show measurable improvement with AGENTS.md vs. without
 
 ### Research Report
 
@@ -111,7 +111,7 @@
 | BENCH-06 | Phase 2 | Complete |
 | BENCH-07 | Phase 2 | Complete |
 | BENCH-08 | Phase 2 | Pending |
-| BENCH-09 | Phase 2 | Pending |
+| BENCH-09 | Phase 2 | Complete |
 | RSCH-01 | Phase 3 | Pending |
 | RSCH-02 | Phase 3 | Pending |
 | RSCH-03 | Phase 3 | Pending |

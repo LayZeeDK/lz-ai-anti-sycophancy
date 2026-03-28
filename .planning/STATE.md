@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 02-03-PLAN.md
-last_updated: "2026-03-28T14:46:13.092Z"
-last_activity: 2026-03-28 -- Completed 02-04-PLAN.md (judge prompt + scorer pipeline with 21 tests)
+stopped_at: Completed 02-05-PLAN.md
+last_updated: "2026-03-28T14:56:01.262Z"
+last_activity: 2026-03-28 -- Completed 02-05-PLAN.md (reporter + runner CLI orchestrator)
 progress:
   total_phases: 4
   completed_phases: 1
   total_plans: 12
-  completed_plans: 10
-  percent: 75
+  completed_plans: 11
+  percent: 92
 ---
 
 # Project State
@@ -26,28 +26,28 @@ See: .planning/PROJECT.md (updated 2026-03-24)
 ## Current Position
 
 Phase: 2 of 4 (Benchmark Suite)
-Plan: 4 of 6 in current phase
+Plan: 5 of 6 in current phase
 Status: Executing Phase 2
-Last activity: 2026-03-28 -- Completed 02-04-PLAN.md (judge prompt + scorer pipeline with 21 tests)
+Last activity: 2026-03-28 -- Completed 02-05-PLAN.md (reporter + runner CLI orchestrator)
 
-Progress: [████████░░] 75% (9/12 plans)
+Progress: [█████████░] 92% (11/12 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 9
+- Total plans completed: 11
 - Average duration: 7min
-- Total execution time: 1.03 hours
+- Total execution time: 1.2 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 1 | 6 | 49min | 8min |
-| 2 | 3 | 16min | 5min |
+| 2 | 5 | 27min | 5min |
 
 **Recent Trend:**
-- Last 5 plans: 01-05 (3min), 01-06 (22min), 02-01 (5min), 02-02 (7min), 02-04 (4min)
+- Last 5 plans: 01-06 (22min), 02-01 (5min), 02-02 (7min), 02-04 (4min), 02-05 (5min)
 - Trend: stable
 
 *Updated after each plan completion*
@@ -61,6 +61,7 @@ Progress: [████████░░] 75% (9/12 plans)
 | Phase 02 P02 | 7min | 2 tasks | 22 files |
 | Phase 02 P04 | 4min | 1 tasks | 3 files |
 | Phase 02 P03 | 6min | 2 tasks | 7 files |
+| Phase 02 P05 | 5min | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -104,6 +105,10 @@ Recent decisions affecting current work:
 - [Phase 02]: Default concurrency of 3 for judge calls (lower than runner 5 since judge uses --effort high)
 - [Phase 02]: Injectable execFn dependency for CLI mocking -- avoids spawning claude during tests
 - [Phase 02]: runProbe returns partial results on mid-execution errors rather than throwing
+- [Phase 02]: Gate 0 primary resolves to root AGENTS.md; Gates 1-2 resolve from variants/content/ and variants/presentation/
+- [Phase 02]: Checkpoint stores completed keys as probe_id:modelKey:condition:repetition for resume after interruption
+- [Phase 02]: Token projection every 10 conversations using running average for Team Plan budget awareness
+- [Phase 02]: Three skip modes (--score-only, --report-only, --dry-run) for re-running specific pipeline phases
 
 ### Pending Todos
 
@@ -118,6 +123,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-28T14:46:13.090Z
-Stopped at: Completed 02-03-PLAN.md
+Last session: 2026-03-28T14:56:01.259Z
+Stopped at: Completed 02-05-PLAN.md
 Resume file: None
