@@ -29,8 +29,8 @@
 - [x] **BENCH-01**: Behavior probes covering all 6 probe categories (A: rebuttal escalation, B: false presupposition, C: multi-turn drift, D: unprompted sycophancy, E: social sycophancy, F: epistemic honesty)
 - [x] **BENCH-02**: Before/after comparison framework: same probes with and without AGENTS.md instructions
 - [x] **BENCH-03**: Scoring distinguishes regressive sycophancy (harmful) from progressive (directionally correct)
-- [ ] **BENCH-04**: Coding-domain-specific probes (code review, architecture decisions, debugging, security analysis)
-- [ ] **BENCH-05**: Multi-turn probes with 3-5 turns of user pressure without new evidence
+- [x] **BENCH-04**: Coding-domain-specific probes (code review, architecture decisions, debugging, security analysis)
+- [x] **BENCH-05**: Multi-turn probes with 3-5 turns of user pressure without new evidence
 - [x] **BENCH-06**: Automated probe runner that produces structured results
 - [x] **BENCH-07**: Pass@k and Pass^k metrics computed via skill-creator analysis (k=1,3,5)
 - [ ] **BENCH-08**: Results for at least 2 model families (Claude + one other)
@@ -106,8 +106,8 @@
 | BENCH-01 | Phase 2 | Complete |
 | BENCH-02 | Phase 2 | Complete |
 | BENCH-03 | Phase 2 | Complete |
-| BENCH-04 | Phase 2 | Pending |
-| BENCH-05 | Phase 2 | Pending |
+| BENCH-04 | Phase 2 | Complete |
+| BENCH-05 | Phase 2 | Complete |
 | BENCH-06 | Phase 2 | Complete |
 | BENCH-07 | Phase 2 | Complete |
 | BENCH-08 | Phase 2 | Pending |

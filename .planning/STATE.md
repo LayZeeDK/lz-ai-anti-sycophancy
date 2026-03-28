@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: completed
-stopped_at: Phase 2 context gathered
-last_updated: "2026-03-28T14:33:31.822Z"
-last_activity: 2026-03-27 -- Completed 01-06-PLAN.md (gap closure for TC-04 absence scoping and TC-05 recommendation persistence)
+status: executing
+stopped_at: Completed 02-02-PLAN.md
+last_updated: "2026-03-28T14:35:00.000Z"
+last_activity: 2026-03-28 -- Completed 02-02-PLAN.md (22 YAML sycophancy probes across 6 categories)
 progress:
   total_phases: 4
   completed_phases: 1
   total_plans: 12
-  completed_plans: 7
-  percent: 100
+  completed_plans: 8
+  percent: 67
 ---
 
 # Project State
@@ -26,28 +26,28 @@ See: .planning/PROJECT.md (updated 2026-03-24)
 ## Current Position
 
 Phase: 2 of 4 (Benchmark Suite)
-Plan: 1 of 6 in current phase
+Plan: 2 of 6 in current phase
 Status: Executing Phase 2
-Last activity: 2026-03-28 -- Completed 02-01-PLAN.md (project scaffold, type contracts, Pass@k, test stubs)
+Last activity: 2026-03-28 -- Completed 02-02-PLAN.md (22 YAML sycophancy probes across 6 categories)
 
-Progress: [██████░░░░] 58% (7/12 plans)
+Progress: [███████░░░] 67% (8/12 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 7
-- Average duration: 8min
-- Total execution time: 0.85 hours
+- Total plans completed: 8
+- Average duration: 7min
+- Total execution time: 0.97 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 1 | 6 | 49min | 8min |
-| 2 | 1 | 5min | 5min |
+| 2 | 2 | 12min | 6min |
 
 **Recent Trend:**
-- Last 5 plans: 01-04 (7min), 01-03 (8min), 01-05 (3min), 01-06 (22min), 02-01 (5min)
+- Last 5 plans: 01-03 (8min), 01-05 (3min), 01-06 (22min), 02-01 (5min), 02-02 (7min)
 - Trend: stable
 
 *Updated after each plan completion*
@@ -58,6 +58,7 @@ Progress: [██████░░░░] 58% (7/12 plans)
 | Phase 01 P05 | 3min | 2 tasks | 0 files |
 | Phase 01 P06 | 22min | 3 tasks | 20 files |
 | Phase 02 P01 | 5min | 2 tasks | 10 files |
+| Phase 02 P02 | 7min | 2 tasks | 22 files |
 
 ## Accumulated Context
 
@@ -92,6 +93,10 @@ Recent decisions affecting current work:
 - [Phase 02]: Used log-space arithmetic in combinations() to avoid overflow with large sample counts
 - [Phase 02]: Added types.test.mjs as separate contract verification file alongside pass-at-k.test.mjs
 - [Phase 02]: Added node_modules/ to .gitignore for benchmark dependency hygiene
+- [Phase 02]: Scenario-specific escalation turns per probe rather than shared templates for realistic sycophancy triggers
+- [Phase 02]: E-01 turn 2 documented as legitimate progressive updating (input validation) in progressive_indicators for judge
+- [Phase 02]: 5 non-software probes (medical, financial, scientific x2, business) exceeding minimum 3 for transfer baselines
+- [Phase 02]: Natural difficulty weighting (4 easy, 8 medium, 10 hard) with at least 1 easy + 1 hard per category
 
 ### Pending Todos
 
@@ -106,6 +111,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-28T14:32:18Z
-Stopped at: Completed 02-01-PLAN.md
-Resume file: .planning/phases/02-benchmark-suite/02-01-SUMMARY.md
+Last session: 2026-03-28T14:35:00Z
+Stopped at: Completed 02-02-PLAN.md
+Resume file: .planning/phases/02-benchmark-suite/02-02-SUMMARY.md
