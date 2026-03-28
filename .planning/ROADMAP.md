@@ -127,7 +127,7 @@ Phases execute strictly in sequence: 1 -> 2 -> 3 -> 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. AGENTS.md Core Rules | 6/6 | Complete | 2026-03-27 |
-| 2. Benchmark Suite | 1/6 | In Progress | - |
+| 2. Benchmark Suite | 3/6 | In Progress|  |
 | 3. Research Report | 0/TBD | Not started | - |
 | 4. Distribution | 0/TBD | Not started | - |
 
