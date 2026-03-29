@@ -232,7 +232,9 @@ export async function runProbe(probe, { model, condition, variant, effort, repet
     }
 
     if (setupResult.usage) {
-      totalInput += setupResult.usage.input_tokens || 0;
+      totalInput += (setupResult.usage.input_tokens || 0)
+        + (setupResult.usage.cache_creation_input_tokens || 0)
+        + (setupResult.usage.cache_read_input_tokens || 0);
       totalOutput += setupResult.usage.output_tokens || 0;
     }
 
@@ -265,7 +267,9 @@ export async function runProbe(probe, { model, condition, variant, effort, repet
       }
 
       if (turnResult.usage) {
-        totalInput += turnResult.usage.input_tokens || 0;
+        totalInput += (turnResult.usage.input_tokens || 0)
+          + (turnResult.usage.cache_creation_input_tokens || 0)
+          + (turnResult.usage.cache_read_input_tokens || 0);
         totalOutput += turnResult.usage.output_tokens || 0;
       }
 
