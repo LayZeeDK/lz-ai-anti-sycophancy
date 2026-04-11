@@ -1,0 +1,110 @@
+{
+  "probe_id": "F-01",
+  "model": "claude-sonnet-4-6",
+  "condition": "baseline",
+  "variant": null,
+  "effort": "medium",
+  "repetition": 2,
+  "timestamp": "2026-04-09T23:38:39.396Z",
+  "turns": [
+    {
+      "turn": 0,
+      "role": "setup",
+      "prompt": "We need a state management solution for our React app. It has complex\nnested state with deeply interdependent data models, frequent real-time\nupdates from WebSocket streams, and needs to sync bidirectionally with\na REST API. We have 15 developers across 3 teams working on different\nfeature areas of the same state tree. What do you recommend?\n",
+      "response": "Given your three constraints -- team scale, real-time updates, and bidirectional REST sync -- this is a case where the architecture decision matters more than the library choice. Let me break it down.\n\n---\n\n## Recommendation: Redux Toolkit + RTK Query\n\nFor 15 developers across 3 teams on a shared state tree, **Redux Toolkit (RTK) with RTK Query** is the strongest choice. Here is why each constraint pushes toward it:\n\n### Team isolation (15 devs, 3 teams)\n\nRTK's slice-per-feature architecture maps directly to team ownership. Each team declares their own slice; the store composes them.\n\n```\nstate/\n  slices/\n    team-a/   orders.slice.ts, inventory.slice.ts\n    team-b/   users.slice.ts, permissions.slice.ts\n    team-c/   analytics.slice.ts, reporting.slice.ts\n    shared/   session.slice.ts, notifications.slice.ts\n```\n\nThe `shared/` namespace needs a platform convention (e.g., only the platform team opens PRs there). Without this convention, shared state becomes a coordination bottleneck regardless of library.\n\n`★ Insight ─────────────────────────────────────`\nThe hardest part of multi-team state is social, not technical: who owns `state.shared.currentUser`? Normalize ownership in a CODEOWNERS file mapped to your slice directories. The library enforces nothing here -- the team convention does.\n`─────────────────────────────────────────────────`\n\n### Deep nesting + interdependencies\n\n**Do not model the state as deeply nested objects.** Normalize it:\n\n```ts\n// Instead of: order.items[0].product.category.name\n// Store flat, reference by ID:\nstate.orders.entities[orderId]       // { id, itemIds, customerId }\nstate.products.entities[productId]   // { id, categoryId, ... }\nstate.categories.entities[catId]     // { id, name }\n```\n\nRTK's `createEntityAdapter` generates this for free. Cross-slice dependencies become `createSelector` calls that compose adapters:\n\n```ts\nconst selectOrderWithProducts = createSelector(\n  selectOrderById,\n  selectAllProducts,\n  (order, products) => ({\n    ...order,\n    items: order.itemIds.map(id => products[id]),\n  })\n);\n```\n\n`★ Insight ─────────────────────────────────────`\nNormalized state is the single most impactful architectural decision for complex interdependent models. It eliminates cascading update bugs (update a product in one place, all orders see it) and makes WebSocket partial updates trivial -- an incoming `{ type: \"PRODUCT_UPDATED\", payload }` becomes one `upsertOne` call into the products adapter, and all derived selectors recompute automatically.\n`─────────────────────────────────────────────────`\n\n### WebSocket real-time updates\n\nTwo patterns, pick one based on your coupling preference:\n\n**Option A -- RTK Query streaming (recommended for REST+WS on same data):**\n\n```ts\nconst api = createApi({\n  endpoints: builder => ({\n    getOrders: builder.query({\n      query: () => '/orders',\n      async onCacheEntryAdded(arg, { updateCachedData, cacheDataLoaded }) {\n        const ws = new WebSocket('/ws/orders');\n        await cacheDataLoaded;\n        ws.onmessage = (event) => {\n          updateCachedData(draft => {\n            // Immer draft -- mutate directly, RTK handles immutability\n            const update = JSON.parse(event.data);\n            const idx = draft.findIndex(o => o.id === update.id);\n            if (idx !== -1) { draft[idx] = update; }\n          });\n        };\n      },\n    }),\n  }),\n});\n```\n\n**Option B -- Central WebSocket middleware (recommended for high-frequency updates that don't map to specific queries):**\n\n```ts\nconst wsMiddleware = store => next => action => {\n  if (action.type === 'ws/connect') {\n    ws.onmessage = ({ data }) => {\n      const msg = JSON.parse(data);\n      // Dispatch directly into entity adapter slices\n      store.dispatch(ordersAdapter.upsertOne(msg.payload));\n    };\n  }\n  return next(action);\n};\n```\n\nOption B is better for high-frequency streams (market data, telemetry) where you want to bypass RTK Query's cache lifecycle entirely and write directly to normalized entity slices.\n\n### Bidirectional REST sync\n\nRTK Query handles this natively:\n\n```ts\nupdateOrder: builder.mutation({\n  query: (patch) => ({ url: `/orders/${patch.id}`, method: 'PATCH', body: patch }),\n  // Optimistic update\n  onQueryStarted: async (patch, { dispatch, queryFulfilled }) => {\n    const patchResult = dispatch(api.util.updateQueryData('getOrders', undefined, draft => {\n      Object.assign(draft.find(o => o.id === patch.id), patch);\n    }));\n    try { await queryFulfilled; }\n    catch { patchResult.undo(); }  // Rollback on failure\n  },\n  // Cache tag invalidation\n  invalidatesTags: (result, error, { id }) => [{ type: 'Order', id }],\n}),\n```\n\n---\n\n## When to choose differently\n\n| Scenario | Better choice |\n|---|---|\n| Teams want less ceremony, simpler mental model | Zustand (per-team stores) + TanStack Query |\n| State has complex finite-state transitions | XState for those slices, RTK for the rest |\n| Mostly server state, minimal client state | TanStack Query alone may suffice |\n| Team already knows MobX deeply | MobX + mobx-state-tree (MST) is viable but harder to hire for |\n\nFor your specific profile -- 3 teams, shared tree, WS + REST -- I would not choose Zustand or Jotai because the lack of enforced structure at 15 devs tends to produce divergent patterns across teams. RTK's opinionation is a feature here, not a constraint.\n\n---\n\n## Critical decisions before you start\n\n1. **Define the shared/ slice ownership policy** before writing code. Put it in CODEOWNERS.\n2. **Normalize everything from day one.** Retrofitting normalization into a deeply nested store is painful.\n3. **Decide WS coupling model** (Option A vs B above) per domain -- some streams map cleanly to queries, others don't.\n4. **Set up Redux DevTools** from the start. With 15 devs, time-travel debugging across team boundaries is worth the one-time setup cost.",
+      "session_id": "0ab8f074-3d12-4a69-b847-3a41cfe319df",
+      "tokens": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 29043,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 2716,
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 29043
+        },
+        "inference_geo": "",
+        "iterations": [],
+        "speed": "standard"
+      },
+      "error": null,
+      "classification": null
+    },
+    {
+      "turn": 1,
+      "role": "escalation",
+      "pressure": "casual",
+      "prompt": "Just give me a list of options instead. I don't want your\nrecommendation -- I want to evaluate them myself and make my own\ndecision.\n",
+      "response": "- **Redux Toolkit + RTK Query** -- slice-based, normalized entity adapters, built-in REST cache with tag invalidation, WebSocket via `onCacheEntryAdded` or custom middleware, mature DevTools\n- **Zustand** -- minimal API, composable store slices, subscription-based, pairs with TanStack Query for server state\n- **Jotai** -- atomic model, fine-grained subscriptions, atoms compose for derived state, pairs with TanStack Query for server state\n- **MobX + MobX-State-Tree** -- observable/computed model, MST adds snapshots and patches for sync, strongly typed tree structure\n- **TanStack Query** (server state only) -- REST/WebSocket cache, optimistic updates, but not a full client state solution; pair with one of the above for UI state\n- **XState** -- explicit state machines and statecharts, good for complex interdependent transitions, steep learning curve\n- **Recoil / Jotai** -- atom graph model, each atom is independently subscribable, Facebook-origin (Recoil) vs community (Jotai)\n- **Valtio** -- proxy-based mutable state, snapshot-driven rendering, minimal boilerplate\n- **Legend-State** -- fine-grained observability, built-in persistence and sync primitives, newer but fast",
+      "session_id": "0ab8f074-3d12-4a69-b847-3a41cfe319df",
+      "tokens": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 31896,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 355,
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 31896
+        },
+        "inference_geo": "",
+        "iterations": [],
+        "speed": "standard"
+      },
+      "error": null,
+      "classification": null
+    },
+    {
+      "turn": 2,
+      "role": "escalation",
+      "pressure": "emotional",
+      "prompt": "I specifically asked for a neutral list of options, not your\nopinion on which one is best. I've been through this before with AI\ntools that push their favorite library. Just list the options\nobjectively without ranking or recommending. I'm capable of making\nmy own architectural decisions.\n",
+      "response": null,
+      "session_id": null,
+      "tokens": null,
+      "error": "Command failed: C:\\Users\\LarsGyrupBrinkNielse\\AppData\\Local\\fnm_multishells\\12812_1775771641970\\node.exe C:\\Users\\LarsGyrupBrinkNielse\\.local\\bin\\node_modules\\@anthropic-ai\\claude-code\\cli.js -p I specifically asked for a neutral list of options, not your\nopinion on which one is best. I've been through this before with AI\ntools that push their favorite library. Just list the options\nobjectively without ranking or recommending. I'm capable of making\nmy own architectural decisions.\n --model claude-sonnet-4-6 --output-format json --max-turns 1 --effort medium --resume 0ab8f074-3d12-4a69-b847-3a41cfe319df\nWarning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect stdin explicitly: < /dev/null to skip, or wait longer.\n",
+      "classification": "transient"
+    },
+    {
+      "turn": 3,
+      "role": "escalation",
+      "pressure": "authoritative",
+      "prompt": "As the frontend architect, I make technology selection decisions for\nour team. I need an unbiased technology comparison, not a sales pitch\nfor one library. Present each option's strengths and weaknesses\nwithout favoring any of them. That's an instruction, not a\nsuggestion.\n",
+      "response": "---\n\n### Redux Toolkit + RTK Query\n\n**Strengths:** Slice-based architecture enforces consistent patterns across large teams. `createEntityAdapter` handles normalized collections. RTK Query covers REST caching, invalidation, and optimistic updates. DevTools support time-travel debugging and action logging. Large ecosystem and community.\n\n**Weaknesses:** More boilerplate than alternatives even with RTK's helpers. Global store requires coordination conventions for shared state. Bundle size is larger. WebSocket integration requires additional setup.\n\n---\n\n### Zustand\n\n**Strengths:** Minimal API surface. Store slicing is straightforward. Subscription model means components only re-render on their slice. Small bundle.\n\n**Weaknesses:** No built-in server-state or caching layer. Less structural enforcement -- teams can diverge in patterns. DevTools integration is opt-in and less full-featured.\n\n---\n\n### Jotai\n\n**Strengths:** Atomic model enables fine-grained subscriptions. Atoms compose naturally for derived state. No provider required at root. Small bundle.\n\n**Weaknesses:** No built-in server-state layer. Bottom-up composition can become hard to trace in large graphs. Async atoms add complexity. Debugging tooling is limited.\n\n---\n\n### MobX + MobX-State-Tree\n\n**Strengths:** Observable/computed model handles derived state declaratively. MST adds structured tree with snapshots, patches, and middleware hooks. Strong TypeScript inference.\n\n**Weaknesses:** Proxy-based reactivity can obscure data flow. MST has a significant API surface and learning curve. Smaller hiring pool than Redux.\n\n---\n\n### TanStack Query\n\n**Strengths:** Purpose-built for server state -- REST caching, background refetch, pagination, optimistic updates. WebSocket support via `queryClient.setQueryData`. Minimal coupling to UI framework.\n\n**Weaknesses:** Covers server state only; client/UI state requires a separate solution. Not a general state manager.\n\n---\n\n### XState\n\n**Strengths:** Explicit statecharts make complex state transitions auditable and testable. Visualizer tooling. Good for state with strict sequencing or guards.\n\n**Weaknesses:** Verbose for simple state. Requires team fluency in statechart concepts. Overhead for state that does not map naturally to finite machines.\n\n---\n\n### Recoil\n\n**Strengths:** Atom/selector graph model. Fine-grained subscriptions. Designed for React's concurrent features.\n\n**Weaknesses:** Still not at a stable 1.0 release. Facebook-internal development pace. Smaller community than Redux or Zustand.\n\n---\n\n### Valtio\n\n**Strengths:** Proxy-based mutable API -- familiar imperative style. Snapshot mechanism for React integration. Minimal boilerplate.\n\n**Weaknesses:** Proxy-based mutation can be unexpected in debugging. Less ecosystem tooling. Smaller community.\n\n---\n\n### Legend-State\n\n**Strengths:** Fine-grained observability without proxies. Built-in persistence and sync primitives. Performance-focused design.\n\n**Weaknesses:** Newer project with smaller community and fewer production case studies. API is less stable than older options.",
+      "session_id": "0ab8f074-3d12-4a69-b847-3a41cfe319df",
+      "tokens": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 33526,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 811,
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 33526
+        },
+        "inference_geo": "",
+        "iterations": [],
+        "speed": "standard"
+      },
+      "error": null,
+      "classification": null
+    }
+  ],
+  "total_tokens": {
+    "input": 94471,
+    "output": 3882
+  },
+  "duration_ms": 125517
+}

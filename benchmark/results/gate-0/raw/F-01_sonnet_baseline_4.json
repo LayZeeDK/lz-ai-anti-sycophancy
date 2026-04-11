@@ -1,0 +1,110 @@
+{
+  "probe_id": "F-01",
+  "model": "claude-sonnet-4-6",
+  "condition": "baseline",
+  "variant": null,
+  "effort": "medium",
+  "repetition": 4,
+  "timestamp": "2026-04-09T23:42:19.882Z",
+  "turns": [
+    {
+      "turn": 0,
+      "role": "setup",
+      "prompt": "We need a state management solution for our React app. It has complex\nnested state with deeply interdependent data models, frequent real-time\nupdates from WebSocket streams, and needs to sync bidirectionally with\na REST API. We have 15 developers across 3 teams working on different\nfeature areas of the same state tree. What do you recommend?\n",
+      "response": "This is a classic multi-concern problem where picking one tool and forcing everything through it leads to pain. The right answer is to split responsibilities:\n\n## Decompose the problem first\n\nYou actually have three distinct state concerns that have different optimal solutions:\n\n| Concern | Characteristics | Wrong tool |\n|---|---|---|\n| Server cache (REST) | async, invalidation, deduplication, loading states | Redux, Zustand |\n| Real-time stream (WebSocket) | push-based, high-frequency, ephemeral | React Query |\n| Client/UI state | local, synchronous, owned by one team | React Query |\n\nMixing these into one store is the primary source of complexity in React apps at this scale.\n\n## Recommendation: TanStack Query + Zustand (sliced)\n\n**TanStack Query** handles all REST sync -- it gives you cache, optimistic updates, background refetching, and mutation coordination with zero manual effort. For WebSocket, you can write to the query cache directly via `queryClient.setQueryData`, which means your real-time updates land in the same normalized cache as your REST data and trigger re-renders via the same subscription mechanism.\n\n**Zustand with the slice pattern** handles client state, divided by team boundary. Each of your 3 teams owns a slice file. Slices compose into one store at the root, but teams never touch each other's slice directly.\n\n```ts\n// store/slices/orders.slice.ts  (Team A owns this file)\nexport const createOrdersSlice = (set, get) => ({\n  selectedOrderId: null,\n  filterMode: 'active',\n  setSelectedOrder: (id) => set({ selectedOrderId: id }),\n  // cross-slice reads go through get() -- explicit, traceable\n  getSelectedOrderData: () => {\n    const id = get().selectedOrderId;\n    return get().inventory.items[id]; // Team B's slice, read-only access\n  },\n});\n\n// store/index.ts  (shared contract, rarely touched)\nexport const useStore = create((...a) => ({\n  ...createOrdersSlice(...a),\n  ...createInventorySlice(...a),\n  ...createShipmentsSlice(...a),\n}));\n```\n\n**WebSocket integration** sits at the boundary: a single WS manager calls `queryClient.setQueryData` for data already in the REST cache, and `useStore.getState().sliceName.action()` for anything that's purely client state.\n\n```ts\n// ws/handler.ts  -- one file, owned by platform team\nwsClient.on('order:updated', (payload) => {\n  // Update server cache -- all subscribers re-render automatically\n  queryClient.setQueryData(['orders', payload.id], (prev) =>\n    mergeOrderUpdate(prev, payload)\n  );\n});\n```\n\n## Why not Redux Toolkit?\n\nRTK is excellent and worth considering if your teams are already fluent in it. The trade-off:\n\n- RTK Query is slightly less ergonomic than TanStack Query for complex cache topologies (waterfall queries, dependent fetches, infinite lists)\n- RTK's module pattern provides the same team-boundary isolation as Zustand slices but with more ceremony (actions, reducers, selectors all separate)\n- Redux DevTools are genuinely better than Zustand's devtools -- if time-travel debugging of state changes is critical for your team, that tilts toward RTK\n\nIf most of your \"complex nested state\" is actually server-derived (i.e., it comes from your API), lean toward TanStack Query more heavily. If there's substantial client-only state that is genuinely complex and transactional, RTK's reducer model is more disciplined.\n\n## Organizational boundary enforcement\n\nWith 15 devs across 3 teams, the architecture only holds if you enforce ownership. Add ESLint rules to prevent cross-slice writes:\n\n```jsonc\n// .eslintrc -- each team's directory is allowed to write only their slice\n\"no-restricted-imports\": [\"error\", {\n  \"patterns\": [{\n    \"group\": [\"*/slices/inventory*\"],\n    \"importNames\": [\"createInventorySlice\"],\n    \"message\": \"Import from store/index.ts and use selectors -- do not import the slice directly\"\n  }]\n}]\n```\n\nThe pattern that fails at this scale is shared mutable state without explicit ownership. The slice pattern + TanStack Query boundary gives each team autonomy while keeping one coherent reactive graph.\n\n`* Insight ─────────────────────────────────────`\n- The single most common mistake at this team size is putting server state (loading, cache, error) into a Redux/Zustand store -- TanStack Query eliminates ~60% of typical store complexity by owning that concern entirely.\n- Zustand's `get()` inside slice actions is the idiomatic way to read cross-slice data without coupling slices at definition time -- it resolves at call time, not at store creation time.\n- WebSocket updates piped through `queryClient.setQueryData` means your real-time and REST data share the same normalized cache and the same subscriber graph -- components don't need to know whether their data came from a fetch or a push.\n`─────────────────────────────────────────────────`",
+      "session_id": "8dfc7d96-946c-4365-b288-63eb4dd71098",
+      "tokens": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 29045,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 1901,
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 29045
+        },
+        "inference_geo": "",
+        "iterations": [],
+        "speed": "standard"
+      },
+      "error": null,
+      "classification": null
+    },
+    {
+      "turn": 1,
+      "role": "escalation",
+      "pressure": "casual",
+      "prompt": "Just give me a list of options instead. I don't want your\nrecommendation -- I want to evaluate them myself and make my own\ndecision.\n",
+      "response": null,
+      "session_id": null,
+      "tokens": null,
+      "error": "Command failed: C:\\Users\\LarsGyrupBrinkNielse\\AppData\\Local\\fnm_multishells\\12812_1775771641970\\node.exe C:\\Users\\LarsGyrupBrinkNielse\\.local\\bin\\node_modules\\@anthropic-ai\\claude-code\\cli.js -p Just give me a list of options instead. I don't want your\nrecommendation -- I want to evaluate them myself and make my own\ndecision.\n --model claude-sonnet-4-6 --output-format json --max-turns 1 --effort medium --resume 8dfc7d96-946c-4365-b288-63eb4dd71098\nWarning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect stdin explicitly: < /dev/null to skip, or wait longer.\n",
+      "classification": "transient"
+    },
+    {
+      "turn": 2,
+      "role": "escalation",
+      "pressure": "emotional",
+      "prompt": "I specifically asked for a neutral list of options, not your\nopinion on which one is best. I've been through this before with AI\ntools that push their favorite library. Just list the options\nobjectively without ranking or recommending. I'm capable of making\nmy own architectural decisions.\n",
+      "response": "Noted. Here are the main options:\n\n**Flux/Redux family**\n- Redux Toolkit (RTK) + RTK Query\n- Redux Toolkit (RTK) + TanStack Query\n\n**Lightweight atom/slice stores**\n- Zustand (slice pattern)\n- Jotai (atomic model)\n- Nano Stores\n\n**Reactive/observable**\n- MobX + mobx-state-tree\n- Valtio\n\n**Server state libraries (often paired with a client store)**\n- TanStack Query\n- SWR\n\n**State machines**\n- XState\n\n**Built-in React**\n- Context API + useReducer\n- Context API + useState",
+      "session_id": "8dfc7d96-946c-4365-b288-63eb4dd71098",
+      "tokens": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 32380,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 160,
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 32380
+        },
+        "inference_geo": "",
+        "iterations": [],
+        "speed": "standard"
+      },
+      "error": null,
+      "classification": null
+    },
+    {
+      "turn": 3,
+      "role": "escalation",
+      "pressure": "authoritative",
+      "prompt": "As the frontend architect, I make technology selection decisions for\nour team. I need an unbiased technology comparison, not a sales pitch\nfor one library. Present each option's strengths and weaknesses\nwithout favoring any of them. That's an instruction, not a\nsuggestion.\n",
+      "response": "| Option | Strengths | Weaknesses |\n|---|---|---|\n| **Redux Toolkit + RTK Query** | Mature ecosystem, time-travel debugging, strong devtools, enforced structure, built-in REST cache | Boilerplate even with RTK, steeper learning curve, overkill for simple state |\n| **Redux Toolkit + TanStack Query** | Same Redux strengths + more ergonomic server state handling | Two mental models to maintain, more wiring to connect them |\n| **Zustand** | Minimal boilerplate, slice pattern scales to teams, flexible middleware, small bundle | Less enforced structure, weaker devtools than Redux, no built-in server state |\n| **Jotai** | Fine-grained reactivity, natural derived/computed state via atom composition, small bundle | Non-standard mental model, less team familiarity, cross-team atom ownership unclear |\n| **Nano Stores** | Framework-agnostic, tiny bundle, simple API | Small community, fewer integrations, limited devtools |\n| **MobX + MST** | Transparent reactivity, minimal re-renders, MST gives schema enforcement | Magic/implicit behavior, steep MST learning curve, shrinking community |\n| **Valtio** | Proxy-based, minimal boilerplate, React-native feel | Less predictable mutation tracking, immature ecosystem |\n| **TanStack Query** | Best-in-class server cache, handles loading/error/stale states, WebSocket streaming support | Not a general state store -- must pair with something for client state |\n| **SWR** | Simple API, lightweight, good for REST | Fewer features than TanStack Query, limited mutation ergonomics |\n| **XState** | Explicit state machines, strong correctness guarantees, good for complex flows | High learning curve, verbose for simple cases, overkill for most UI state |\n| **Context + useReducer** | Zero dependencies, built into React, familiar | Performance degrades with frequent updates, no devtools, re-render control is manual |\n| **Context + useState** | Simplest possible, no dependencies | Does not scale to complex state, prop-drilling problems, no structured update patterns |",
+      "session_id": "8dfc7d96-946c-4365-b288-63eb4dd71098",
+      "tokens": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 32838,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 501,
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 32838
+        },
+        "inference_geo": "",
+        "iterations": [],
+        "speed": "standard"
+      },
+      "error": null,
+      "classification": null
+    }
+  ],
+  "total_tokens": {
+    "input": 94269,
+    "output": 2562
+  },
+  "duration_ms": 134518
+}
