@@ -1,10 +1,11 @@
 ---
 phase: 2
 slug: benchmark-suite
-status: draft
-nyquist_compliant: false
-wave_0_complete: false
+status: complete
+nyquist_compliant: true
+wave_0_complete: true
 created: 2026-03-28
+audited: 2026-04-11
 ---
 
 # Phase 2 -- Validation Strategy
@@ -18,10 +19,11 @@ created: 2026-03-28
 | Property | Value |
 |----------|-------|
 | **Framework** | Node.js built-in test runner (`node:test`) + assert |
-| **Config file** | none -- Wave 0 installs |
+| **Config file** | none |
 | **Quick run command** | `node --test benchmark/test/*.mjs` |
 | **Full suite command** | `node --test benchmark/test/*.mjs` |
-| **Estimated runtime** | ~5 seconds |
+| **Estimated runtime** | ~0.3 seconds |
+| **Total tests** | 109 (109 pass, 0 fail, 0 todo) |
 
 ---
 
@@ -30,54 +32,71 @@ created: 2026-03-28
 - **After every task commit:** Run `node --test benchmark/test/*.mjs`
 - **After every plan wave:** Run `node --test benchmark/test/*.mjs`
 - **Before `/gsd:verify-work`:** Full suite must be green
-- **Max feedback latency:** 10 seconds
+- **Max feedback latency:** 1 second
 
 ---
 
 ## Per-Task Verification Map
 
-| Task ID | Plan | Wave | Requirement | Test Type | Automated Command | File Exists | Status |
-|---------|------|------|-------------|-----------|-------------------|-------------|--------|
-| TBD | 01 | 0 | BENCH-01 | unit | `node --test benchmark/test/probe-loader.test.mjs` | -- W0 | pending |
-| TBD | 01 | 0 | BENCH-02 | integration | `node --test benchmark/test/executor.test.mjs` | -- W0 | pending |
-| TBD | 01 | 0 | BENCH-03 | unit | `node --test benchmark/test/scorer.test.mjs` | -- W0 | pending |
-| TBD | 01 | 0 | BENCH-04 | unit | `node --test benchmark/test/probe-loader.test.mjs` | -- W0 | pending |
-| TBD | 01 | 0 | BENCH-05 | integration | `node --test benchmark/test/executor.test.mjs` | -- W0 | pending |
-| TBD | 01 | 0 | BENCH-06 | smoke | `node benchmark/runner.mjs --gate 0 --dry-run` | -- W0 | pending |
-| TBD | 01 | 0 | BENCH-07 | unit | `node --test benchmark/test/reporter.test.mjs` | -- W0 | pending |
-| TBD | 01 | 0 | BENCH-08 | smoke | Manual verification of result files | manual-only | pending |
-| TBD | 01 | 0 | BENCH-09 | smoke | Manual verification of report delta | manual-only | pending |
-
-*Status: pending / green / red / flaky*
+| Requirement | Plan | Test File | Test Coverage | Status |
+|-------------|------|-----------|---------------|--------|
+| BENCH-01 | 01, 02 | probe-loader.test.mjs | loadAllProbes validates all 6 categories present | COVERED |
+| BENCH-02 | 01, 03 | executor.test.mjs, reporter.test.mjs | buildCliArgs tests condition args; computeMetrics groups by condition | COVERED |
+| BENCH-03 | 04 | scorer.test.mjs | buildJudgePrompt includes regressive/progressive definitions; judge schema validates classification | COVERED |
+| BENCH-04 | 02 | probe-loader.test.mjs | loadAllProbes verifies coding-domain probes exist across subdomains | COVERED |
+| BENCH-05 | 02, 03 | executor.test.mjs | runProbe tests 3-turn chaining with session resume | COVERED |
+| BENCH-06 | 03, 05 | executor.test.mjs, reporter.test.mjs | Full pipeline: probe loading, execution, scoring, report generation | COVERED |
+| BENCH-07 | 01, 05 | pass-at-k.test.mjs, reporter.test.mjs | 13 math tests for Pass@k/Pass^k + computeMetrics at k=1,3,5 | COVERED |
+| BENCH-08 | -- | -- | Deferred to v2 (EXT-01) | N/A |
+| BENCH-09 | 06 | -- | Manual: Gate 0 report shows +26.8% delta (55.0% -> 81.8%) | MANUAL-ONLY |
 
 ---
 
-## Wave 0 Requirements
+## Test File Summary
 
-- [ ] `benchmark/package.json` -- ESM package with `yaml` dependency and test script
-- [ ] `benchmark/test/probe-loader.test.mjs` -- validates YAML schema, category coverage, frontmatter fields
-- [ ] `benchmark/test/executor.test.mjs` -- tests temp dir creation/cleanup, CLI arg construction (mock claude -p)
-- [ ] `benchmark/test/scorer.test.mjs` -- tests judge schema, regressive/progressive classification logic
-- [ ] `benchmark/test/reporter.test.mjs` -- tests Pass@k/Pass^k computation, markdown generation
+| File | Tests | Covers |
+|------|-------|--------|
+| `benchmark/test/pass-at-k.test.mjs` | 13 | BENCH-07: combinatorics, passAtK, passHatK, edge cases |
+| `benchmark/test/types.test.mjs` | 13 | Contract verification: CATEGORIES, FACETS, JUDGE_SCHEMA, MODELS, GATES |
+| `benchmark/test/probe-loader.test.mjs` | 16 | BENCH-01, BENCH-04: YAML loading, validation, category coverage |
+| `benchmark/test/executor.test.mjs` | 25 | BENCH-02, BENCH-05, BENCH-06: CLI args, temp dirs, error classification, multi-turn |
+| `benchmark/test/scorer.test.mjs` | 21 | BENCH-03: judge prompt, CLI invocation, low-confidence flagging, batch scoring |
+| `benchmark/test/reporter.test.mjs` | 21 | BENCH-06, BENCH-07: metrics, go/no-go, markdown report, file generation |
 
 ---
 
 ## Manual-Only Verifications
 
-| Behavior | Requirement | Why Manual | Test Instructions |
-|----------|-------------|------------|-------------------|
-| Results for 2 model families | BENCH-08 | Requires actual model invocations with subscription | Run Gate 0 with --model claude-opus-4-6 and --model claude-sonnet-4-6, verify both produce result files |
-| Measurable improvement | BENCH-09 | Requires full benchmark run and human review of report | Run Gate 0, compare before/after delta in markdown report |
+| Behavior | Requirement | Why Manual | Verification |
+|----------|-------------|------------|--------------|
+| Measurable improvement | BENCH-09 | Requires actual model invocations with subscription and human review | Gate 0 report: +26.8% delta, PROCEED recommendation. 440/440 conversations scored. |
+| 2+ model families | BENCH-08 | Deferred to v2 | N/A -- covered by EXT-01 |
 
 ---
 
 ## Validation Sign-Off
 
-- [ ] All tasks have `<automated>` verify or Wave 0 dependencies
-- [ ] Sampling continuity: no 3 consecutive tasks without automated verify
-- [ ] Wave 0 covers all MISSING references
-- [ ] No watch-mode flags
-- [ ] Feedback latency < 10s
-- [ ] `nyquist_compliant: true` set in frontmatter
+- [x] All tasks have automated verify or documented manual verification
+- [x] Sampling continuity: no 3 consecutive tasks without automated verify
+- [x] Wave 0 covers all MISSING references
+- [x] No watch-mode flags
+- [x] Feedback latency < 10s (actual: < 1s)
+- [x] `nyquist_compliant: true` set in frontmatter
 
-**Approval:** pending
+**Approval:** complete
+
+---
+
+## Validation Audit 2026-04-11
+
+| Metric | Count |
+|--------|-------|
+| Requirements audited | 9 |
+| COVERED (automated) | 7 |
+| MANUAL-ONLY | 1 (BENCH-09) |
+| N/A (deferred) | 1 (BENCH-08) |
+| Gaps found | 0 |
+| Resolved | 0 |
+| Escalated | 0 |
+
+All 109 tests passing. No gaps identified. Phase 2 is Nyquist-compliant.
