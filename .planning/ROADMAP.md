@@ -19,7 +19,10 @@ collected; you cannot document what has not been verified.
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: AGENTS.md Core Rules** - Write research-backed behavioral rules targeting all 19+ sycophancy categories
-- [ ] **Phase 2: Benchmark Suite** - Build before/after comparison framework with coding-domain probes and Pass@k metrics
+- [x] **Phase 2: Benchmark Suite** - Build before/after comparison framework with coding-domain probes and Pass@k metrics
+- [ ] **Phase 2.1: Failure Analysis + Probe Hardening** - Analyze Gate 0 C/F failures, replace saturated probes, revise rules (INSERTED)
+- [ ] **Phase 2.2: Focused Benchmark** - Gate 0b with hardened probes + targeted Gate 1 content variants on C/F (INSERTED)
+- [ ] **Phase 2.3: Robustness Validation** - Gate 3 real-world conditions as final ship gate (INSERTED)
 - [ ] **Phase 3: Research Report** - Synthesize research corpus and benchmark results into a practitioner-accessible document
 - [ ] **Phase 4: Distribution** - Assemble README, reference docs, LICENSE, and ship-ready repo structure
 
@@ -87,10 +90,64 @@ Plans:
 
 ---
 
+### Phase 02.1: Failure Analysis + Probe Hardening (INSERTED)
+
+**Goal**: Understand why AGENTS.md underperforms on multi-turn drift (C: 53.3%) and epistemic
+honesty (F: 67.5%) by analyzing Gate 0 failure transcripts, replace 7 saturated probes with
+harder variants, and revise AGENTS.md rules if failure analysis reveals addressable gaps.
+**Depends on**: Phase 2
+**Requirements**: TBD (analysis phase -- no new formal requirements; feeds into Phase 2.2)
+**Success Criteria** (what must be TRUE):
+  1. All failed C-treatment and F-treatment conversations from Gate 0 have been read and failure patterns documented (pressure type, flip turn, specific capitulation trigger).
+  2. 7 replacement probes written for saturated probes (A-01, A-02, B-04, D-02, E-02, E-04, F-04), targeting the same categories at higher difficulty.
+  3. Decision documented: revise AGENTS.md rules OR proceed to variant testing with current rules, with specific rationale based on failure analysis findings.
+**Plans:** 0 plans
+
+Plans:
+- [ ] TBD (run /gsd-plan-phase 02.1 to break down)
+
+---
+
+### Phase 02.2: Focused Benchmark (INSERTED)
+
+**Goal**: Re-establish baseline and treatment rates with hardened probes (Gate 0b), then run
+targeted content variant comparisons on weak categories C and F to identify the best-performing
+AGENTS.md configuration before shipping.
+**Depends on**: Phase 02.1
+**Requirements**: TBD (extends BENCH-09 with refined measurement)
+**Success Criteria** (what must be TRUE):
+  1. Gate 0b results exist for all 22 probes (15 original + 7 replacements) with hardened probe set, establishing updated baseline and treatment rates.
+  2. Focused Gate 1 results compare epistemic labeling variants on F probes and mechanism-cluster variant on C probes against the primary.
+  3. Best-performing configuration selected with documented rationale. If no variant improves C or F by >10%, primary is confirmed as the shipping candidate.
+**Plans:** 0 plans
+
+Plans:
+- [ ] TBD (run /gsd-plan-phase 02.2 to break down)
+
+---
+
+### Phase 02.3: Robustness Validation (INSERTED)
+
+**Goal**: Verify the winning AGENTS.md configuration maintains effectiveness under real-world
+conditions (long context, Claude Code system prompt wrapping, high-effort reasoning) as the
+final go/no-go gate before shipping.
+**Depends on**: Phase 02.2
+**Requirements**: TBD (extends BENCH-09 with robustness dimension)
+**Success Criteria** (what must be TRUE):
+  1. Treatment rates under long context (80K+ tokens), Claude Code "may or may not be relevant" wrapper, and --effort max do not degrade by more than 10% from clean-condition Gate 0b rates.
+  2. Any condition causing >10% degradation is documented with specific failure patterns and mitigation recommendations.
+  3. Ship/patch/investigate decision documented with supporting data.
+**Plans:** 0 plans
+
+Plans:
+- [ ] TBD (run /gsd-plan-phase 02.3 to break down)
+
+---
+
 ### Phase 3: Research Report
 **Goal**: A practitioner reading the report understands why sycophancy matters, what the research
 shows, and what the AGENTS.md and benchmark accomplished, with honest documentation of limitations.
-**Depends on**: Phase 2
+**Depends on**: Phase 02.3
 **Requirements**: RSCH-01, RSCH-02, RSCH-03, RSCH-04
 **Success Criteria** (what must be TRUE):
   1. The report covers the full research arc: taxonomy of 19+ sycophancy categories, RLHF root cause, quantitative rates from SycEval and ELEPHANT, evidence-backed interventions, and actual benchmark results from Phase 2.
@@ -122,12 +179,15 @@ enables any developer to adopt the AGENTS.md in under 5 minutes and understand t
 ## Progress
 
 **Execution Order:**
-Phases execute strictly in sequence: 1 -> 2 -> 3 -> 4
+Phases execute strictly in sequence: 1 -> 2 -> 2.1 -> 2.2 -> 2.3 -> 3 -> 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. AGENTS.md Core Rules | 6/6 | Complete | 2026-03-27 |
 | 2. Benchmark Suite | 6/6 | Complete | 2026-04-11 |
+| 2.1 Failure Analysis + Probe Hardening | 0/TBD | Not started | - |
+| 2.2 Focused Benchmark | 0/TBD | Not started | - |
+| 2.3 Robustness Validation | 0/TBD | Not started | - |
 | 3. Research Report | 0/TBD | Not started | - |
 | 4. Distribution | 0/TBD | Not started | - |
 
@@ -149,4 +209,4 @@ No orphaned requirements. No duplicate mappings.
 
 ---
 *Roadmap created: 2026-03-24*
-*Last updated: 2026-04-11 after Phase 2 complete (Gate 0 PROCEED, BENCH-08 deferred to v2)*
+*Last updated: 2026-04-11 after inserting Phases 2.1-2.3 (failure analysis, focused benchmark, robustness)*

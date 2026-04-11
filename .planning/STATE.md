@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-24)
 
 **Core value:** AGENTS.md instructions measurably reduce sycophantic behaviors across all 19+ categories while remaining concise enough (~50-80 rules) that frontier models reliably follow them every session.
-**Current focus:** Phase 2 - Benchmark Suite
+**Current focus:** Phase 2.1 - Failure Analysis + Probe Hardening
 
 ## Current Position
 
-Phase: 2 of 4 (Benchmark Suite)
-Plan: 5 of 6 in current phase
-Status: Executing Phase 2
-Last activity: 2026-03-28 -- Completed 02-05-PLAN.md (reporter + runner CLI orchestrator)
+Phase: 2.1 of 7 (Failure Analysis + Probe Hardening)
+Plan: 0 of TBD in current phase
+Status: Not planned yet
+Last activity: 2026-04-11 -- Completed Phase 2 (Gate 0 PROCEED, +26.8%)
 
-Progress: [█████████░] 92% (11/12 plans)
+Progress: [████████████░░░░░░░░] 12/12+TBD plans
 
 ## Performance Metrics
 
@@ -112,6 +112,12 @@ Recent decisions affecting current work:
 - [Phase 02]: Windows execFile requires node + cli.js direct invocation instead of claude shell wrapper for subprocess spawning
 - [Phase 02]: Scorer needs --max-turns 2 when using --json-schema because structured output requires a tool use turn
 - [Phase 02]: Scored results include repetition/category/difficulty/tokens for proper per-repetition file naming and reporter metadata
+
+### Roadmap Evolution
+
+- Phase 02.1 inserted after Phase 2: Failure Analysis + Probe Hardening (INSERTED) -- analyze Gate 0 C/F failure transcripts, replace 7 saturated probes, revise AGENTS.md if warranted
+- Phase 02.2 inserted after Phase 2: Focused Benchmark (INSERTED) -- Gate 0b with hardened probes + targeted Gate 1 content variants on C/F categories
+- Phase 02.3 inserted after Phase 2: Robustness Validation (INSERTED) -- Gate 3 conditions (long context, Claude Code wrapper, effort max) as ship/no-ship gate
 
 ### Pending Todos
 
