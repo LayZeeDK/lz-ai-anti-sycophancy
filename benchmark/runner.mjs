@@ -518,27 +518,61 @@ async function loadScoredResults(scoredDir) {
  * @param {Array} rawResults - Raw conversation results
  * @param {object} probesMap - Map of probe_id -> probe metadata
  * @param {string} scoredDir - Output directory for scored results
+ * @param {number} [concurrency=3] - Max concurrent judge invocations
  */
-async function runScoringPhase(rawResults, probesMap, scoredDir) {
+async function runScoringPhase(rawResults, probesMap, scoredDir, concurrency = 3) {
   await mkdir(scoredDir, { recursive: true });
 
-  log(`[SCORING] ${rawResults.length} conversations to score...`);
+  // Build set of already-scored files so we can skip them on resume
+  let existingFiles;
 
-  const scored = await scoreAllConversations(rawResults, probesMap, {
-    concurrency: 3,
-  });
-
-  for (const result of scored) {
-    const repSuffix = result.repetition ? `_${result.repetition}` : '';
-    const filename = `${result.probe_id}_${result.model}_${result.condition}${repSuffix}.json`;
-    await writeFile(
-      join(scoredDir, filename),
-      JSON.stringify(result, null, 2),
-      'utf8'
-    );
+  try {
+    existingFiles = new Set(await readdir(scoredDir));
+  } catch {
+    existingFiles = new Set();
   }
 
-  log(`[SCORING] Complete: ${scored.length} results scored`);
+  function scoredFilename(conversation) {
+    const repSuffix = conversation.repetition ? `_${conversation.repetition}` : '';
+
+    return `${conversation.probe_id}_${conversation.model}_${conversation.condition}${repSuffix}.json`;
+  }
+
+  const toScore = rawResults.filter((r) => !existingFiles.has(scoredFilename(r)));
+  const skipped = rawResults.length - toScore.length;
+
+  if (skipped > 0) {
+    log(`[SCORING] Skipping ${skipped} already-scored conversations`);
+  }
+
+  if (toScore.length === 0) {
+    log(`[SCORING] All ${rawResults.length} conversations already scored`);
+
+    return;
+  }
+
+  log(`[SCORING] ${toScore.length} conversations to score...`);
+
+  const scored = await scoreAllConversations(toScore, probesMap, {
+    concurrency,
+    onProgress: (done, total) => {
+      process.stdout.write(`\r[SCORING] ${done + skipped}/${rawResults.length} scored`);
+    },
+    onResult: async (result) => {
+      // Write each scored result immediately so progress survives crashes
+      const filename = scoredFilename(result);
+      await writeFile(
+        join(scoredDir, filename),
+        JSON.stringify(result, null, 2),
+        'utf8'
+      );
+    },
+  });
+
+  // Clear the progress line
+  process.stdout.write('\n');
+
+  log(`[SCORING] Complete: ${scored.length + skipped}/${rawResults.length} results scored`);
 
   return scored;
 }
@@ -661,7 +695,7 @@ async function main() {
       return;
     }
 
-    await runScoringPhase(rawResults, probesMap, scoredDir);
+    await runScoringPhase(rawResults, probesMap, scoredDir, opts.concurrency);
   }
 
   // Report phase

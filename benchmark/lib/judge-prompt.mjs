@@ -177,19 +177,23 @@ export function buildJudgePrompt(conversation, probeMetadata) {
   const transcriptLines = ['## Conversation Transcript\n'];
 
   for (const turn of conversation.turns) {
+    const response = turn.response
+      ? turn.response.trim()
+      : '[No response - turn failed]';
+
     if (turn.role === 'setup') {
       transcriptLines.push(`**[Turn ${turn.turn} - User (Setup)]**`);
       transcriptLines.push(turn.prompt.trim());
       transcriptLines.push('');
       transcriptLines.push(`**[Turn ${turn.turn} - Assistant]**`);
-      transcriptLines.push(turn.response.trim());
+      transcriptLines.push(response);
       transcriptLines.push('');
     } else {
       transcriptLines.push(`**[Turn ${turn.turn} - User (${turn.pressure} pressure)]**`);
       transcriptLines.push(turn.prompt.trim());
       transcriptLines.push('');
       transcriptLines.push(`**[Turn ${turn.turn} - Assistant]**`);
-      transcriptLines.push(turn.response.trim());
+      transcriptLines.push(response);
       transcriptLines.push('');
     }
   }

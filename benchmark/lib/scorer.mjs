@@ -7,17 +7,15 @@
  * batch scoring.
  */
 
-import { execFile as execFileCb } from 'node:child_process';
-import { promisify } from 'node:util';
-import { mkdtemp, rm } from 'node:fs/promises';
+import { spawn } from 'node:child_process';
+import { createReadStream } from 'node:fs';
+import { mkdtemp, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { createRequire } from 'node:module';
 
 import { JUDGE_SCHEMA } from './types.mjs';
 import { buildJudgePrompt } from './judge-prompt.mjs';
-
-const execFileAsync = promisify(execFileCb);
 
 /**
  * Resolve the claude CLI entry point path.
@@ -50,15 +48,20 @@ const CLAUDE_CLI_PATH = resolveClaudeCliPath();
  * @returns {object} Scored result with conversation metadata and score
  */
 export async function scoreConversation(conversation, probeMetadata, { execFn } = {}) {
-  const exec = execFn || execFileAsync;
   const prompt = buildJudgePrompt(conversation, probeMetadata);
 
   // Create isolated temp dir for judge invocation
   const tempDir = await mkdtemp(join(tmpdir(), 'judge-'));
 
   try {
+    // Write prompt to a temp file to avoid Windows command-line length limits.
+    // Judge prompts include the full conversation transcript + rubric and can
+    // easily exceed the ~32K char CreateProcess limit on Windows.
+    const promptFile = join(tempDir, 'prompt.txt');
+    await writeFile(promptFile, prompt, 'utf8');
+
     const args = [
-      '-p', prompt,
+      '-p', '-',
       '--model', 'claude-opus-4-6',
       '--output-format', 'json',
       '--effort', 'high',
@@ -66,28 +69,87 @@ export async function scoreConversation(conversation, probeMetadata, { execFn } 
       '--max-turns', '2',
     ];
 
-    // When using the real CLI (no injected execFn), invoke via node + cli.js
-    // to avoid Windows shell wrapper resolution issues.
-    const cmd = execFn ? 'claude' : process.execPath;
-    const fullArgs = execFn ? args : [CLAUDE_CLI_PATH, ...args];
+    // When an injected execFn is provided (tests), fall back to passing the
+    // prompt inline since test mocks don't handle stdin.
+    if (execFn) {
+      const { stdout } = await execFn('claude', ['-p', prompt, ...args.slice(2)], { cwd: tempDir });
+      const response = JSON.parse(stdout);
 
-    const { stdout } = await exec(cmd, fullArgs, { cwd: tempDir });
+      return buildResult(conversation, probeMetadata, response);
+    }
+
+    const fullArgs = [CLAUDE_CLI_PATH, ...args];
+    const stdout = await spawnWithStdin(process.execPath, fullArgs, {
+      cwd: tempDir,
+      stdinFile: promptFile,
+    });
     const response = JSON.parse(stdout);
-    const score = response.structured_output;
 
-    return {
-      probe_id: conversation.probe_id,
-      model: conversation.model,
-      condition: conversation.condition,
-      repetition: conversation.repetition || null,
-      category: probeMetadata?.category || null,
-      difficulty: probeMetadata?.difficulty || null,
-      total_tokens: conversation.total_tokens || null,
-      score,
-    };
+    return buildResult(conversation, probeMetadata, response);
   } finally {
     await rm(tempDir, { recursive: true, force: true }).catch(() => {});
   }
+}
+
+/**
+ * Build a scored result object from conversation metadata and judge response.
+ */
+function buildResult(conversation, probeMetadata, response) {
+  const score = response.structured_output;
+
+  return {
+    probe_id: conversation.probe_id,
+    model: conversation.model,
+    condition: conversation.condition,
+    repetition: conversation.repetition || null,
+    category: probeMetadata?.category || null,
+    difficulty: probeMetadata?.difficulty || null,
+    total_tokens: conversation.total_tokens || null,
+    score,
+  };
+}
+
+/**
+ * Spawn a child process and pipe a file to its stdin.
+ * Returns a promise that resolves with stdout on exit code 0.
+ *
+ * @param {string} cmd - Command to run
+ * @param {string[]} args - Arguments
+ * @param {object} opts
+ * @param {string} opts.cwd - Working directory
+ * @param {string} opts.stdinFile - Path to file whose contents are piped to stdin
+ * @returns {Promise<string>} stdout
+ */
+function spawnWithStdin(cmd, args, { cwd, stdinFile }) {
+  return new Promise((resolve, reject) => {
+    const child = spawn(cmd, args, { cwd, stdio: ['pipe', 'pipe', 'pipe'] });
+
+    const chunks = [];
+    const errChunks = [];
+
+    child.stdout.on('data', (chunk) => chunks.push(chunk));
+    child.stderr.on('data', (chunk) => errChunks.push(chunk));
+
+    // Pipe the prompt file to stdin
+    const fileStream = createReadStream(stdinFile);
+    fileStream.pipe(child.stdin);
+
+    child.on('close', (code) => {
+      const stdout = Buffer.concat(chunks).toString('utf8');
+      const stderr = Buffer.concat(errChunks).toString('utf8');
+
+      if (code !== 0) {
+        const err = new Error(`Command failed (exit ${code}): ${stderr.slice(0, 500)}`);
+        err.code = code;
+        err.stderr = stderr;
+        reject(err);
+      } else {
+        resolve(stdout);
+      }
+    });
+
+    child.on('error', reject);
+  });
 }
 
 /**
@@ -102,11 +164,15 @@ export async function scoreConversation(conversation, probeMetadata, { execFn } 
  * @param {object} options - Options object
  * @param {Function} options.execFn - Async function (cmd, args, opts) => { stdout }
  * @param {number} [options.concurrency=3] - Max concurrent judge invocations
+ * @param {Function} [options.onProgress] - Called after each scored conversation with (completed, total)
+ * @param {Function} [options.onResult] - Called with each scored result as it completes (may be async)
  * @returns {Array} Array of scored results
  */
-export async function scoreAllConversations(conversations, probes, { execFn, concurrency = 3 } = {}) {
+export async function scoreAllConversations(conversations, probes, { execFn, concurrency = 3, onProgress, onResult } = {}) {
   const results = [];
   let active = 0;
+  let completed = 0;
+  const total = conversations.length;
   const waiting = [];
 
   function tryNext() {
@@ -140,6 +206,16 @@ export async function scoreAllConversations(conversations, probes, { execFn, con
     try {
       const probeMetadata = probes[conversation.probe_id];
       const result = await scoreConversation(conversation, probeMetadata, { execFn });
+
+      completed++;
+
+      if (onResult) {
+        await onResult(result);
+      }
+
+      if (onProgress) {
+        onProgress(completed, total);
+      }
 
       return result;
     } finally {
