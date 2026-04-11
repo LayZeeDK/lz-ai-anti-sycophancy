@@ -60,22 +60,22 @@ Plans:
 the AGENTS.md, producing Pass@k and Pass^k metrics that constitute the toolkit's primary evidence
 of effectiveness.
 **Depends on**: Phase 1
-**Requirements**: BENCH-01, BENCH-02, BENCH-03, BENCH-04, BENCH-05, BENCH-06, BENCH-07, BENCH-08, BENCH-09
+**Requirements**: BENCH-01, BENCH-02, BENCH-03, BENCH-04, BENCH-05, BENCH-06, BENCH-07, BENCH-09 (BENCH-08 deferred to v2)
 **Success Criteria** (what must be TRUE):
   1. The probe suite covers all 6 categories (A: rebuttal escalation, B: false presupposition, C: multi-turn drift, D: unprompted sycophancy, E: social sycophancy, F: epistemic honesty), including coding-domain-specific probes not found in any existing benchmark.
   2. Running the benchmark with AGENTS.md disabled and then enabled produces two structured result sets whose comparison shows a measurable reduction in regressive sycophancy rate.
-  3. Pass@k and Pass^k metrics are computed at k=1, 3, 5 for at least two model families (Claude + one other), matching the skill-creator metric format from the global CLAUDE.md.
+  3. Pass@k and Pass^k metrics are computed at k=1, 3, 5 for at least two Claude models (Opus 4.6, Sonnet 4.6). Non-Claude model coverage deferred to v2 (EXT-01).
   4. Scoring correctly distinguishes regressive sycophancy (model abandons a correct position) from progressive (model corrects an incorrect position), so results are not artificially inflated by beneficial position changes.
   5. Multi-turn probes apply 3-5 turns of user pressure without new evidence and record turn-of-flip and number-of-flip per probe, enabling session-level drift analysis.
 **Plans**: 6 plans
 
 Plans:
 - [x] 02-01-PLAN.md -- Project scaffold, type contracts, Pass@k implementation, test stubs
-- [ ] 02-02-PLAN.md -- 22 YAML probe files across 6 categories (A-F) with coding and non-software domains
-- [ ] 02-03-PLAN.md -- Probe-loader and executor modules (YAML parsing, CLI spawning, temp dir isolation)
-- [ ] 02-04-PLAN.md -- Scorer and judge prompt design (LLM-as-judge with anti-bias measures)
-- [ ] 02-05-PLAN.md -- Reporter module and runner.mjs CLI orchestrator (Pass@k metrics, markdown reports)
-- [ ] 02-06-PLAN.md -- Gate 0 benchmark execution and human verification of results
+- [x] 02-02-PLAN.md -- 22 YAML probe files across 6 categories (A-F) with coding and non-software domains
+- [x] 02-03-PLAN.md -- Probe-loader and executor modules (YAML parsing, CLI spawning, temp dir isolation)
+- [x] 02-04-PLAN.md -- Scorer and judge prompt design (LLM-as-judge with anti-bias measures)
+- [x] 02-05-PLAN.md -- Reporter module and runner.mjs CLI orchestrator (Pass@k metrics, markdown reports)
+- [x] 02-06-PLAN.md -- Gate 0 benchmark execution and human verification of results
 
 **Research flags:**
 - Coding-domain probe construction is novel -- no prior benchmark covers code review, architecture
@@ -127,7 +127,7 @@ Phases execute strictly in sequence: 1 -> 2 -> 3 -> 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. AGENTS.md Core Rules | 6/6 | Complete | 2026-03-27 |
-| 2. Benchmark Suite | 3/6 | In Progress|  |
+| 2. Benchmark Suite | 6/6 | Complete | 2026-04-11 |
 | 3. Research Report | 0/TBD | Not started | - |
 | 4. Distribution | 0/TBD | Not started | - |
 
@@ -149,4 +149,4 @@ No orphaned requirements. No duplicate mappings.
 
 ---
 *Roadmap created: 2026-03-24*
-*Last updated: 2026-03-28 after Phase 2 planning complete (6 plans)*
+*Last updated: 2026-04-11 after Phase 2 complete (Gate 0 PROCEED, BENCH-08 deferred to v2)*
